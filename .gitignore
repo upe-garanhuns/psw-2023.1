@@ -1,3 +1,10 @@
+bin/
+target/
+*.project
+*.classpath
+*.wtpmodules
+*.settings
+
 # Compiled class file
 *.class
 
