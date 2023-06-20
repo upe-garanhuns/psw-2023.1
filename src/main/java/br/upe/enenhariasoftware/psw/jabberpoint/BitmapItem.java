@@ -23,8 +23,8 @@ public class BitmapItem extends SlideItem {
 	private BufferedImage bufferedImage;
 	private String imageName;
 
-	protected static final String FILE = "Arquivo ";
-	protected static final String NOTFOUND = " não encontrado";
+	protected static final String FILE = "File ";
+	protected static final String NOTFOUND = " not found";
 
 	public BitmapItem(int level, String name) {
 		super(level);
