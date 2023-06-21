@@ -141,7 +141,7 @@ public class MenuController extends MenuBar {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        AboutBox.show(parent);
+        About.show(parent);
       }
     });
     

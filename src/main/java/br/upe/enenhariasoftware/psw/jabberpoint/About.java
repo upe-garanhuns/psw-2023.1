@@ -13,7 +13,7 @@ import java.awt.Frame;
 
 import javax.swing.JOptionPane;
 
-public class AboutBox {
+public class About {
 
 	public static void show(Frame parent) {
 		JOptionPane.showMessageDialog(parent,
