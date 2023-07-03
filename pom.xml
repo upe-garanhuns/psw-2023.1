@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.upe.enenhariasoftware.psw</groupId>
 	<artifactId>jabberpoint</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>Jabber Point</name>
 	<description>A simple slide presentation.</description>
 	<url>https://github.com/upe-garanhuns/psw-2023.1</url>
