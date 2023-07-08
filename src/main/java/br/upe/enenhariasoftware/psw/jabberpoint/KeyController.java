@@ -14,11 +14,11 @@ import java.awt.event.KeyEvent;
 
 public class KeyController extends KeyAdapter {
 
-	private Presentation presentation;
+  private Presentation presentation;
 
-	public KeyController(Presentation p) {
-		presentation = p;
-	}
+  public KeyController(Presentation p) {
+	presentation = p;
+  }
 
 	public void keyPressed(KeyEvent keyEvent) {
 		switch (keyEvent.getKeyCode()) {

@@ -26,7 +26,7 @@ import java.util.List;
 
 public class TextItem extends SlideItem {
 
-	private String text;
+  private String text;
 
 	private static final String EMPTYTEXT = "No Text Given";
 
