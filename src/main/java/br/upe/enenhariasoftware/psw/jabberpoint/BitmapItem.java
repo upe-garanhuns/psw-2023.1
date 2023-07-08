@@ -20,8 +20,8 @@ import javax.imageio.ImageIO;
 
 public class BitmapItem extends SlideItem {
 
-  private BufferedImage bufferedImage;
-  private String imageName;
+	private BufferedImage bufferedImage;
+	private String imageName;
 
 	protected static final String FILE = "File ";
 	protected static final String NOTFOUND = " not found";
