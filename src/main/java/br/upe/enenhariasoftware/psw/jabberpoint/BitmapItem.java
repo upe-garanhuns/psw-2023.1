@@ -15,11 +15,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BitmapItem extends SlideItem {
-
+  private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
+  
   private BufferedImage bufferedImage;
   private String imageName;
 
@@ -34,7 +36,7 @@ public class BitmapItem extends SlideItem {
     try {
       bufferedImage = ImageIO.read(new File(imageName));
     } catch (IOException e) {
-      System.err.println(FILE + imageName + NOTFOUND);
+      logger.error("{}{}{}", FILE, imageName, NOTFOUND);
     }
 
   }
