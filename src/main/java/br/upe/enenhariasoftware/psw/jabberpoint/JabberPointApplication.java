@@ -10,7 +10,6 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
 
 public class JabberPointApplication {

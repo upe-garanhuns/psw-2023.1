@@ -10,7 +10,6 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.awt.Frame;
-
 import javax.swing.JOptionPane;
 
 public class About {
