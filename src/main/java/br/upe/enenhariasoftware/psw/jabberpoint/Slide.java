@@ -16,8 +16,8 @@ import java.util.Vector;
 
 public class Slide {
 
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
+	public static final int WIDTH = 1200;
+	public static final int HEIGHT = 800;
 
 	protected TextItem title;
 	protected Vector<SlideItem> items;
