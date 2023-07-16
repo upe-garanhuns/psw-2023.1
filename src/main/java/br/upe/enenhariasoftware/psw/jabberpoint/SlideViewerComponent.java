@@ -41,6 +41,7 @@ public class SlideViewerComponent extends JComponent {
 		this.frame = frame;
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
@@ -57,6 +58,7 @@ public class SlideViewerComponent extends JComponent {
 		frame.setTitle(presentation.getTitle());
 	}
 
+	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);

@@ -10,13 +10,15 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Presentation {
+public class Presentation implements Serializable {
 
 	private String title;
 	private ArrayList<Slide> showList = null;
 	private SlideViewerComponent slideViewComponent = null;
 	private int currentSlideNumber = 0;
+	private static final long serialVersionUID = 1L;
 
 	public Presentation() {
 		slideViewComponent = null;

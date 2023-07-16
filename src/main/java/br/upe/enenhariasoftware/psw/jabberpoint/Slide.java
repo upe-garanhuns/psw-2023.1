@@ -13,11 +13,13 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
+import java.io.Serializable;
 
-public class Slide {
+public class Slide implements Serializable{
 
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
+	private static final long serialVersionUID = 1L;
 
 	protected TextItem title;
 	protected Vector<SlideItem> items;
