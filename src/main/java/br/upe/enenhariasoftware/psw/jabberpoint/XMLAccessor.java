@@ -17,6 +17,8 @@ import java.util.Vector;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -24,6 +26,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLAccessor extends Accessor {
+  private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
+
+  protected static final String ERROR_MESSAGE = "Error occured: ";
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -81,11 +86,11 @@ public class XMLAccessor extends Accessor {
       }
 
     } catch (IOException iox) {
-      System.err.println(iox.toString());
+      logger.error("{}{}", ERROR_MESSAGE, iox.toString());
     } catch (SAXException sax) {
-      System.err.println(sax.getMessage());
+      logger.error("{}{}", ERROR_MESSAGE, sax.getMessage());
     } catch (ParserConfigurationException pcx) {
-      System.err.println(PCE);
+      logger.error("{}{}", ERROR_MESSAGE, PCE);
     }
 
   }
@@ -101,7 +106,7 @@ public class XMLAccessor extends Accessor {
       try {
         level = Integer.parseInt(leveltext);
       } catch (NumberFormatException x) {
-        System.err.println(NFE);
+        logger.error("Error occured: {}", NFE);
       }
     }
 
@@ -112,7 +117,7 @@ public class XMLAccessor extends Accessor {
       if (IMAGE.equals(type)) {
         slide.append(new BitmapItem(level, item.getTextContent()));
       } else {
-        System.err.println(UNKNOWNTYPE);
+        logger.error("{}{}", ERROR_MESSAGE, UNKNOWNTYPE);
       }
     }
   }
@@ -148,7 +153,7 @@ public class XMLAccessor extends Accessor {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
             out.print(((BitmapItem) slideItem).getName());
           } else {
-            System.out.println("Ignoring " + slideItem);
+            logger.info("Ignoring {}", slideItem);
           }
         }
 
