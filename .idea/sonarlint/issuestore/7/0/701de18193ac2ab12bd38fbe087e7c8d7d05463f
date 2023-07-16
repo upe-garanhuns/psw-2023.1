@@ -1,0 +1,19 @@
+
+N
+java:S27557"3Disable access to external entities in XML parsing.(²™¥úøÿÿÿÿ
+|
+java:S1149‡"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(¤”­Ö
+]
+java:S16594"GDeclare "itemNumber" and all following declarations on a separate line.(¹Íê¦
+N	java:S106R"9Replace this use of System.out or System.err by a logger.(¢Çøè
+S	java:S106T"9Replace this use of System.out or System.err by a logger.(¹ô¤Ôúÿÿÿÿ
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(”ÊéÆıÿÿÿÿ
+S	java:S106f"9Replace this use of System.out or System.err by a logger.(ÅÉÀÆÿÿÿÿÿ
+N	java:S106q"9Replace this use of System.out or System.err by a logger.(õ½
+H
+java:S1905‰",Remove this unnecessary cast to "SlideItem".(£©²ÿÿÿÿÿ
+a
+java:S6201Œ"JReplace this instanceof check and cast with 'instanceof TextItem textitem'(¾ûñÉ
+e
+java:S6201"NReplace this instanceof check and cast with 'instanceof BitmapItem bitmapitem'(¯’ëÀ
+T	java:S106”"9Replace this use of System.out or System.err by a logger.(Ô—ßÿûÿÿÿÿ
