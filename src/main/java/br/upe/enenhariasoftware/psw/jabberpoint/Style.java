@@ -15,13 +15,12 @@ import java.awt.Font;
 public class Style {
 
   private static Style[] styles;
-
   private static final String FONTNAME = "Helvetica";
-  int indent;
-  Color color;
-  Font font;
-  int fontSize;
-  int leading;
+  private int indent;
+  private Color color;
+  private Font font;
+  private int fontSize;
+  private int leading;
 
   public static void createStyles() {
     styles = new Style[5];
@@ -53,5 +52,17 @@ public class Style {
 
   public Font getFont(float scale) {
     return font.deriveFont(fontSize * scale);
+  }
+  
+  public int getIndent() {
+	  return this.indent;
+  }
+  
+  public int getLeading() {
+	  return this.leading;
+  }
+  
+  public Color getColor() {
+	  return this.color;
   }
 }
