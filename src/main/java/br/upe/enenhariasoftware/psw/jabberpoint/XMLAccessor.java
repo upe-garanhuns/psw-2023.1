@@ -142,7 +142,7 @@ public class XMLAccessor extends Accessor {
 
       Vector<SlideItem> slideItems = slide.getSlideItems();
       for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-        SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+        SlideItem slideItem = slideItems.elementAt(itemNumber);
         out.print("<item kind=");
 
         if (slideItem instanceof TextItem) {
