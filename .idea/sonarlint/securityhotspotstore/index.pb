@@ -1,6 +1,4 @@
 
-q
-Asrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/Style.java,3\e\3e794cf326b77872c3a50e411d638b4f3a486125
 z
 Jsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/MenuController.java,3\0\3091c82a8a22a1b40b9e2586f3fbeb37bc832648
 t
