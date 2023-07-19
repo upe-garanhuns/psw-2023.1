@@ -137,22 +137,22 @@ public class XMLAccessor extends Accessor {
 
 			Vector<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
-				out.print("<item kind=");
+			    SlideItem slideItem = slideItems.elementAt(itemNumber);
+			    out.print("<item kind=");
 
-				if (slideItem instanceof TextItem) {
-					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
-					out.print(((TextItem) slideItem).getText());
-				} else {
-					if (slideItem instanceof BitmapItem) {
-						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print(((BitmapItem) slideItem).getName());
-					} else {
-						System.out.println("Ignoring " + slideItem);
-					}
-				}
+			    if (slideItem instanceof TextItem) {
+			        out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
+			        out.print(((TextItem) slideItem).getText());
+			    } else {
+			        if (slideItem instanceof BitmapItem) {
+			            out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
+			            out.print(((BitmapItem) slideItem).getName());
+			        } else {
+			            System.out.println("Ignoring " + slideItem);
+			        }
+			    }
 
-				out.println("</item>");
+			    out.println("</item>");
 			}
 
 			out.println("</slide>");
