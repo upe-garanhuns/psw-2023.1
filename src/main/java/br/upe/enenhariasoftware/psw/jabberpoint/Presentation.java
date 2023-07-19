@@ -6,6 +6,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
+
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class Presentation {
     if (number < 0 || number >= getSize()) {
       return null;
     }
-    return (Slide) showList.get(number);
+    return showList.get(number);
   }
 
   public Slide getCurrentSlide() {

@@ -6,6 +6,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
+
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.awt.event.KeyAdapter;
