@@ -68,7 +68,7 @@ public class Presentation {
   }
 
   void clear() {
-    showList = new ArrayList<Slide>();
+    showList = new ArrayList<>();
     setSlideNumber(-1);
   }
 
