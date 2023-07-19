@@ -48,7 +48,10 @@ public class XMLAccessor extends Accessor {
 
   @Override
   public void loadFile(Presentation presentation, String filename) throws IOException {
-    int slideNumber, itemNumber, max = 0, maxItems = 0;
+    int slideNumber;
+    int itemNumber;
+    int max;
+    int maxItems;
 
     try {
       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
