@@ -20,6 +20,7 @@ public class KeyController extends KeyAdapter {
 		presentation = p;
 	}
 
+	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		switch (keyEvent.getKeyCode()) {
 		case KeyEvent.VK_PAGE_DOWN:
