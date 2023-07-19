@@ -1,9 +1,9 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
  * Software - 2023.1
- *
+ * 
  * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * @author Ian F. Darwin, Helaine Lins
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
@@ -46,21 +46,39 @@ public class BitmapItem extends SlideItem {
     return imageName;
   }
 
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-            (int) (bufferedImage.getWidth(observer) * scale),
-            ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+  public int getImageWidth(ImageObserver observer, float scale) {
+    return (int) (bufferedImage.getWidth(observer) * scale);
   }
+
+  public int getImageHeight(ImageObserver observer, float scale) {
+    return (int) (bufferedImage.getHeight(observer) * scale);
+  }
+
+  public int getStyleIndent(Style myStyle, float scale) {
+    return (int) (myStyle.getIndent() * scale);
+  }
+
+  public int getStyleLeading(Style myStyle, float scale) {
+    return (int) (myStyle.getLeading() * scale);
+  }
+
+  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+    return new Rectangle(getStyleIndent(myStyle, scale), 0, getImageWidth(observer, scale),
+        getStyleLeading(myStyle, scale) + getImageHeight(observer, scale));
+  }
+
 
   public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.getIndent() * scale);
-    int height = y + (int) (myStyle.getLeading() * scale);
+    int width = x + getStyleIndent(myStyle, scale);
+    int height = y + getStyleLeading(myStyle, scale);
 
-    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-            (int) (bufferedImage.getHeight(observer) * scale), observer);
+    g.drawImage(bufferedImage, width, height, getImageWidth(observer, scale),
+        getImageHeight(observer, scale), observer);
   }
 
+  @Override
   public String toString() {
     return "BitmapItem[" + getLevel() + "," + imageName + "]";
   }
+
 }
