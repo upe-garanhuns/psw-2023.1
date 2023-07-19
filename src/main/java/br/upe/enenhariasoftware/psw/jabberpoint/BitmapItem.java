@@ -1,9 +1,9 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
  * Software - 2023.1
- * 
+ *
  * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * @author Ian F. Darwin, Helaine Lins
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
@@ -48,8 +48,8 @@ public class BitmapItem extends SlideItem {
 
   public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
     return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-        (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+            (int) (bufferedImage.getWidth(observer) * scale),
+            ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
   }
 
   public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
@@ -57,7 +57,7 @@ public class BitmapItem extends SlideItem {
     int height = y + (int) (myStyle.getLeading() * scale);
 
     g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-        (int) (bufferedImage.getHeight(observer) * scale), observer);
+            (int) (bufferedImage.getHeight(observer) * scale), observer);
   }
 
   public String toString() {

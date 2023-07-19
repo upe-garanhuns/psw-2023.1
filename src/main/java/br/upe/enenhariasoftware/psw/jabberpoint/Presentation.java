@@ -1,9 +1,9 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
  * Software - 2023.1
- * 
+ *
  * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * @author Ian F. Darwin, Helaine Lins
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
@@ -14,13 +14,12 @@ import java.util.ArrayList;
 public class Presentation implements Serializable {
 
   private String title;
-  private ArrayList<Slide> showList = null;
-  private SlideViewerComponent slideViewComponent = null;
+  private ArrayList<Slide> slideList;
+  private SlideViewerComponent slideViewComponent;
   private int currentSlideNumber = 0;
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 221L;
 
   public Presentation() {
-    slideViewComponent = null;
     clear();
   }
 
@@ -30,15 +29,15 @@ public class Presentation implements Serializable {
   }
 
   public int getSize() {
-    return showList.size();
+    return this.slideList.size();
   }
 
   public String getTitle() {
-    return title;
+    return this.title;
   }
 
-  public void setTitle(String nt) {
-    title = nt;
+  public void setTitle(String newTitle) {
+    this.title = newTitle;
   }
 
   public void setShowView(SlideViewerComponent slideViewerComponent) {
@@ -46,11 +45,11 @@ public class Presentation implements Serializable {
   }
 
   public int getSlideNumber() {
-    return currentSlideNumber;
+    return this.currentSlideNumber;
   }
 
-  public void setSlideNumber(int number) {
-    currentSlideNumber = number;
+  public void setSlideNumber(int slideNumber) {
+    currentSlideNumber = slideNumber;
     if (slideViewComponent != null) {
       slideViewComponent.update(this, getCurrentSlide());
     }
@@ -63,25 +62,22 @@ public class Presentation implements Serializable {
   }
 
   public void nextSlide() {
-    if (currentSlideNumber < (showList.size() - 1)) {
+    if (currentSlideNumber < (slideList.size() - 1)) {
       setSlideNumber(currentSlideNumber + 1);
     }
   }
 
-  void clear() {
-    showList = new ArrayList<>();
+  public void clear() {
+    slideList = new ArrayList<>();
     setSlideNumber(-1);
   }
 
-  public void append(Slide slide) {
-    showList.add(slide);
+  public void append(Slide newSlide) {
+    slideList.add(newSlide);
   }
 
-  public Slide getSlide(int number) {
-    if (number < 0 || number >= getSize()) {
-      return null;
-    }
-    return showList.get(number);
+  public Slide getSlide(int slideNumber) {
+    return (slideNumber >= 0 && slideNumber < getSize()) ? slideList.get(slideNumber) : null;
   }
 
   public Slide getCurrentSlide() {
