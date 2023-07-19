@@ -49,7 +49,7 @@ public class DemoPresentation extends Accessor {
     slide.append(2, "Go to File->Open.");
     slide.append(1, " ");
     slide.append(1, "End");
-    URL resource = this.getClass().getClassLoader().getResource("classpath:JabberPoint.jpg");
+    URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
     slide.append(new BitmapItem(1, resource.getPath()));
     presentation.append(slide);
   }
