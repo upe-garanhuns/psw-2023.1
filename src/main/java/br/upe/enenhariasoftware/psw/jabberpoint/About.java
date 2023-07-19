@@ -12,7 +12,11 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-public class About {
+public final class About {
+
+  private About() {
+    throw new IllegalStateException("About is an utility class");
+  }
 
   public static void show(Frame parent) {
     JOptionPane.showMessageDialog(parent,
