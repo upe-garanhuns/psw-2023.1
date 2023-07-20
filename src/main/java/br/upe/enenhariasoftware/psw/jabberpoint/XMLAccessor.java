@@ -14,7 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Vector;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -60,8 +59,13 @@ public class XMLAccessor extends Accessor {
     int maxItems = 0;
 
     try {
-      DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+      // Configuração para desabilitar o acesso a entidades externas
+      dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true); // XML External Entity (XXE) attack
+      dbf.setFeature("http://xml.org/sax/features/external-general-entities", false); // General Entity Expansion
+      dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false); // Parameter Entity Expansion
 
+      DocumentBuilder builder = dbf.newDocumentBuilder();
       Document document = builder.parse(new File(filename));
 
       Element doc = document.getDocumentElement();
