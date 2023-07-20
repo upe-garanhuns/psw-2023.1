@@ -13,7 +13,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-import java.util.Vector;
+
 
 public class Slide {
 
@@ -44,7 +44,7 @@ public class Slide {
   }
 
   public SlideItem getSlideItem(int number) {
-    return (SlideItem) items.get(number);
+    return items.get(number);
   }
 
   public ArrayList<SlideItem> getSlideItems() {
@@ -67,7 +67,7 @@ public class Slide {
     y += slideItem.getBoundingBox(g, view, scale, style).height;
 
     for (int number = 0; number < getSize(); number++) {
-      slideItem = (SlideItem) getSlideItems().get(number);
+      slideItem = getSlideItems().get(number);
 
       style = Style.getStyle(slideItem.getLevel());
       slideItem.draw(area.x, y, scale, g, style, view);

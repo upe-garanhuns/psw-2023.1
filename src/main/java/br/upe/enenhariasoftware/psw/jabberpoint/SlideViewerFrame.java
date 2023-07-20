@@ -20,8 +20,8 @@ public class SlideViewerFrame extends JFrame {
 
   private static final String JABTITLE = "Jabberpoint 1.6";
 
-  public final static int WIDTH = 1200;
-  public final static int HEIGHT = 800;
+  public static final int WIDTH = 1200;
+  public static final int HEIGHT = 800;
 
   public SlideViewerFrame(String title, Presentation presentation) {
     super(title);
@@ -36,7 +36,8 @@ public class SlideViewerFrame extends JFrame {
     setTitle(JABTITLE);
 
     addWindowListener(new WindowAdapter() {
-      public void windowClosing(WindowEvent e) {
+      @Override
+        public void windowClosing(WindowEvent e) {
         System.exit(0);
       }
     });
