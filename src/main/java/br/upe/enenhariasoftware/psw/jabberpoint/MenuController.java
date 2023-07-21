@@ -25,7 +25,7 @@ public class MenuController extends MenuBar {
 
   private static final long serialVersionUID = 227L;
   
-  private Frame parent; 
+  private Frame frame;
   private Presentation presentation; 
 
   protected static final String ABOUT = "About";
@@ -49,13 +49,14 @@ public class MenuController extends MenuBar {
   protected static final String SAVEERR = "Failed to save";
 
   public MenuController(Frame frame, Presentation pres) {
-    parent = frame;
+    this.frame = frame;
     presentation = pres;
     
     MenuItem menuItem;
     
     Menu fileMenu = new Menu(FILE);
-    fileMenu.add(menuItem = mkMenuItem(OPEN));
+    menuItem = mkMenuItem(OPEN);
+    fileMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
@@ -66,23 +67,25 @@ public class MenuController extends MenuBar {
           xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(MenuController.this.frame, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
         
-        parent.repaint();
+        MenuController.this.frame.repaint();
       }
     });
-    
-    fileMenu.add(menuItem = mkMenuItem(NEW));
+
+    menuItem = mkMenuItem(NEW);
+    fileMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
-        parent.repaint();
+        MenuController.this.frame.repaint();
       }
     });
-    
-    fileMenu.add(menuItem = mkMenuItem(SAVE));
+
+    menuItem = mkMenuItem(SAVE);
+    fileMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -90,14 +93,15 @@ public class MenuController extends MenuBar {
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(MenuController.this.frame, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
       }
     });
     
     fileMenu.addSeparator();
-    
-    fileMenu.add(menuItem = mkMenuItem(EXIT));
+
+    menuItem = mkMenuItem(EXIT);
+    fileMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
@@ -108,27 +112,30 @@ public class MenuController extends MenuBar {
     add(fileMenu);
     
     Menu viewMenu = new Menu(VIEW);
-    viewMenu.add(menuItem = mkMenuItem(NEXT));
+    menuItem = mkMenuItem(NEXT);
+    viewMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.nextSlide();
       }
     });
-    
-    viewMenu.add(menuItem = mkMenuItem(PREV));
-    
+
+    menuItem = mkMenuItem(PREV);
+    viewMenu.add(menuItem);
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.prevSlide();
       }
     });
-    
-    viewMenu.add(menuItem = mkMenuItem(GOTO));
+
+    menuItem = mkMenuItem(GOTO);
+    viewMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
+        String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
         presentation.setSlideNumber(pageNumber - 1);
       }
@@ -137,11 +144,13 @@ public class MenuController extends MenuBar {
     add(viewMenu);
     
     Menu helpMenu = new Menu(HELP);
-    helpMenu.add(menuItem = mkMenuItem(ABOUT));
+
+    menuItem = mkMenuItem(ABOUT);
+    helpMenu.add(menuItem);
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        About.show(parent);
+        About.show(MenuController.this.frame);
       }
     });
     
