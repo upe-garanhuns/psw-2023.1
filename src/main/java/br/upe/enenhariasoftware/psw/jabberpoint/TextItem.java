@@ -100,7 +100,7 @@ public class TextItem extends SlideItem {
 	}
 
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
+		List<TextLayout> layouts = new ArrayList<>();
 
 		AttributedString attrStr = getAttributedString(s, scale);
 		Graphics2D g2d = (Graphics2D) g;
