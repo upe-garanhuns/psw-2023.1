@@ -14,7 +14,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -42,7 +41,7 @@ public class SlideViewerComponent extends JComponent {
   }
 
   @Override
-    public Dimension getPreferredSize() {
+  public Dimension getPreferredSize() {
     return new Dimension(Slide.WIDTH, Slide.HEIGHT);
   }
 
@@ -59,7 +58,7 @@ public class SlideViewerComponent extends JComponent {
   }
 
   @Override
-    public void paintComponent(Graphics g) {
+  public void paintComponent(Graphics g) {
     g.setColor(BGCOLOR);
     g.fillRect(0, 0, getSize().width, getSize().height);
 

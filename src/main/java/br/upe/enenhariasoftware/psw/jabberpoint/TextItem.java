@@ -19,12 +19,15 @@ import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
+import java.io.Serializable;
 import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TextItem extends SlideItem {
+public class TextItem extends SlideItem implements Serializable {
+
+  private static final long serialVersionUID = 122L;
 
   private String text;
 

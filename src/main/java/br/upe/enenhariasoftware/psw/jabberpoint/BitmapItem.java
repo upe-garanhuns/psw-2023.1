@@ -20,9 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BitmapItem extends SlideItem {
+
+  private static final long serialVersionUID = 432L;
+
   private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
-  
-  private BufferedImage bufferedImage;
+
+  private transient BufferedImage bufferedImage;
   private String imageName;
 
   protected static final String FILE = "File ";
