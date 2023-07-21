@@ -28,10 +28,14 @@ public abstract class SlideItem {
     return level;
   }
 
-  public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale,
+  public abstract int getStyleIndent(Style myStyle, float scale);
+
+  public abstract int getStyleLeading(Style myStyle, float scale);
+
+  public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale,
                                            Style style);
 
-  public abstract void draw(int x, int y, float scale, Graphics g, Style style,
+  public abstract void draw(int baseX, int baseY, float scale, Graphics graphics, Style style,
                             ImageObserver observer);
 
 }

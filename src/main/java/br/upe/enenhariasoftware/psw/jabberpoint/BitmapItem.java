@@ -53,10 +53,12 @@ public class BitmapItem extends SlideItem {
     return (int) (bufferedImage.getHeight(observer) * scale);
   }
 
+  @Override
   public int getStyleIndent(Style myStyle, float scale) {
     return (int) (myStyle.getIndent() * scale);
   }
 
+  @Override
   public int getStyleLeading(Style myStyle, float scale) {
     return (int) (myStyle.getLeading() * scale);
   }
