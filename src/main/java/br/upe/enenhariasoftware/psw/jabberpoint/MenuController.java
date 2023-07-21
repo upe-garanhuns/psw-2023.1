@@ -41,7 +41,7 @@ public class MenuController extends MenuBar {
   protected static final String SAVE = "Save";
   protected static final String VIEW = "View";
 
-  protected static final String TESTFILE = "classpath:test.xml"; 
+  protected static final String TESTFILE = "src/main/resources/test.xml";
   protected static final String SAVEFILE = "classpath:dump.xml"; 
 
   protected static final String IOEX = "IO Exception: ";

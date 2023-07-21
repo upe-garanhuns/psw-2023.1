@@ -21,7 +21,7 @@
 		<item kind="text"  level="1"> </item>
 		<item kind="text"  level="1">Garanhuns</item>
 		<item kind="text"  level="1"> </item>
-		<item kind="image"  level="2">classpath:upe_garanhuns.jpg</item>
+		<item kind="image"  level="2">src/main/resources/upe_garanhuns.jpg</item>
 	</slide>
 	<slide>
 		<title>JabberPoint: Style</title>
@@ -36,6 +36,6 @@
 		<item kind="text"  level="1">You could navigate to</item>
 		<item kind="text"  level="2">Presentation: File->Open</item>
 		<item kind="text"  level="1"> </item>
-		<item kind="image"  level="1">classpath:JabberPoint.jpg</item>
+		<item kind="image"  level="1">src/main/resources/JabberPoint.jpg</item>
 	</slide>
 </presentation>
