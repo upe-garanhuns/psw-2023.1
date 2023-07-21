@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
 
 public class BitmapItem extends SlideItem {
 
-	private BufferedImage bufferedImage;
+	private transient BufferedImage bufferedImage;
 	private String imageName;
 
 	protected static final String FILE = "File ";
