@@ -27,7 +27,6 @@ public class BitmapItem extends SlideItem {
 
   public BitmapItem(int level, String name) {
     super(level);
-
     imageName = name;
 
     try {
@@ -62,18 +61,23 @@ public class BitmapItem extends SlideItem {
     return (int) (myStyle.getLeading() * scale);
   }
 
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle(getStyleIndent(myStyle, scale), 0, getImageWidth(observer, scale),
-        getStyleLeading(myStyle, scale) + getImageHeight(observer, scale));
+  @Override
+  public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
+    int styleIndent = getStyleIndent(myStyle, scale);
+    int imageWidth = getImageWidth(observer, scale);
+    int height = getStyleLeading(myStyle, scale) + getImageHeight(observer, scale);
+
+    return new Rectangle(styleIndent, 0, imageWidth, height);
   }
 
+  @Override
+  public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver observer) {
+    int x = baseX + getStyleIndent(myStyle, scale);
+    int y = baseY + getStyleLeading(myStyle, scale);
+    int width = getImageWidth(observer, scale);
+    int height = getImageHeight(observer, scale);
 
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + getStyleIndent(myStyle, scale);
-    int height = y + getStyleLeading(myStyle, scale);
-
-    g.drawImage(bufferedImage, width, height, getImageWidth(observer, scale),
-        getImageHeight(observer, scale), observer);
+    graphics.drawImage(bufferedImage, x, y, width, height, observer);
   }
 
   @Override
