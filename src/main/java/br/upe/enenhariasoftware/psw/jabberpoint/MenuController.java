@@ -54,7 +54,8 @@ public class MenuController extends MenuBar {
     MenuItem menuItem;
 
     Menu fileMenu = new Menu(FILE);
-    fileMenu.add(menuItem = mkMenuItem(OPEN));
+    menuItem = mkMenuItem(OPEN);
+    fileMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -73,7 +74,8 @@ public class MenuController extends MenuBar {
       }
     });
 
-    fileMenu.add(menuItem = mkMenuItem(NEW));
+    menuItem = mkMenuItem(NEW);
+    fileMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -83,7 +85,8 @@ public class MenuController extends MenuBar {
       }
     });
 
-    fileMenu.add(menuItem = mkMenuItem(SAVE));
+    menuItem = mkMenuItem(SAVE);
+    fileMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -99,7 +102,8 @@ public class MenuController extends MenuBar {
 
     fileMenu.addSeparator();
 
-    fileMenu.add(menuItem = mkMenuItem(EXIT));
+    menuItem = mkMenuItem(EXIT);
+    fileMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -111,7 +115,8 @@ public class MenuController extends MenuBar {
     add(fileMenu);
 
     Menu viewMenu = new Menu(VIEW);
-    viewMenu.add(menuItem = mkMenuItem(NEXT));
+    menuItem = mkMenuItem(NEXT);
+    viewMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -120,7 +125,8 @@ public class MenuController extends MenuBar {
       }
     });
 
-    viewMenu.add(menuItem = mkMenuItem(PREV));
+    menuItem = mkMenuItem(PREV);
+    viewMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -129,7 +135,8 @@ public class MenuController extends MenuBar {
       }
     });
 
-    viewMenu.add(menuItem = mkMenuItem(GOTO));
+    menuItem = mkMenuItem(GOTO);
+    viewMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -143,7 +150,8 @@ public class MenuController extends MenuBar {
     add(viewMenu);
 
     Menu helpMenu = new Menu(HELP);
-    helpMenu.add(menuItem = mkMenuItem(ABOUT));
+    menuItem = mkMenuItem(ABOUT);
+    helpMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
       @Override
