@@ -28,7 +28,7 @@ public class SlideViewerComponent extends JComponent {
   private static final int XPOS = 1100;
   private static final int YPOS = 20;
 
-  private transient Slide slide;
+  private Slide slide;
   private Font labelFont = null;
   private Presentation presentation = null;
   private JFrame frame = null;
