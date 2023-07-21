@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -132,7 +132,7 @@ public class XMLAccessor extends Accessor {
       out.println("<slide>");
       out.println("<title>" + slide.getTitle() + "</title>");
 
-      ArrayList<SlideItem> slideItems = slide.getSlideItems();
+      List<SlideItem> slideItems = slide.getSlideItems();
       for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
         SlideItem slideItem = slideItems.get(itemNumber);
         out.print("<item kind=");
