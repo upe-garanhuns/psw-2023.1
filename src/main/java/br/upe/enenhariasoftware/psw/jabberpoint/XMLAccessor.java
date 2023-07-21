@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,6 +26,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLAccessor extends Accessor {
+
+  public static final Logger LOGGER = Logger.getLogger(XMLAccessor.class.getName());
+
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -48,7 +53,10 @@ public class XMLAccessor extends Accessor {
 
   @Override
   public void loadFile(Presentation presentation, String filename) throws IOException {
-    int slideNumber, itemNumber, max = 0, maxItems = 0;
+    int slideNumber;
+    int itemNumber;
+    int max;
+    int maxItems;
 
     try {
       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -78,11 +86,11 @@ public class XMLAccessor extends Accessor {
       }
 
     } catch (IOException iox) {
-      System.err.println(iox.toString());
+      LOGGER.warning(iox.toString());
     } catch (SAXException sax) {
-      System.err.println(sax.getMessage());
+      LOGGER.warning(sax.getMessage());
     } catch (ParserConfigurationException pcx) {
-      System.err.println(PCE);
+      LOGGER.warning(PCE);
     }
 
   }
@@ -98,7 +106,7 @@ public class XMLAccessor extends Accessor {
       try {
         level = Integer.parseInt(leveltext);
       } catch (NumberFormatException x) {
-        System.err.println(NFE);
+        LOGGER.warning(NFE);
       }
     }
 
@@ -109,7 +117,7 @@ public class XMLAccessor extends Accessor {
       if (IMAGE.equals(type)) {
         slide.append(new BitmapItem(level, item.getTextContent()));
       } else {
-        System.err.println(UNKNOWNTYPE);
+        LOGGER.warning(UNKNOWNTYPE);
       }
     }
   }
@@ -145,7 +153,7 @@ public class XMLAccessor extends Accessor {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
             out.print(((BitmapItem) slideItem).getName());
           } else {
-            System.out.println("Ignoring " + slideItem);
+            LOGGER.log(Level.INFO, "Ignoring {0}", slideItem);
           }
         }
 
