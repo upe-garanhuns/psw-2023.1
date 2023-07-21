@@ -14,7 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -50,7 +49,11 @@ public class XMLAccessor extends Accessor {
 	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber, itemNumber, max = 0, maxItems = 0;
+		int slideNumber;
+		int itemNumber;
+		int max;
+		int maxItems;
+
 
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -135,7 +138,7 @@ public class XMLAccessor extends Accessor {
 
 			List<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
+				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
 
 				if (slideItem instanceof TextItem) {
