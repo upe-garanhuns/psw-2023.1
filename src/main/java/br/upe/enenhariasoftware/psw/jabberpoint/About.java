@@ -19,10 +19,10 @@ public final class About {
 	}
 
 	public static void show(Frame parent) {
-		JOptionPane.showMessageDialog(parent, """
-				JabberPoint Copyright (c) 1995-now by Ian F. Darwin, ian@darwinsys.com.
-				Adapted by Helaine Lins - Universidade de Pernambuco, 2023.1.
-				The author's original copy is available at http://www.darwinsys.com/
-				""", "About JabberPoint", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(parent,
+				"JabberPoint Copyright (c) 1995-now by Ian F. Darwin, ian@darwinsys.com.\n"
+						+ "Adapted by Helaine Lins - Universidade de Pernambuco, 2023.1. \n"
+						+ "The author's original copy is available at http://www.darwinsys.com/",
+				"About JabberPoint", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
