@@ -14,13 +14,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.io.Serial;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public class SlideViewerComponent extends JComponent {
-	@Serial
 	private static final long serialVersionUID = 227L;
 	private static final Color BGCOLOR = Color.white;
 	private static final Color COLOR = Color.black;
