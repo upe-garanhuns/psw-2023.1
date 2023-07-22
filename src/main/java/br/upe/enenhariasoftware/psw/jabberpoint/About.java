@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 
 public class About {
 
+	private About(){
+
+	}
+
 	public static void show(Frame parent) {
 		JOptionPane.showMessageDialog(parent,
 				"JabberPoint Copyright (c) 1995-now by Ian F. Darwin, ian@darwinsys.com.\n"
