@@ -9,9 +9,12 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Presentation {
+public class Presentation implements Serializable {
+
+  private static final long serialVersionUID = 197L;
 
   private String title;
   private ArrayList<Slide> showList = null;

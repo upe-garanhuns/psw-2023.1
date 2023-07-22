@@ -12,16 +12,19 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Slide {
+public class Slide implements Serializable {
+
+  private static final long serialVersionUID = 210L;
 
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
   protected TextItem title;
-  protected List<SlideItem> items;
+  private List<SlideItem> items;
 
   public Slide() {
     items = new ArrayList<>();
