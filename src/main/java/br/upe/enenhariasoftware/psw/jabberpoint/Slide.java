@@ -1,33 +1,37 @@
 /**
- * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
- * Disciplina de Projeto de Software - 2023.1
- * 
- * Licensed under the Apache License, Version 2.0
- * https://www.apache.org/licenses/LICENSE-2.0
- * 
+ * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
+ * Software - 2023.1
+ *
+ * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ *
  * @author Ian F. Darwin, Helaine Lins
  */
+
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import java.util.Vector;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Slide {
+
+public class Slide implements Serializable {
+
+	private static final long serialVersionUID = 179L;
 
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
 
 	protected TextItem title;
-	protected Vector<SlideItem> items;
+	protected ArrayList<SlideItem> items;
 
 	public Slide() {
-		items = new Vector<SlideItem>();
+		items = new ArrayList<>();
 	}
 
 	public void append(SlideItem anItem) {
-		items.addElement(anItem);
+		items.add(anItem);
 	}
 
 	public String getTitle() {
@@ -43,11 +47,10 @@ public class Slide {
 	}
 
 	public SlideItem getSlideItem(int number) {
-		return items.elementAt(number);
-
+		return items.get(number);
 	}
 
-	public Vector<SlideItem> getSlideItems() {
+	public ArrayList<SlideItem> getSlideItems() {
 		return items;
 	}
 
@@ -67,7 +70,7 @@ public class Slide {
 		y += slideItem.getBoundingBox(g, view, scale, style).height;
 
 		for (int number = 0; number < getSize(); number++) {
-			slideItem = (SlideItem) getSlideItems().elementAt(number);
+			slideItem = getSlideItems().get(number);
 
 			style = Style.getStyle(slideItem.getLevel());
 			slideItem.draw(area.x, y, scale, g, style, view);
@@ -77,6 +80,7 @@ public class Slide {
 	}
 
 	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
+		return Math.min(((float) area.width) / ((float) WIDTH),
+				((float) area.height) / ((float) HEIGHT));
 	}
 }

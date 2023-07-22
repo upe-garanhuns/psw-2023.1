@@ -1,31 +1,34 @@
 /**
- * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
- * Disciplina de Projeto de Software - 2023.1
- * 
- * Licensed under the Apache License, Version 2.0
- * https://www.apache.org/licenses/LICENSE-2.0
- * 
+ * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
+ * Software - 2023.1
+ *
+ * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ *
  * @author Ian F. Darwin, Helaine Lins
  */
+
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
-
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XMLAccessor extends Accessor {
+	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
+
+	protected static final String ERROR_MESSAGE = "Error occured: ";
 
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -48,6 +51,7 @@ public class XMLAccessor extends Accessor {
 
 	}
 
+	@Override
 	public void loadFile(Presentation presentation, String filename) throws IOException {
 		int slideNumber;
 		int itemNumber;
@@ -55,8 +59,13 @@ public class XMLAccessor extends Accessor {
 		int maxItems = 0;
 
 		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			// Configuração para desabilitar o acesso a entidades externas
+			dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true); // XML External Entity (XXE) attack
+			dbf.setFeature("http://xml.org/sax/features/external-general-entities", false); // General Entity Expansion
+			dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false); // Parameter Entity Expansion
 
+			DocumentBuilder builder = dbf.newDocumentBuilder();
 			Document document = builder.parse(new File(filename));
 
 			Element doc = document.getDocumentElement();
@@ -82,11 +91,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-			System.err.println(iox.toString());
+			logger.error("{}{}", ERROR_MESSAGE, iox.toString());
 		} catch (SAXException sax) {
-			System.err.println(sax.getMessage());
+			logger.error("{}{}", ERROR_MESSAGE, sax.getMessage());
 		} catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			logger.error("{}{}", ERROR_MESSAGE, PCE);
 		}
 
 	}
@@ -102,7 +111,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				System.err.println(NFE);
+				logger.error("Error occured: {}", NFE);
 			}
 		}
 
@@ -113,11 +122,12 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				System.err.println(UNKNOWNTYPE);
+				logger.error("{}{}", ERROR_MESSAGE, UNKNOWNTYPE);
 			}
 		}
 	}
 
+	@Override
 	public void saveFile(Presentation presentation, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 
@@ -135,9 +145,9 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			ArrayList<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
 
 				if (slideItem instanceof TextItem) {
@@ -148,7 +158,7 @@ public class XMLAccessor extends Accessor {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print(((BitmapItem) slideItem).getName());
 					} else {
-						System.out.println("Ignoring " + slideItem);
+						logger.info("Ignoring {}", slideItem);
 					}
 				}
 
