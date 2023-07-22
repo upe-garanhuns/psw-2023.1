@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -49,13 +50,12 @@ public class XMLAccessor extends Accessor {
 	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber;
-		int itemNumber;
-		int max = 0;
-		int maxItems = 0;
+		int slideNumber, itemNumber, max = 0, maxItems = 0;
 
 		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            DocumentBuilder builder = factory.newDocumentBuilder();
 
 			Document document = builder.parse(new File(filename));
 
@@ -137,22 +137,22 @@ public class XMLAccessor extends Accessor {
 
 			Vector<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-			    SlideItem slideItem = slideItems.elementAt(itemNumber);
-			    out.print("<item kind=");
+				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				out.print("<item kind=");
 
-			    if (slideItem instanceof TextItem) {
-			        out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
-			        out.print(((TextItem) slideItem).getText());
-			    } else {
-			        if (slideItem instanceof BitmapItem) {
-			            out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-			            out.print(((BitmapItem) slideItem).getName());
-			        } else {
-			            System.out.println("Ignoring " + slideItem);
-			        }
-			    }
+				if (slideItem instanceof TextItem) {
+					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
+					out.print(((TextItem) slideItem).getText());
+				} else {
+					if (slideItem instanceof BitmapItem) {
+						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
+						out.print(((BitmapItem) slideItem).getName());
+					} else {
+						System.out.println("Ignoring " + slideItem);
+					}
+				}
 
-			    out.println("</item>");
+				out.println("</item>");
 			}
 
 			out.println("</slide>");
