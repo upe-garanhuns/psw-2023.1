@@ -40,10 +40,12 @@ public class BitmapItem extends SlideItem {
 	}
 
 	public BitmapItem() {
+
 		this(0, null);
 	}
 
 	public String getName() {
+
 		return imageName;
 	}
 
