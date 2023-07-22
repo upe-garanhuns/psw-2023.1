@@ -43,8 +43,8 @@ public class Slide {
 	}
 
 	public SlideItem getSlideItem(int number) {
-		return (SlideItem) items.elementAt(number);
-		
+		return items.elementAt(number);
+
 	}
 
 	public Vector<SlideItem> getSlideItems() {
