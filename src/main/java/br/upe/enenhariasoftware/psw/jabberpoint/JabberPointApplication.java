@@ -10,7 +10,6 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
 
 public class JabberPointApplication {
@@ -26,6 +25,7 @@ public class JabberPointApplication {
 	        Accessor.getDemoAccessor().loadFile(presentation, "");
 	      } else {
 	        new XMLAccessor().loadFile(presentation, args[0]);
+
 	      }
 
 	      presentation.setSlideNumber(0);
