@@ -61,7 +61,6 @@ public class Slide {
 
 	    Style style = Style.getStyle(title.getLevel());
 	    title.draw(area.x, y, scale, g, style, view);
-	    
 	    y += title.getBoundingBox(g, view, scale, style).height;
 
 	    for (int number = 0; number < getSize(); number++) {
