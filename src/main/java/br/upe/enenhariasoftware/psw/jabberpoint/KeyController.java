@@ -17,8 +17,10 @@ public class KeyController extends KeyAdapter {
 	private Presentation presentation;
 
 	public KeyController(Presentation p) {
+
 		presentation = p;
 	}
+	@Override
 
 	public void keyPressed(KeyEvent keyEvent) {
 		switch (keyEvent.getKeyCode()) {
