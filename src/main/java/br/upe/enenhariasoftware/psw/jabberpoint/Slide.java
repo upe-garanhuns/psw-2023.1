@@ -23,7 +23,7 @@ public class Slide {
 	protected Vector<SlideItem> items;
 
 	public Slide() {
-		items = new Vector<SlideItem>();
+		items = new Vector<>();
 	}
 
 	public void append(SlideItem anItem) {
