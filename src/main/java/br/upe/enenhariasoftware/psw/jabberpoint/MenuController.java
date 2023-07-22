@@ -146,6 +146,7 @@ public class MenuController extends MenuBar {
     helpMenu.add(menuItem);
 
     menuItem.addActionListener(new ActionListener() {
+
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         About.show(MenuController.this.parentFrame);
