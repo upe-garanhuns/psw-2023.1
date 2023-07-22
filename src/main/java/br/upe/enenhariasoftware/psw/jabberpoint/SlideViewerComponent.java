@@ -15,10 +15,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import java.io.Serializable;
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class SlideViewerComponent extends JComponent {
+public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;
 
 	private static final Color BGCOLOR = Color.white;
@@ -29,9 +31,9 @@ public class SlideViewerComponent extends JComponent {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 
-	private Slide slide;
+	private transient Slide slide;
 	private Font labelFont = null;
-	private Presentation presentation = null;
+	private transient Presentation presentation = null;
 	private JFrame frame = null;
 
 	public SlideViewerComponent(Presentation pres, JFrame frame) {

@@ -12,9 +12,10 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Slide {
+public class Slide implements Serializable {
 
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;

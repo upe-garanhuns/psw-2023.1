@@ -28,7 +28,7 @@ public class MenuController extends MenuBar implements Serializable {
   private static final long serialVersionUID = 227L;
   
   private Frame parent; 
-  private Presentation presentation; 
+  private transient Presentation presentation; 
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";
