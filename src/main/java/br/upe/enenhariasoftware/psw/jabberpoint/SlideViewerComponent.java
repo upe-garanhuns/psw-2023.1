@@ -1,10 +1,10 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ *
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * @author Ian F. Darwin, Helaine Lins
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
@@ -41,6 +41,7 @@ public class SlideViewerComponent extends JComponent {
 		this.frame = frame;
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
@@ -57,6 +58,7 @@ public class SlideViewerComponent extends JComponent {
 		frame.setTitle(presentation.getTitle());
 	}
 
+	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
