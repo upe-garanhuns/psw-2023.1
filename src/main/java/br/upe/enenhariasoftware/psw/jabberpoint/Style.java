@@ -48,6 +48,7 @@ public class Style {
     this.leading = leading;
   }
 
+  @Override
   public String toString() {
     return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
   }

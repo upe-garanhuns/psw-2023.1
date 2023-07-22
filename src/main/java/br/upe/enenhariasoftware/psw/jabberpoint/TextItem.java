@@ -54,6 +54,7 @@ public class TextItem extends SlideItem implements Serializable {
     return attrStr;
   }
 
+  @Override
   public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
     List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
@@ -121,6 +122,7 @@ public class TextItem extends SlideItem implements Serializable {
     return layouts;
   }
 
+  @Override
   public String toString() {
     return "TextItem[" + getLevel() + "," + getText() + "]";
   }
