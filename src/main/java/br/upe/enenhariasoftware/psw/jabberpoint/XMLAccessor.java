@@ -14,6 +14,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -42,6 +45,7 @@ public class XMLAccessor extends Accessor {
 	protected static final String PCE = "Parser Configuration Exception";
 	protected static final String UNKNOWNTYPE = "Unknown Element type";
 	protected static final String NFE = "Number Format Exception";
+	private static final Logger logger = Logger.getLogger(XMLAccessor.class.getName());
 
 	private String getTitle(Element element, String tagName) {
 		NodeList titles = element.getElementsByTagName(tagName);
@@ -82,11 +86,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-			System.err.println(iox.toString());
+		  logger.log(Level.SEVERE, "ES ERROR:", iox);
 		} catch (SAXException sax) {
-			System.err.println(sax.getMessage());
+		  logger.log(Level.SEVERE, "SAX ERROR", sax);
 		} catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+		  logger.log(Level.SEVERE, "PARSER CONFIGURATION ERROR: ", pcx);
 		}
 
 	}
@@ -102,7 +106,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				System.err.println(NFE);
+			  logger.log(Level.SEVERE, NFE);
 			}
 		}
 
@@ -113,7 +117,7 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				System.err.println(UNKNOWNTYPE);
+			  logger.log(Level.SEVERE, UNKNOWNTYPE);
 			}
 		}
 	}
