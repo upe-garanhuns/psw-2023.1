@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Slide implements Serializable {
@@ -50,7 +51,7 @@ public class Slide implements Serializable {
     return items.get(number);
   }
 
-  public ArrayList<SlideItem> getSlideItems() {
+  public List<SlideItem> getSlideItems() {
     return items;
   }
 
