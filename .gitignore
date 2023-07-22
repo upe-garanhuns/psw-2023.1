@@ -1,6 +1,5 @@
 bin/
 target/
-.idea/
 *.project
 *.classpath
 *.wtpmodules

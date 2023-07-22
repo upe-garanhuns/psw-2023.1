@@ -43,8 +43,7 @@ public class Style {
   public Style(int indent, Color color, int points, int leading) {
     this.indent = indent;
     this.color = color;
-    this.fontSize = points;
-    this.font = new Font(FONTNAME, Font.BOLD, fontSize);
+    font = new Font(FONTNAME, Font.BOLD, fontSize = points);
     this.leading = leading;
   }
 

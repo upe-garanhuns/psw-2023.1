@@ -13,14 +13,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -28,8 +26,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLAccessor extends Accessor {
-
-	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
 
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -53,10 +49,7 @@ public class XMLAccessor extends Accessor {
 	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber;
-		int itemNumber;
-		int max;
-		int maxItems;
+		int slideNumber, itemNumber, max = 0, maxItems = 0;
 
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -86,11 +79,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-			logger.error(iox.toString());
+			System.err.println(iox.toString());
 		} catch (SAXException sax) {
-			logger.error(sax.getMessage());
+			System.err.println(sax.getMessage());
 		} catch (ParserConfigurationException pcx) {
-			logger.error(PCE);
+			System.err.println(PCE);
 		}
 
 	}
@@ -106,7 +99,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				logger.error(NFE);
+				System.err.println(NFE);
 			}
 		}
 
@@ -117,7 +110,7 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				logger.error(UNKNOWNTYPE);
+				System.err.println(UNKNOWNTYPE);
 			}
 		}
 	}
@@ -139,9 +132,9 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			ArrayList<SlideItem> slideItems = slide.getSlideItems();
+			Vector<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = slideItems.get(itemNumber);
+				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
 				out.print("<item kind=");
 
 				if (slideItem instanceof TextItem) {
@@ -152,7 +145,7 @@ public class XMLAccessor extends Accessor {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print(((BitmapItem) slideItem).getName());
 					} else {
-						logger.error("Ignoring {}", slideItem);
+						System.out.println("Ignoring " + slideItem);
 					}
 				}
 

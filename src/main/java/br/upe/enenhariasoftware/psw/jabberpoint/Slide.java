@@ -12,22 +12,22 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Slide {
 
-	public static final int WIDTH = 1200;
-	public static final int HEIGHT = 800;
+	public final static int WIDTH = 1200;
+	public final static int HEIGHT = 800;
 
 	protected TextItem title;
-	protected ArrayList<SlideItem> items;
+	protected Vector<SlideItem> items;
 
 	public Slide() {
-		items = new ArrayList<>();
+		items = new Vector<SlideItem>();
 	}
 
 	public void append(SlideItem anItem) {
-		items.add(anItem);
+		items.addElement(anItem);
 	}
 
 	public String getTitle() {
@@ -43,10 +43,10 @@ public class Slide {
 	}
 
 	public SlideItem getSlideItem(int number) {
-		return items.get(number);
+		return (SlideItem) items.elementAt(number);
 	}
 
-	public ArrayList<SlideItem> getSlideItems() {
+	public Vector<SlideItem> getSlideItems() {
 		return items;
 	}
 
@@ -66,7 +66,7 @@ public class Slide {
 		y += slideItem.getBoundingBox(g, view, scale, style).height;
 
 		for (int number = 0; number < getSize(); number++) {
-			slideItem = getSlideItems().get(number);
+			slideItem = (SlideItem) getSlideItems().elementAt(number);
 
 			style = Style.getStyle(slideItem.getLevel());
 			slideItem.draw(area.x, y, scale, g, style, view);

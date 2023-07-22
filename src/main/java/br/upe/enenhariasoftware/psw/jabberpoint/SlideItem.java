@@ -17,11 +17,11 @@ public abstract class SlideItem {
 
 	private int level = 0;
 
-	protected SlideItem(int lev) {
+	public SlideItem(int lev) {
 		level = lev;
 	}
 
-	protected SlideItem() {
+	public SlideItem() {
 		this(0);
 	}
 
