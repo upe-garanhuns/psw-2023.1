@@ -12,9 +12,9 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-public class About {
+public class AboutBox {
 
-  private About() {
+  private AboutBox() {
     /*
      * Construtor privado para ocultar o construtor público implícito e evitar que outras classes
      * façam instâncias indesejadas da class About.
