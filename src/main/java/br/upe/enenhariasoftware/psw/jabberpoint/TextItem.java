@@ -54,7 +54,8 @@ public class TextItem extends SlideItem {
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
-		int xsize = 0, ysize = (int) (myStyle.leading * scale);
+		int xsize = 0;
+		int ysize = (int) (myStyle.leading * scale);
 
 		Iterator<TextLayout> iterator = layouts.iterator();
 

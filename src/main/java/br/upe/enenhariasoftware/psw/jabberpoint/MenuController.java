@@ -25,7 +25,7 @@ public class MenuController extends MenuBar {
 
   private static final long serialVersionUID = 227L;
   
-  private Frame parent; 
+  private Frame frameParent;
   private Presentation presentation; 
 
   protected static final String ABOUT = "About";
@@ -49,7 +49,7 @@ public class MenuController extends MenuBar {
   protected static final String SAVEERR = "Failed to save";
 
   public MenuController(Frame frame, Presentation pres) {
-    parent = frame;
+    frameParent = frame;
     presentation = pres;
     
     MenuItem menuItem;
@@ -67,10 +67,10 @@ public class MenuController extends MenuBar {
           xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(frameParent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
         
-        parent.repaint();
+        frameParent.repaint();
       }
     });
     
@@ -80,7 +80,7 @@ public class MenuController extends MenuBar {
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
-        parent.repaint();
+        frameParent.repaint();
       }
     });
     
@@ -93,7 +93,7 @@ public class MenuController extends MenuBar {
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(frameParent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
       }
     });
@@ -150,7 +150,7 @@ public class MenuController extends MenuBar {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        About.show(parent);
+        About.show(frameParent);
       }
     });
     
