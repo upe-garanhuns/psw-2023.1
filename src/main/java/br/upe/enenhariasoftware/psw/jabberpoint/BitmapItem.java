@@ -22,7 +22,6 @@ public class BitmapItem extends SlideItem {
 
   public static final Logger LOGGER = Logger.getLogger(BitmapItem.class.getName());
 
-
   private BufferedImage bufferedImage;
   private String imageName;
 

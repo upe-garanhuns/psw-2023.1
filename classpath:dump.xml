@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE presentation SYSTEM "jabberpoint.dtd">
+<presentation>
+<showtitle>Demo presentation</showtitle>
+<slide>
+<title>JabberPoint</title>
+<item kind="text" level="2">Copyright (c) 1996-now: Ian Darwin</item>
+<item kind="text" level="2">Copyright (c) 2023-now: Helaine Lins</item>
+<item kind="text" level="4">Memo demo presentation</item>
+<item kind="text" level="1">Navegation:</item>
+<item kind="text" level="3">Next slide: PgDn ou Enter</item>
+<item kind="text" level="3">Previous slide: PgUp ou up-arrow</item>
+<item kind="text" level="3">Stop: q ou Q</item>
+</slide>
+<slide>
+<title>Presentation levels demo</title>
+<item kind="text" level="1">Level 1</item>
+<item kind="text" level="2">Level 2</item>
+<item kind="text" level="1">Style Level 1</item>
+<item kind="text" level="2">Style Level  2</item>
+<item kind="text" level="3">Style Level 3</item>
+<item kind="text" level="4">Style Level 4</item>
+</slide>
+<slide>
+<title>Second Slide</title>
+<item kind="text" level="1">To open a new presentation,</item>
+<item kind="text" level="2">Go to File->Open.</item>
+<item kind="text" level="1"> </item>
+<item kind="text" level="1">End</item>
+<item kind="image" level="1">/home/uriel/Documents/Projeto-PSW/target/classes/JabberPoint.jpg</item>
+</slide>
+</presentation>

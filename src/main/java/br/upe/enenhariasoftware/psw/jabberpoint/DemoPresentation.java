@@ -14,6 +14,8 @@ import java.net.URL;
 
 public class DemoPresentation extends Accessor {
 
+  private Presentation presentation = new Presentation();
+
   @Override
   public void loadFile(Presentation presentation, String unusedFilename)
       throws FileNotFoundException {
@@ -52,11 +54,16 @@ public class DemoPresentation extends Accessor {
     URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
     slide.append(new BitmapItem(1, resource.getPath()));
     presentation.append(slide);
+    this.presentation = presentation;
   }
 
   @Override
   public void saveFile(Presentation presentation, String unusedFilename) {
     throw new IllegalStateException("Cannot save demo presentation!");
+  }
+
+  public Presentation getPresentation() {
+    return this.presentation;
   }
 
 }
