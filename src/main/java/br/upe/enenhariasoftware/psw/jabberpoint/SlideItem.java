@@ -12,20 +12,16 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import java.io.Serializable;
 
-public abstract class SlideItem implements Serializable {
-
-  private static final long serialVersionUID = 344L;
-
+public abstract class SlideItem {
 
   private int level = 0;
 
-  public SlideItem(int lev) {
+  protected SlideItem(int lev) {
     level = lev;
   }
 
-  public SlideItem() {
+  protected SlideItem() {
     this(0);
   }
 

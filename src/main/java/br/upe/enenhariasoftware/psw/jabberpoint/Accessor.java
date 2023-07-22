@@ -20,7 +20,7 @@ public abstract class Accessor {
     return new DemoPresentation();
   }
 
-  public Accessor() {}
+  protected Accessor() {}
 
   public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
 

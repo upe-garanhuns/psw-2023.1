@@ -24,7 +24,7 @@ public class MenuController extends MenuBar {
 
   private static final long serialVersionUID = 227L;
 
-  private Frame parent;
+  private Frame mainParent;
   private Presentation presentation;
 
   protected static final String ABOUT = "About";
@@ -48,14 +48,13 @@ public class MenuController extends MenuBar {
   protected static final String SAVEERR = "Failed to save";
 
   public MenuController(Frame frame, Presentation pres) {
-    parent = frame;
+    mainParent = frame;
     presentation = pres;
 
     MenuItem menuItem;
 
     Menu fileMenu = new Menu(FILE);
-    menuItem = mkMenuItem(OPEN);
-    fileMenu.add(menuItem);
+    fileMenu.add(menuItem = mkMenuItem(OPEN));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -67,26 +66,24 @@ public class MenuController extends MenuBar {
           xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(mainParent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
 
-        parent.repaint();
+        mainParent.repaint();
       }
     });
 
-    menuItem = mkMenuItem(NEW);
-    fileMenu.add(menuItem);
+    fileMenu.add(menuItem = mkMenuItem(NEW));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
-        parent.repaint();
+        mainParent.repaint();
       }
     });
 
-    menuItem = mkMenuItem(SAVE);
-    fileMenu.add(menuItem);
+    fileMenu.add(menuItem = mkMenuItem(SAVE));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -95,15 +92,14 @@ public class MenuController extends MenuBar {
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(mainParent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
       }
     });
 
     fileMenu.addSeparator();
 
-    menuItem = mkMenuItem(EXIT);
-    fileMenu.add(menuItem);
+    fileMenu.add(menuItem = mkMenuItem(EXIT));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -115,8 +111,7 @@ public class MenuController extends MenuBar {
     add(fileMenu);
 
     Menu viewMenu = new Menu(VIEW);
-    menuItem = mkMenuItem(NEXT);
-    viewMenu.add(menuItem);
+    viewMenu.add(menuItem = mkMenuItem(NEXT));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -125,8 +120,7 @@ public class MenuController extends MenuBar {
       }
     });
 
-    menuItem = mkMenuItem(PREV);
-    viewMenu.add(menuItem);
+    viewMenu.add(menuItem = mkMenuItem(PREV));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -135,8 +129,7 @@ public class MenuController extends MenuBar {
       }
     });
 
-    menuItem = mkMenuItem(GOTO);
-    viewMenu.add(menuItem);
+    viewMenu.add(menuItem = mkMenuItem(GOTO));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
@@ -150,13 +143,12 @@ public class MenuController extends MenuBar {
     add(viewMenu);
 
     Menu helpMenu = new Menu(HELP);
-    menuItem = mkMenuItem(ABOUT);
-    helpMenu.add(menuItem);
+    helpMenu.add(menuItem = mkMenuItem(ABOUT));
 
     menuItem.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
-        About.show(parent);
+        About.show(mainParent);
       }
     });
 
