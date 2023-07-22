@@ -1,7 +1,7 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ * <p>
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -21,22 +21,14 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TextItem extends SlideItem {
-
-	private String text;
-
-	private static final String EMPTYTEXT = "No Text Given";
+	private final String text;
 
 	public TextItem(int level, String string) {
 		super(level);
 		text = string;
-	}
-
-	public TextItem() {
-		this(0, EMPTYTEXT);
 	}
 
 	public String getText() {
@@ -54,12 +46,10 @@ public class TextItem extends SlideItem {
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
-		int xsize = 0, ysize = (int) (myStyle.leading * scale);
+		int xsize = 0;
+		int ysize = (int) (myStyle.leading * scale);
 
-		Iterator<TextLayout> iterator = layouts.iterator();
-
-		while (iterator.hasNext()) {
-			TextLayout layout = iterator.next();
+		for (TextLayout layout : layouts) {
 			Rectangle2D bounds = layout.getBounds();
 
 			if (bounds.getWidth() > xsize) {
@@ -87,11 +77,7 @@ public class TextItem extends SlideItem {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(myStyle.color);
 
-		Iterator<TextLayout> it = layouts.iterator();
-
-		while (it.hasNext()) {
-			TextLayout layout = it.next();
-
+		for (TextLayout layout : layouts) {
 			pen.y += layout.getAscent();
 			layout.draw(g2d, pen.x, pen.y);
 
@@ -100,7 +86,7 @@ public class TextItem extends SlideItem {
 	}
 
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
+		List<TextLayout> layouts = new ArrayList<>();
 
 		AttributedString attrStr = getAttributedString(s, scale);
 		Graphics2D g2d = (Graphics2D) g;
@@ -118,6 +104,7 @@ public class TextItem extends SlideItem {
 		return layouts;
 	}
 
+	@Override
 	public String toString() {
 		return "TextItem[" + getLevel() + "," + getText() + "]";
 	}
