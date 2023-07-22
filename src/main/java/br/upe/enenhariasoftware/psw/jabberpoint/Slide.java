@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Slide {
 
@@ -46,7 +47,7 @@ public class Slide {
 		return items.get(number);
 	}
 
-	public ArrayList<SlideItem> getSlideItems() {
+	public List<SlideItem> getSlideItems() {
 		return items;
 	}
 
