@@ -43,7 +43,7 @@ public class Slide {
 	}
 
 	public SlideItem getSlideItem(int number) {
-		return items.elementAt(number);
+		return (SlideItem) items.elementAt(number);
 	}
 
 	public Vector<SlideItem> getSlideItems() {
@@ -55,22 +55,25 @@ public class Slide {
 	}
 
 	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-	    float scale = getScale(area);
-	    
-	    int y = area.y;
+		float scale = getScale(area);
 
-	    Style style = Style.getStyle(title.getLevel());
-	    title.draw(area.x, y, scale, g, style, view);
-	    y += title.getBoundingBox(g, view, scale, style).height;
+		int y = area.y;
 
-	    for (int number = 0; number < getSize(); number++) {
-	        SlideItem slideItem = getSlideItems().elementAt(number);
-	        style = Style.getStyle(slideItem.getLevel());
-	        slideItem.draw(area.x, y, scale, g, style, view);
-	        y += slideItem.getBoundingBox(g, view, scale, style).height;
-	    }
+		SlideItem slideItem = this.title;
+		Style style = Style.getStyle(slideItem.getLevel());
+		slideItem.draw(area.x, y, scale, g, style, view);
+
+		y += slideItem.getBoundingBox(g, view, scale, style).height;
+
+		for (int number = 0; number < getSize(); number++) {
+			slideItem = (SlideItem) getSlideItems().elementAt(number);
+
+			style = Style.getStyle(slideItem.getLevel());
+			slideItem.draw(area.x, y, scale, g, style, view);
+
+			y += slideItem.getBoundingBox(g, view, scale, style).height;
+		}
 	}
-
 
 	private float getScale(Rectangle area) {
 		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
