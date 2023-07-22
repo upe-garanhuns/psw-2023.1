@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
@@ -59,9 +58,10 @@ public class XMLAccessor extends Accessor {
     int maxItems;
 
     try {
-      DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      DocumentBuilderFactory builder = DocumentBuilderFactory.newInstance();
+      builder.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
 
-      Document document = builder.parse(new File(filename));
+      Document document = builder.newDocumentBuilder().parse(new File(filename));
 
       Element doc = document.getDocumentElement();
       presentation.setTitle(getTitle(doc, SHOWTITLE));
