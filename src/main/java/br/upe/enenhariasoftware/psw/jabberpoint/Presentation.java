@@ -1,7 +1,7 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ * <p>
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -12,10 +12,9 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 import java.util.ArrayList;
 
 public class Presentation {
-
 	private String title;
 	private ArrayList<Slide> showList = null;
-	private SlideViewerComponent slideViewComponent = null;
+	private SlideViewerComponent slideViewComponent;
 	private int currentSlideNumber = 0;
 
 	public Presentation() {
@@ -80,7 +79,7 @@ public class Presentation {
 		if (number < 0 || number >= getSize()) {
 			return null;
 		}
-		return (Slide) showList.get(number);
+		return showList.get(number);
 	}
 
 	public Slide getCurrentSlide() {
