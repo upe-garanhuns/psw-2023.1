@@ -21,12 +21,23 @@ public class KeyController extends KeyAdapter {
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		switch (keyEvent.getKeyCode()) {
-			case KeyEvent.VK_PAGE_DOWN, KeyEvent.VK_DOWN, KeyEvent.VK_ENTER, '+' -> presentation.nextSlide();
-			case KeyEvent.VK_PAGE_UP, KeyEvent.VK_UP, '-' -> presentation.prevSlide();
-			case 'q', 'Q' -> System.exit(0);
-			default -> {
-				break;
-			}
+		case KeyEvent.VK_PAGE_DOWN:
+		case KeyEvent.VK_DOWN:
+		case KeyEvent.VK_ENTER:
+		case '+':
+			presentation.nextSlide();
+			break;
+		case KeyEvent.VK_PAGE_UP:
+		case KeyEvent.VK_UP:
+		case '-':
+			presentation.prevSlide();
+			break;
+		case 'q':
+		case 'Q':
+			System.exit(0);
+			break; // fix?
+		default:
+			break;
 		}
 	}
 }
