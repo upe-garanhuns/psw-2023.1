@@ -22,7 +22,7 @@ public class BitmapItem extends SlideItem {
 
   public static final Logger LOGGER = Logger.getLogger(BitmapItem.class.getName());
 
-  private BufferedImage bufferedImage;
+  private transient BufferedImage bufferedImage;
   private String imageName;
 
   protected static final String FILE = "File ";

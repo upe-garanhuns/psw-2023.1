@@ -11,13 +11,14 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Presentation implements Serializable {
 
   private static final long serialVersionUID = 197L;
 
   private String title;
-  private ArrayList<Slide> showList = null;
+  private List<Slide> slides = null;
   private SlideViewerComponent slideViewComponent = null;
   private int currentSlideNumber = 0;
 
@@ -32,7 +33,7 @@ public class Presentation implements Serializable {
   }
 
   public int getSize() {
-    return showList.size();
+    return slides.size();
   }
 
   public String getTitle() {
@@ -65,25 +66,25 @@ public class Presentation implements Serializable {
   }
 
   public void nextSlide() {
-    if (currentSlideNumber < (showList.size() - 1)) {
+    if (currentSlideNumber < (slides.size() - 1)) {
       setSlideNumber(currentSlideNumber + 1);
     }
   }
 
   void clear() {
-    showList = new ArrayList<>();
+    slides = new ArrayList<>();
     setSlideNumber(-1);
   }
 
   public void append(Slide slide) {
-    showList.add(slide);
+    slides.add(slide);
   }
 
   public Slide getSlide(int number) {
     if (number < 0 || number >= getSize()) {
       return null;
     }
-    return showList.get(number);
+    return slides.get(number);
   }
 
   public Slide getCurrentSlide() {
