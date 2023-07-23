@@ -145,7 +145,7 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			ArrayList<SlideItem> slideItems = slide.getSlideItems();
+			ArrayList <SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
