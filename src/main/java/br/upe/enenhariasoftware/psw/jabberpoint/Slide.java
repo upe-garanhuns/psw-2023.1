@@ -15,16 +15,13 @@ import java.awt.image.ImageObserver;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
 public class Slide implements Serializable {
-
-	private static final long serialVersionUID = 179L;
 
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
 
-	protected TextItem title;
-	protected ArrayList<SlideItem> items;
+	protected transient TextItem title;
+	protected transient ArrayList<SlideItem> items;
 
 	public Slide() {
 		items = new ArrayList<>();
@@ -50,7 +47,7 @@ public class Slide implements Serializable {
 		return items.get(number);
 	}
 
-	public ArrayList<SlideItem> getSlideItems() {
+	public ArrayList <SlideItem> getSlideItems() {
 		return items;
 	}
 
