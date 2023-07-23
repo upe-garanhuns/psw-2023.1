@@ -9,24 +9,20 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
-import java.awt.Frame;
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.MenuShortcut;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
-import javax.swing.JOptionPane;
-
-public class MenuController extends MenuBar {
+public class MenuController extends MenuBar implements Serializable {
 
   private static final long serialVersionUID = 227L;
-  
+
   private Frame frameParent;
-  private Presentation presentation; 
+  private transient Presentation presentation;
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";
@@ -40,28 +36,25 @@ public class MenuController extends MenuBar {
   protected static final String PREV = "Previous";
   protected static final String SAVE = "Save";
   protected static final String VIEW = "View";
-
-  protected static final String TESTFILE = "classpath:test.xml"; 
-  protected static final String SAVEFILE = "classpath:dump.xml"; 
-
+  protected static final String TESTFILE = "classpath:test.xml";
+  protected static final String SAVEFILE = "classpath:dump.xml";
   protected static final String IOEX = "IO Exception: ";
   protected static final String LOADERR = "Failed to load";
   protected static final String SAVEERR = "Failed to save";
-
   public MenuController(Frame frame, Presentation pres) {
     frameParent = frame;
     presentation = pres;
-    
+
     MenuItem menuItem;
-    
+
     Menu fileMenu = new Menu(FILE);
     menuItem = mkMenuItem(OPEN);
     fileMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
-        
+
         Accessor xmlAccessor = new XMLAccessor();
         try {
           xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
@@ -69,24 +62,24 @@ public class MenuController extends MenuBar {
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(frameParent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
-        
+
         frameParent.repaint();
       }
     });
-    
+
     menuItem = mkMenuItem(NEW);
     fileMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
         frameParent.repaint();
       }
     });
-    
+
     menuItem = mkMenuItem(SAVE);
     fileMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         Accessor xmlAccessor = new XMLAccessor();
@@ -97,42 +90,42 @@ public class MenuController extends MenuBar {
         }
       }
     });
-    
+
     fileMenu.addSeparator();
-    
+
     menuItem = mkMenuItem(EXIT);
     fileMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.exit(0);
       }
     });
-    
+
     add(fileMenu);
-    
+
     Menu viewMenu = new Menu(VIEW);
     menuItem = mkMenuItem(NEXT);
     viewMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.nextSlide();
       }
     });
-    
+
     menuItem = mkMenuItem(PREV);
     viewMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.prevSlide();
       }
     });
-    
+
     menuItem = mkMenuItem(GOTO);
     viewMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         String pageNumberStr =
@@ -141,22 +134,21 @@ public class MenuController extends MenuBar {
         presentation.setSlideNumber(pageNumber - 1);
       }
     });
-    
+
     add(viewMenu);
-    
+
     Menu helpMenu = new Menu(HELP);
     menuItem = mkMenuItem(ABOUT);
     helpMenu.add(menuItem);
-    
+
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         About.show(frameParent);
       }
     });
-    
-    setHelpMenu(helpMenu); 
-  }
 
+    setHelpMenu(helpMenu);
+  }
   public MenuItem mkMenuItem(String name) {
     return new MenuItem(name, new MenuShortcut(name.charAt(0)));
   }
