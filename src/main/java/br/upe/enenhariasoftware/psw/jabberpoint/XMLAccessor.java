@@ -24,6 +24,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
 
 public class XMLAccessor extends Accessor {
 	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
@@ -145,7 +146,7 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			ArrayList <SlideItem> slideItems = slide.getSlideItems();
+			List <SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
