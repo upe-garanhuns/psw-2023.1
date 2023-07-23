@@ -27,7 +27,7 @@ public class MenuController extends MenuBar implements Serializable {
 
   private static final long serialVersionUID = 227L;
   
-  private Frame parent; 
+  private Frame frame1; 
   private transient Presentation presentation; 
 
   protected static final String ABOUT = "About";
@@ -51,7 +51,7 @@ public class MenuController extends MenuBar implements Serializable {
   protected static final String SAVEERR = "Failed to save";
 
   public MenuController(Frame frame, Presentation pres) {
-    parent = frame;
+    frame1 = frame;
     presentation = pres;
     
     MenuItem menuItem;
@@ -69,10 +69,10 @@ public class MenuController extends MenuBar implements Serializable {
           xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
           presentation.setSlideNumber(0);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(frame1, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
         
-        parent.repaint();
+        frame1.repaint();
       }
     });
     
@@ -82,7 +82,7 @@ public class MenuController extends MenuBar implements Serializable {
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentation.clear();
-        parent.repaint();
+        frame1.repaint();
       }
     });
     
@@ -95,7 +95,7 @@ public class MenuController extends MenuBar implements Serializable {
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(frame1, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
       }
     });
@@ -151,7 +151,7 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        About.show(parent);
+        About.show(frame1);
       }
     });
     
