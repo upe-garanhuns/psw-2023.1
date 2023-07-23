@@ -13,16 +13,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-import java.io.Serializable;
-import java.util.List;
 
-public class Slide implements Serializable {
+public class Slide {
 
     public static final int WIDTH = 1200;
     public  static final int HEIGHT = 800;
 
-    protected  transient TextItem title;
-    protected transient ArrayList<SlideItem> items;
+    protected TextItem title;
+    protected ArrayList<SlideItem> items;
 
     public Slide() {
         items = new ArrayList<>();
@@ -48,7 +46,7 @@ public class Slide implements Serializable {
         return items.get(number);
     }
 
-    public List <SlideItem> getSlideItems() {
+    public ArrayList<SlideItem> getSlideItems() {
         return items;
     }
 

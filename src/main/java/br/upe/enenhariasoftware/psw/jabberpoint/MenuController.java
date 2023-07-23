@@ -10,8 +10,6 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.awt.Frame;
-import java.io.Serializable;
-
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
@@ -23,12 +21,12 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-public class MenuController extends MenuBar implements Serializable {
+public class MenuController extends MenuBar {
 
   private static final long serialVersionUID = 227L;
   
   private Frame frameParent;
-  private transient Presentation presentation;
+  private Presentation presentation; 
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";

@@ -10,10 +10,8 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.util.ArrayList;
-import java.io.Serializable;
 
-
-public class Presentation implements Serializable {
+public class Presentation {
 
 	private String title;
 	private ArrayList<Slide> showList = null;
