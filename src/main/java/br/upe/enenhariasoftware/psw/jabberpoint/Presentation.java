@@ -14,6 +14,7 @@ import java.io.Serializable;
 
 public class Presentation implements Serializable {
 
+	private static final long serialVersionUID = 227L;
 	private String title;
 	private ArrayList<Slide> showList = null;
 	private SlideViewerComponent slideViewComponent = null;

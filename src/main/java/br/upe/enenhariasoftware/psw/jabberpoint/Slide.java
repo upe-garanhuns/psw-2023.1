@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class Slide implements Serializable {
 
+	private static final long serialVersionUID = 227L;
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
 
