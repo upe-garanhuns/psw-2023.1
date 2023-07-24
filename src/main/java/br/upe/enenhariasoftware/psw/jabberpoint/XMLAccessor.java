@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,6 +27,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLAccessor extends Accessor {
+
+	private static final Logger LOGGER = Logger.getLogger(XMLAccessor.class.getName());
 
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -50,10 +52,19 @@ public class XMLAccessor extends Accessor {
 	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber, itemNumber, max = 0, maxItems = 0;
+		int slideNumber = 0;
+		int itemNumber = 0;
+		int max = 0;
+		int maxItems = 0;
 
 		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+			factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+
+			DocumentBuilder builder = factory.newDocumentBuilder();
 
 			Document document = builder.parse(new File(filename));
 
@@ -80,11 +91,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-			System.err.println(iox.toString());
+			LOGGER.warning(iox.toString());
 		} catch (SAXException sax) {
-			System.err.println(sax.getMessage());
+			LOGGER.warning(sax.getMessage());
 		} catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			LOGGER.warning(PCE);
 		}
 
 	}
@@ -100,7 +111,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				System.err.println(NFE);
+				LOGGER.warning(NFE);
 			}
 		}
 
@@ -111,7 +122,7 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				System.err.println(UNKNOWNTYPE);
+				LOGGER.warning(UNKNOWNTYPE);
 			}
 		}
 	}
@@ -135,7 +146,7 @@ public class XMLAccessor extends Accessor {
 
 			List<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
+				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
 
 				if (slideItem instanceof TextItem) {
@@ -146,7 +157,7 @@ public class XMLAccessor extends Accessor {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print(((BitmapItem) slideItem).getName());
 					} else {
-						System.out.println("Ignoring " + slideItem);
+						LOGGER.info("Ignoring " + slideItem);
 					}
 				}
 
