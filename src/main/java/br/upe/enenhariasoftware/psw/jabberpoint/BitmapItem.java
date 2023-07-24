@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
@@ -22,6 +23,8 @@ public class BitmapItem extends SlideItem {
 
 	private BufferedImage bufferedImage;
 	private String imageName;
+
+	private static final Logger logger = Logger.getLogger(BitmapItem.class.getName());
 
 	protected static final String FILE = "File ";
 	protected static final String NOTFOUND = " not found";
@@ -34,7 +37,7 @@ public class BitmapItem extends SlideItem {
 		try {
 			bufferedImage = ImageIO.read(new File(imageName));
 		} catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND);
+			logger.warning(FILE + imageName + NOTFOUND);
 		}
 
 	}

@@ -23,6 +23,8 @@ public class Style {
   int fontSize;
   int leading;
 
+
+
   public static void createStyles() {
     styles = new Style[5];
     styles[0] = new Style(0, Color.red, 48, 20);
