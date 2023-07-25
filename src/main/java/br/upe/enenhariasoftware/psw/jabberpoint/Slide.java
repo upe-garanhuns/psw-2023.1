@@ -8,11 +8,11 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Slide implements Serializable {
 
@@ -21,7 +21,7 @@ public class Slide implements Serializable {
   private static final long serialVersionUID = 1L;
 
   protected transient TextItem title;
-  protected transient ArrayList<SlideItem> items;
+  protected transient List<SlideItem> items;
 
   public Slide() {
     items = new ArrayList<>();
@@ -29,6 +29,10 @@ public class Slide implements Serializable {
 
   public void append(SlideItem anItem) {
     items.add(anItem);
+  }
+
+  public void append(int level, String message) {
+    append(new TextItem(level, message));
   }
 
   public String getTitle() {
@@ -39,15 +43,11 @@ public class Slide implements Serializable {
     title = new TextItem(0, newTitle);
   }
 
-  public void append(int level, String message) {
-    append(new TextItem(level, message));
-  }
-
   public SlideItem getSlideItem(int number) {
     return items.get(number);
   }
 
-  public ArrayList<SlideItem> getSlideItems() {
+  public List<SlideItem> getSlideItems() {
     return items;
   }
 
@@ -55,29 +55,32 @@ public class Slide implements Serializable {
     return items.size();
   }
 
-  public void draw(Graphics g, Rectangle area, ImageObserver view) {
+  private float getScale(Rectangle area) {
+    float value1 = ((float) area.width) / ((float) WIDTH);
+    float value2 =  ((float) area.height) / ((float) HEIGHT);
+
+    return Math.min(value1,value2);
+  }
+
+  private int getSlideItemHeight (SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style){
+    return slideItem.getBoundingBox(graphics, view, scale, style).height;
+  }
+
+  public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
+    TextItem textItem = this.title;
     float scale = getScale(area);
-
+    int x = area.x;
     int y = area.y;
+    Style style = Style.getStyle(textItem.getLevel());
 
-    SlideItem slideItem = this.title;
-    Style style = Style.getStyle(slideItem.getLevel());
-    slideItem.draw(area.x, y, scale, g, style, view);
+    textItem.draw(x, y, scale, graphics, style, view);
+    y += getSlideItemHeight(textItem, graphics, view, scale, style);
 
-    y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-    for (int number = 0; number < getSize(); number++) {
-      slideItem = getSlideItems().get(number);
-
+    for (SlideItem slideItem : getSlideItems()) {
       style = Style.getStyle(slideItem.getLevel());
-      slideItem.draw(area.x, y, scale, g, style, view);
-
-      y += slideItem.getBoundingBox(g, view, scale, style).height;
+      slideItem.draw(x, y, scale, graphics, style, view);
+      y += getSlideItemHeight(slideItem, graphics, view, scale, style);
     }
   }
 
-  private float getScale(Rectangle area) {
-    return Math.min(((float) area.width) / ((float) WIDTH),
-            ((float) area.height) / ((float) HEIGHT));
-  }
 }

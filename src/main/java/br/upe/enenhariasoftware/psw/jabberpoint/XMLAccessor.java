@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,7 +22,12 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 public class XMLAccessor extends Accessor {
+
+  private static final Logger logger = LogManager.getLogger(XMLAccessor.class);
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -52,7 +57,12 @@ public class XMLAccessor extends Accessor {
     int maxItems = 0;
 
     try {
-      DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+      // to be compliant, completely disable DOCTYPE declaration:
+      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+
+      DocumentBuilder builder = factory.newDocumentBuilder();
 
       Document document = builder.parse(new File(filename));
 
@@ -79,11 +89,11 @@ public class XMLAccessor extends Accessor {
       }
 
     } catch (IOException iox) {
-      System.err.println(iox.toString());
+      logger.error(iox.toString());
     } catch (SAXException sax) {
-      System.err.println(sax.getMessage());
+      logger.error(sax.toString());
     } catch (ParserConfigurationException pcx) {
-      System.err.println(PCE);
+      logger.error(pcx.toString());
     }
 
   }
@@ -99,7 +109,7 @@ public class XMLAccessor extends Accessor {
       try {
         level = Integer.parseInt(leveltext);
       } catch (NumberFormatException x) {
-        System.err.println(NFE);
+        logger.error(x.toString());
       }
     }
 
@@ -110,7 +120,7 @@ public class XMLAccessor extends Accessor {
       if (IMAGE.equals(type)) {
         slide.append(new BitmapItem(level, item.getTextContent()));
       } else {
-        System.err.println(UNKNOWNTYPE);
+        logger.error(UNKNOWNTYPE);
       }
     }
   }
@@ -132,7 +142,7 @@ public class XMLAccessor extends Accessor {
       out.println("<slide>");
       out.println("<title>" + slide.getTitle() + "</title>");
 
-      ArrayList<SlideItem> slideItems = slide.getSlideItems();
+      List<SlideItem> slideItems = slide.getSlideItems();
       for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
         SlideItem slideItem = slideItems.get(itemNumber);
         out.print("<item kind=");
@@ -145,7 +155,7 @@ public class XMLAccessor extends Accessor {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
             out.print(((BitmapItem) slideItem).getName());
           } else {
-            System.out.println("Ignoring " + slideItem);
+            logger.info("Ignoring " + slideItem);
           }
         }
 

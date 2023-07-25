@@ -16,8 +16,13 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 
 public class BitmapItem extends SlideItem {
+
+  private static final Logger logger = LogManager.getLogger(BitmapItem.class);
 
   private BufferedImage bufferedImage;
   private String imageName;
@@ -27,13 +32,12 @@ public class BitmapItem extends SlideItem {
 
   public BitmapItem(int level, String name) {
     super(level);
-
     imageName = name;
 
     try {
       bufferedImage = ImageIO.read(new File(imageName));
     } catch (IOException e) {
-      System.err.println(FILE + imageName + NOTFOUND);
+      logger.error(FILE + imageName + NOTFOUND);
     }
 
   }
@@ -54,26 +58,33 @@ public class BitmapItem extends SlideItem {
     return (int) (bufferedImage.getHeight(observer) * scale);
   }
 
+  @Override
   public int getStyleIndent(Style myStyle, float scale) {
     return (int) (myStyle.getIndent() * scale);
   }
 
+  @Override
   public int getStyleLeading(Style myStyle, float scale) {
     return (int) (myStyle.getLeading() * scale);
   }
 
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle(getStyleIndent(myStyle, scale), 0, getImageWidth(observer, scale),
-        getStyleLeading(myStyle, scale) + getImageHeight(observer, scale));
+  @Override
+  public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
+    int styleIndent = getStyleIndent(myStyle, scale);
+    int imageWidth = getImageWidth(observer, scale);
+    int height = getStyleLeading(myStyle, scale) + getImageHeight(observer, scale);
+
+    return new Rectangle(styleIndent, 0, imageWidth, height);
   }
 
+  @Override
+  public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver observer) {
+    int x = baseX + getStyleIndent(myStyle, scale);
+    int y = baseY + getStyleLeading(myStyle, scale);
+    int width = getImageWidth(observer, scale);
+    int height = getImageHeight(observer, scale);
 
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + getStyleIndent(myStyle, scale);
-    int height = y + getStyleLeading(myStyle, scale);
-
-    g.drawImage(bufferedImage, width, height, getImageWidth(observer, scale),
-        getImageHeight(observer, scale), observer);
+    graphics.drawImage(bufferedImage, x, y, width, height, observer);
   }
 
   @Override
