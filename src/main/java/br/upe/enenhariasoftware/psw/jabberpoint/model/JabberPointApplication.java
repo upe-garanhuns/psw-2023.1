@@ -7,10 +7,12 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 
 public class JabberPointApplication {
 	public static void main(String[] args) {

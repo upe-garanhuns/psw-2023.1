@@ -6,10 +6,12 @@
  *
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class KeyController extends KeyAdapter {
 

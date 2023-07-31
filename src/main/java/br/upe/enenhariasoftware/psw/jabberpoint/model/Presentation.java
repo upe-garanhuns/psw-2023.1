@@ -6,10 +6,12 @@
  *
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 public class Presentation implements Serializable {
 
