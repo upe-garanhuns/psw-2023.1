@@ -9,6 +9,12 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerFrame;
+
 import java.io.IOException;
 
 import javax.swing.JOptionPane;

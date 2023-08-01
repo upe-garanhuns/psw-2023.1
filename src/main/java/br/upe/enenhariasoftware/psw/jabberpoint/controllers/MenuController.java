@@ -7,7 +7,12 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.controllers;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.About;
 
 import java.awt.Frame;
 import java.awt.Menu;
@@ -26,7 +31,7 @@ public class MenuController extends MenuBar {
   private static final long serialVersionUID = 227L;
   
   private Frame frame;
-  private Presentation presentation; 
+  private Presentation presentation;
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";

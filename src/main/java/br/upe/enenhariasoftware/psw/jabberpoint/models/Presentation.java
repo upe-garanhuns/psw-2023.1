@@ -7,7 +7,9 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerComponent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class Presentation implements Serializable {
 		}
 	}
 
-	void clear() {
+	public void clear() {
 		showList = new ArrayList<>();
 		setSlideNumber(-1);
 	}
