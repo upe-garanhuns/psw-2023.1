@@ -9,6 +9,9 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -44,7 +47,8 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(Presentation presentation) {
+		Slide data = presentation.getCurrentSlide();
 		if (data == null) {
 			repaint();
 			return;
@@ -61,13 +65,13 @@ public class SlideViewerComponent extends JComponent {
 		graphics.setColor(BGCOLOR);
 		graphics.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (presentation.getCurrentSlideNumber() < 0 || slide == null) {
 			return;
 		}
 
 		graphics.setFont(labelFont);
 		graphics.setColor(COLOR);
-		graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
+		graphics.drawString("Slide " + (1 + presentation.getCurrentSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 

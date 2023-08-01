@@ -7,23 +7,16 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.util.ArrayList;
 
 public class Presentation {
 	private String title;
 	private ArrayList<Slide> showList = null;
-	private SlideViewerComponent slideViewComponent;
 	private int currentSlideNumber = 0;
 
 	public Presentation() {
-		slideViewComponent = null;
-		clear();
-	}
-
-	public Presentation(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
 		clear();
 	}
 
@@ -31,44 +24,21 @@ public class Presentation {
 		return showList.size();
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String nt) {
-		title = nt;
-	}
-
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
-	}
-
-	public int getSlideNumber() {
-		return currentSlideNumber;
-	}
-
-	public void setSlideNumber(int number) {
-		currentSlideNumber = number;
-		if (slideViewComponent != null) {
-			slideViewComponent.update(this, getCurrentSlide());
-		}
-	}
-
 	public void prevSlide() {
 		if (currentSlideNumber > 0) {
-			setSlideNumber(currentSlideNumber - 1);
+			setCurrentSlideNumber(currentSlideNumber - 1);
 		}
 	}
 
 	public void nextSlide() {
 		if (currentSlideNumber < (showList.size() - 1)) {
-			setSlideNumber(currentSlideNumber + 1);
+			setCurrentSlideNumber(currentSlideNumber + 1);
 		}
 	}
 
-	void clear() {
+	public void clear() {
 		showList = new ArrayList<>();
-		setSlideNumber(-1);
+		setCurrentSlideNumber(-1);
 	}
 
 	public void append(Slide slide) {
@@ -86,7 +56,20 @@ public class Presentation {
 		return getSlide(currentSlideNumber);
 	}
 
-	public void exit(int n) {
-		System.exit(n);
+	public String getTitle() {
+		return title;
 	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getCurrentSlideNumber() {
+		return currentSlideNumber;
+	}
+
+	public void setCurrentSlideNumber(int number) {
+		this.currentSlideNumber = number;
+	}
+
 }

@@ -7,7 +7,14 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.SlideViewerComponent;
+import br.upe.enenhariasoftware.psw.jabberpoint.SlideViewerFrame;
+import br.upe.enenhariasoftware.psw.jabberpoint.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
 import java.io.IOException;
 
@@ -19,7 +26,8 @@ public class JabberPointApplication {
 
 	    Presentation presentation = new Presentation();
 
-	    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+	    SlideViewerFrame frame = new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+		SlideViewerComponent component = new SlideViewerComponent(presentation, frame);
 
 	    try {
 	      if (args.length == 0) {
@@ -28,7 +36,8 @@ public class JabberPointApplication {
 	        new XMLAccessor().loadFile(presentation, args[0]);
 	      }
 
-	      presentation.setSlideNumber(0);
+	      presentation.setCurrentSlideNumber(0);
+		  frame.updateFrame(presentation);
 
 	    } catch (IOException ex) {
 	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);

@@ -9,6 +9,8 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+
 import java.io.IOException;
 
 public abstract class Accessor {

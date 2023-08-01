@@ -9,6 +9,10 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.BitmapItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+
 import java.io.FileNotFoundException;
 import java.net.URL;
 
