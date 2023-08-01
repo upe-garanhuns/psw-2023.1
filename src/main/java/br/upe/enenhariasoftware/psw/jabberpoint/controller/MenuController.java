@@ -51,6 +51,7 @@ public class MenuController extends MenuBar {
     protected static final String LOADERR = "Failed to load";
     protected static final String SAVEERR = "Failed to save";
 
+    // Aqui é controller? Por mim é, mas com dúvidas
     public MenuController(Frame parentFrame, Presentation presentation) {
         this.parentFrame = parentFrame;
         this.presentation = presentation;
@@ -63,6 +64,11 @@ public class MenuController extends MenuBar {
 
     }
 
+    // Eu fiquei com dúvida aqui
+    // Apesar de estar na cara que ele é controller pq ele
+    // pega a ação do ActionListener e chama o método, ele
+    // instancia o menu e adiciona os menuItem, e eu penso
+    // que isso é view, mas não tenho nenhuma certeza
     private void fileMenu(){
         Menu fileMenu = new Menu(FILE);
 
@@ -99,6 +105,7 @@ public class MenuController extends MenuBar {
         add(fileMenu);
     }
 
+    // Considero o mesmo do fileMenu()
     private void viewMenu(){
         Menu viewMenu = new Menu(VIEW);
 
@@ -126,6 +133,9 @@ public class MenuController extends MenuBar {
         add(viewMenu);
     }
 
+    // Conidero o mesmo do anterior
+    // Eu realmente não sei se podia separar as responsabilidades
+    // desses métodos
     private void helpMenu(){
         Menu helpMenu = new Menu(HELP);
 
@@ -139,6 +149,9 @@ public class MenuController extends MenuBar {
         setHelpMenu(helpMenu);
     }
 
+    // Também considero controller, porque apesar de mexer com a
+    // apresentação e o XML, ele não faz a coisa, ele chama o método
+    // que faz a coisa
     private void openFile(){
         presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
@@ -151,11 +164,17 @@ public class MenuController extends MenuBar {
         parentFrame.repaint();
     }
 
+    // Assim... Ele mexe com a presentation, mas
+    // não de uma forma que me faça pensar que ele é
+    // model. Eu considero controller
     private void clearPresentation() {
         presentation.clear();
         parentFrame.repaint();
     }
 
+    // Parece model, porque mexe com o XML, mas eu
+    // considero controller porque ele não executa a ação
+    // em si, ele apenas chama o método que faz isso.
     private void saveFile(){
         Accessor xmlAccessor = new XMLAccessor();
         try {
@@ -165,28 +184,42 @@ public class MenuController extends MenuBar {
         }
     }
 
+    // Pra mim, é controller
     private void exit(){
         presentation.exit(0);
     }
 
+    // Também considero controller
     private void nextSlide(){
         presentation.nextSlide();
     }
 
+    // Considero controller, assim como o goToSlide
     private void previousSlide(){
         presentation.prevSlide();
     }
 
+    // Esse método permite que o usuário digite um número e ele pula
+    // para a página desse número
+    // Eu considero controller, porque não tem nada a ver com a view e
+    // não mexe diretamente na apresentação em si
     private void goToSlide(){
         String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
         presentation.setSlideNumber(pageNumber - 1);
     }
 
+    // Ele chama a classe About.
+    // Eu considero que seja view, pois ele não tem nada
+    // a ver com a apresentação.
     private void about(){
         About.show(parentFrame);
     }
 
+    // É criado um item de menu, e é adicionado o ActionListener.
+    // Esse método é mais utilitário e não se encaixa bem em nenhum, mas
+    // eu colocaria em view, afinal ele cria elementos que servirão apenas
+    // para a view e que não interfere na lógica da apresentação em si.
     private MenuItem menuItem(String name, ActionListener actionListener){
         MenuItem menuItem = new MenuItem(name, new MenuShortcut(name.charAt(0)));
         menuItem.addActionListener(actionListener);

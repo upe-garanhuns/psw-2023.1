@@ -15,6 +15,8 @@ import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 public class Presentation implements Serializable {
 
+  // Presentation tem muito cara de Model, mas tem uns detalhezinhos de view
+
   private String title;
   private ArrayList<Slide> slideList;
   private SlideViewerComponent slideViewComponent;
@@ -25,6 +27,8 @@ public class Presentation implements Serializable {
     clear();
   }
 
+  // Eu não entendi muito bem porque a apresentação recebe o
+  // componente da view, tem que ver melhor isso aí
   public Presentation(SlideViewerComponent slideViewerComponent) {
     this.slideViewComponent = slideViewerComponent;
     clear();
@@ -42,6 +46,7 @@ public class Presentation implements Serializable {
     this.title = newTitle;
   }
 
+  // Mais uma vez, mexendo com a view
   public void setShowView(SlideViewerComponent slideViewerComponent) {
     this.slideViewComponent = slideViewerComponent;
   }
@@ -86,6 +91,7 @@ public class Presentation implements Serializable {
     return getSlide(currentSlideNumber);
   }
 
+  //Esse método de fechar, pra mim, deveria ser view (ou então controller)
   public void exit(int n) {
     System.exit(n);
   }

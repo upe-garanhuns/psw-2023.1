@@ -32,6 +32,10 @@ public class SlideViewerFrame extends JFrame {
     setupWindow(presentation);
   }
 
+  // Esse método tem muito de view, mas ele adiciona
+  // o actionlistener para o negocinho de fechar a tele,
+  // o que me deixa pensando se esse método tem uma pitada
+  // de controller
   public void setupWindow(Presentation presentation) {
     setTitle(JABTITLE);
     addWindowListener(new WindowAdapter() {

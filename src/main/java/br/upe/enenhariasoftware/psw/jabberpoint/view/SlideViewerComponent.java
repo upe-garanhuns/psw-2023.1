@@ -36,6 +36,7 @@ public class SlideViewerComponent extends JComponent {
     private Presentation presentation;
     private final JFrame frame;
 
+    // É só o construtor, se é M, V ou C vai depender dos outros métodos
     public SlideViewerComponent(Presentation presentation, JFrame frame) {
         setBackground(BACKGROUND_COLOR);
         this.presentation = presentation;
@@ -43,11 +44,16 @@ public class SlideViewerComponent extends JComponent {
         this.frame = frame;
     }
 
+    // Tenho 90% de certeza que é view, mas tem os 10% da dúvida
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(Slide.WIDTH, Slide.HEIGHT);
     }
 
+
+    // Ela atualiza o o que está na tela? pra mim é isso
+    // Ele configura o título do frame toda vez que o método
+    // é chamado, será que isso é necessário mesmo?
     public void update(Presentation presentation, Slide data) {
         if (data == null) {
             repaint();
@@ -59,6 +65,12 @@ public class SlideViewerComponent extends JComponent {
         this.frame.setTitle(presentation.getTitle());
     }
 
+    // Esse aqui, pra mim, é view
+    // Ele basicamente faz o desenho do slide na tela, e eu
+    // não vejo pontos onde ele mexe com a lógica de negócio,
+    // mas lá no fim ele chama o método draw do slide, e eu não
+    // sei se isso podia ser controller
+    // Sem contar que esse método tá muito longo
     @Override
     public void paintComponent(Graphics graphics) {
         graphics.setColor(BACKGROUND_COLOR);

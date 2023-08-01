@@ -21,6 +21,9 @@ public class Style {
   private int fontSize;
   private int leading;
 
+  // Como a própria professora disse, essa classe é Model
+  // pq ela lida com a criação de estilos e configura esses
+  // estilos
   public static void createStyles() {
     styles = new Style[5];
     styles[0] = new Style(0, Color.red, 48, 20);
