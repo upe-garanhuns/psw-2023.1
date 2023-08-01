@@ -7,16 +7,16 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -34,6 +34,8 @@ public class SlideViewerComponent extends JComponent {
 	private final Font labelFont;
 	private transient Presentation presentation;
 	private final JFrame frame;
+
+	private Drawer drawer = new Drawer();
 
 	public SlideViewerComponent(Presentation pres, JFrame frame) {
 		setBackground(BGCOLOR);
@@ -75,6 +77,7 @@ public class SlideViewerComponent extends JComponent {
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-		slide.draw(graphics, area, this);
+		drawer.drawSlide(graphics, area, this, slide);
 	}
+
 }

@@ -10,8 +10,8 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.SlideViewerComponent;
-import br.upe.enenhariasoftware.psw.jabberpoint.SlideViewerFrame;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 import br.upe.enenhariasoftware.psw.jabberpoint.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
@@ -27,7 +27,6 @@ public class JabberPointApplication {
 	    Presentation presentation = new Presentation();
 
 	    SlideViewerFrame frame = new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
-		SlideViewerComponent component = new SlideViewerComponent(presentation, frame);
 
 	    try {
 	      if (args.length == 0) {

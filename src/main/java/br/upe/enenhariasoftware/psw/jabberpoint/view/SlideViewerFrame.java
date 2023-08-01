@@ -7,11 +7,12 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;

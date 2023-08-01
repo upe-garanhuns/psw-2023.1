@@ -21,6 +21,7 @@ public class Slide {
 	public static final int HEIGHT = 800;
 
 	protected TextItem title;
+
 	protected ArrayList<SlideItem> items;
 
 	public Slide() {
@@ -55,28 +56,7 @@ public class Slide {
 		return items.size();
 	}
 
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-		float scale = getScale(area);
-
-		int y = area.y;
-
-		SlideItem slideItem = this.title;
-		Style style = Style.getStyle(slideItem.getLevel());
-		slideItem.draw(area.x, y, scale, g, style, view);
-
-		y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-		for (int number = 0; number < getSize(); number++) {
-			slideItem = getSlideItems().get(number);
-
-			style = Style.getStyle(slideItem.getLevel());
-			slideItem.draw(area.x, y, scale, g, style, view);
-
-			y += slideItem.getBoundingBox(g, view, scale, style).height;
-		}
-	}
-
-	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
+	public TextItem getTextItemTitle() {
+		return title;
 	}
 }

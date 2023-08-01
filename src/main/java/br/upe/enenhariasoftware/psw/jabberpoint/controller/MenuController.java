@@ -11,6 +11,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.*;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 
 import java.awt.Menu;
 import java.awt.MenuBar;
