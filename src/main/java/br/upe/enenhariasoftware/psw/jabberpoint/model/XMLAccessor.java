@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,7 +19,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -28,7 +27,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XMLAccessor extends Accessor {
+public class XMLAccessor extends Accessor implements Savable {
 
 	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
 
@@ -123,6 +122,7 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
+	@Override
 	public void saveFile(Presentation presentation, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 

@@ -7,9 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
-
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.IOException;
 
@@ -26,7 +24,4 @@ public abstract class Accessor {
 	}
 
 	public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
-
-	public abstract void saveFile(Presentation presentation, String fileName) throws IOException;
-
 }

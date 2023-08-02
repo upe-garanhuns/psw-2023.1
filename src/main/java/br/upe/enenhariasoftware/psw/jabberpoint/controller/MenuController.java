@@ -10,7 +10,10 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.*;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Savable;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 
 import java.awt.Menu;
@@ -80,7 +83,7 @@ public class MenuController extends MenuBar {
     fileMenu.add(menuItem);
     
     menuItem.addActionListener(e -> {
-        Accessor xmlAccessor = new XMLAccessor();
+        Savable xmlAccessor = new XMLAccessor();
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {

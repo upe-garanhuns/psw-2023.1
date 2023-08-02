@@ -7,8 +7,9 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.BitmapItem;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
@@ -52,12 +53,8 @@ public class DemoPresentation extends Accessor {
 		slide.append(1, " ");
 		slide.append(1, "End");
 		URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
+		assert resource != null;
 		slide.append(new BitmapItem(1, resource.getPath()));
 		presentation.append(slide);
 	}
-
-	public void saveFile(Presentation presentation, String unusedFilename) {
-		throw new IllegalStateException("Cannot save demo presentation!");
-	}
-
 }

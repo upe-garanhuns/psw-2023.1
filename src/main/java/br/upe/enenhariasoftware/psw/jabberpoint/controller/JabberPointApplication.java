@@ -9,10 +9,9 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
-import br.upe.enenhariasoftware.psw.jabberpoint.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
