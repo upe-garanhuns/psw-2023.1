@@ -9,6 +9,7 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.views;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Slide;
 
@@ -34,12 +35,12 @@ public class SlideViewerComponent extends JComponent {
 
 	private transient Slide slide;
 	private Font labelFont = null;
-	private transient Presentation presentation = null;
+	private transient PresentationController presentationController = null;
 	private JFrame frame = null;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
+	public SlideViewerComponent(PresentationController presentationController, JFrame frame) {
 		setBackground(BGCOLOR);
-		presentation = pres;
+		this.presentationController = presentationController;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 		this.frame = frame;
 	}
@@ -54,11 +55,10 @@ public class SlideViewerComponent extends JComponent {
 			repaint();
 			return;
 		}
-
-		this.presentation = presentation;
+		presentationController.setPresentation(presentation);
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+		frame.setTitle(presentationController.getPresentation().getTitle());
 	}
 
 	@Override
@@ -66,13 +66,13 @@ public class SlideViewerComponent extends JComponent {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (presentationController.getPresentation().getSlideNumber() < 0 || slide == null) {
 			return;
 		}
 
 		g.setFont(labelFont);
 		g.setColor(COLOR);
-		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
+		g.drawString("Slide " + (1 + presentationController.getPresentation().getSlideNumber()) + " of " + presentationController.getPresentation().getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 

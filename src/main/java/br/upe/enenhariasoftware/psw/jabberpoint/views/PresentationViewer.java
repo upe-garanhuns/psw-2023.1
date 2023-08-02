@@ -11,7 +11,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.views;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controllers.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controllers.MenuController;
-import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
 
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
@@ -27,16 +27,16 @@ public class PresentationViewer extends JFrame {
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
-  public PresentationViewer(String title, Presentation presentation) {
+  public PresentationViewer(String title, PresentationController presentationController) {
     super(title);
 
-    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-    presentation.setShowView(slideViewerComponent);
+    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationController, this);
+    presentationController.getPresentation().setShowView(slideViewerComponent);
 
-    setupWindow(slideViewerComponent, presentation);
+    setupWindow(slideViewerComponent, presentationController);
   }
 
-  public void setupWindow(SlideViewerComponent slideViewerComponent, Presentation presentation) {
+  public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationController presentation) {
     setTitle(JABTITLE);
 
     addWindowListener(new WindowAdapter() {

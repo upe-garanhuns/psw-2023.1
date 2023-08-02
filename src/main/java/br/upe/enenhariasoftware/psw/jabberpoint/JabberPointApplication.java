@@ -10,7 +10,7 @@
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Style;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.views.PresentationViewer;
@@ -23,18 +23,18 @@ public class JabberPointApplication {
 	public static void main(String[] args) {
 		Style.createStyles();
 
-	    Presentation presentation = new Presentation();
+	    PresentationController presentationController = new PresentationController();
 
-	    new PresentationViewer("Jabberpoint 1.6 -", presentation);
+	    new PresentationViewer("Jabberpoint 1.6 -", presentationController);
 
 	    try {
 	      if (args.length == 0) {
-	        Accessor.getDemoAccessor().loadFile(presentation, "");
+	        Accessor.getDemoAccessor().loadFile(presentationController, "");
 	      } else {
-	        new XMLAccessor().loadFile(presentation, args[0]);
+	        new XMLAccessor().loadFile(presentationController, args[0]);
 	      }
 
-	      presentation.setSlideNumber(0);
+	      presentationController.getPresentation().setSlideNumber(0);
 
 	    } catch (IOException ex) {
 	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);

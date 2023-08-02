@@ -21,6 +21,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -52,7 +53,7 @@ public class XMLAccessor extends Accessor {
 
 	}
 
-	public void loadFile(Presentation presentation, String filename) throws IOException {
+	public void loadFile(PresentationController presentationController, String filename) throws IOException {
 		int slideNumber;
 		int itemNumber;
 		int max;
@@ -69,7 +70,7 @@ public class XMLAccessor extends Accessor {
 			Document document = builder.parse(new File(filename));
 
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			presentationController.getPresentation().setTitle(getTitle(doc, SHOWTITLE));
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
@@ -79,7 +80,7 @@ public class XMLAccessor extends Accessor {
 
 				Slide slide = new Slide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentation.append(slide);
+				presentationController.append(slide);
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
@@ -127,7 +128,7 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-	public void saveFile(Presentation presentation, String filename) throws IOException {
+	public void saveFile(PresentationController presentationController, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 
 		out.println("<?xml version=\"1.0\"?>");
@@ -135,11 +136,11 @@ public class XMLAccessor extends Accessor {
 		out.println("<presentation>");
 
 		out.print("<showtitle>");
-		out.print(presentation.getTitle());
+		out.print(presentationController.getPresentation().getTitle());
 		out.println("</showtitle>");
 
-		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
-			Slide slide = presentation.getSlide(slideNumber);
+		for (int slideNumber = 0; slideNumber < presentationController.getPresentation().getSize(); slideNumber++) {
+			Slide slide = presentationController.getPresentation().getSlide(slideNumber);
 
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
