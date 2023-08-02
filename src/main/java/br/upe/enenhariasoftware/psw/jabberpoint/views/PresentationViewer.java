@@ -18,7 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
-public class SlideViewerFrame extends JFrame {
+public class PresentationViewer extends JFrame {
 
   private static final long serialVersionUID = 3227L;
 
@@ -27,7 +27,7 @@ public class SlideViewerFrame extends JFrame {
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
-  public SlideViewerFrame(String title, Presentation presentation) {
+  public PresentationViewer(String title, Presentation presentation) {
     super(title);
 
     SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);

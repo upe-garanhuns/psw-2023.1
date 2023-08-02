@@ -13,7 +13,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Style;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerFrame;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.PresentationViewer;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class JabberPointApplication {
 
 	    Presentation presentation = new Presentation();
 
-	    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+	    new PresentationViewer("Jabberpoint 1.6 -", presentation);
 
 	    try {
 	      if (args.length == 0) {
