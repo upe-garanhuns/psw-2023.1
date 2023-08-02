@@ -70,7 +70,7 @@ public class Presentation implements Serializable {
     }
   }
 
-  void clear() {
+  public void clear() {
     showList = new ArrayList<>();
     setSlideNumber(-1);
   }
