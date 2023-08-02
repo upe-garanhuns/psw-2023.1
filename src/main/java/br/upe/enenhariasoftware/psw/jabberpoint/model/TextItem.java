@@ -24,6 +24,7 @@ import java.util.List;
 
 public class TextItem extends SlideItem {
 
+  // Representa um item de texto no slide de apresentação
   private String text;
 
   private static final String EMPTYTEXT = "No Text Given";
@@ -41,6 +42,8 @@ public class TextItem extends SlideItem {
     return text == null ? "" : text;
   }
 
+  // Creio que realiza apenas uma função
+  // retornar o texto com estilo de fonte e formatado
   public AttributedString getAttributedString(Style style, float scale) {
     AttributedString attrStr = new AttributedString(getText());
 
@@ -59,6 +62,9 @@ public class TextItem extends SlideItem {
     return (int) (myStyle.getLeading() * scale);
   }
 
+
+  //Não consigo identificar mais de uma função, que não seja retornar um retangulo delimitador do texto
+  // observar melhor isso!
   @Override
   public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
     List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
@@ -85,6 +91,11 @@ public class TextItem extends SlideItem {
   }
 
 
+  // Não utiliza o ImageObserver
+  // Realiza mais de uma função
+  // 1- verifica se o texto é nulo (outro método)
+  // 2 - renderiza o texto, a partir de x e y, layouts e pen (poderia ser outro método)
+  // muitas coisas acontecendo em um só método, da pra dividir em mais 2 e deixar esse draw chamando cada um
   @Override
   public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
     if (text == null || text.length() == 0) {
@@ -108,6 +119,9 @@ public class TextItem extends SlideItem {
     }
   }
 
+  // Também realiza mais de uma função
+  // 1 - cria e retorna layouts
+  // 2 - faz o cálculo do wrappingWidth (largura de ajuste) (crio que esse ficaria melhor em outro método)
   private List<TextLayout> getLayouts(Graphics graphics, Style myStyle, float scale) {
     List<TextLayout> layouts = new ArrayList<>();
 
