@@ -22,33 +22,33 @@ public class DemoPresentation extends Accessor {
 		slide = new Slide();
 
 		slide.setTitle("JabberPoint");
-		slide.append(2, "Copyright (c) 1996-now: Ian Darwin");
-		slide.append(2, "Copyright (c) 2023-now: Helaine Lins");
-		slide.append(4, "Memo demo presentation");
-		slide.append(1, "Navegation:");
-		slide.append(3, "Next slide: PgDn ou Enter");
-		slide.append(3, "Previous slide: PgUp ou up-arrow");
-		slide.append(3, "Stop: q ou Q");
+		slide.appendText(2, "Copyright (c) 1996-now: Ian Darwin");
+		slide.appendText(2, "Copyright (c) 2023-now: Helaine Lins");
+		slide.appendText(4, "Memo demo presentation");
+		slide.appendText(1, "Navegation:");
+		slide.appendText(3, "Next slide: PgDn ou Enter");
+		slide.appendText(3, "Previous slide: PgUp ou up-arrow");
+		slide.appendText(3, "Stop: q ou Q");
 		presentation.append(slide);
 
 		slide = new Slide();
 		slide.setTitle("Presentation levels demo");
-		slide.append(1, "Level 1");
-		slide.append(2, "Level 2");
-		slide.append(1, "Style Level 1");
-		slide.append(2, "Style Level  2");
-		slide.append(3, "Style Level 3");
-		slide.append(4, "Style Level 4");
+		slide.appendText(1, "Level 1");
+		slide.appendText(2, "Level 2");
+		slide.appendText(1, "Style Level 1");
+		slide.appendText(2, "Style Level  2");
+		slide.appendText(3, "Style Level 3");
+		slide.appendText(4, "Style Level 4");
 		presentation.append(slide);
 
 		slide = new Slide();
 		slide.setTitle("Second Slide");
-		slide.append(1, "To open a new presentation,");
-		slide.append(2, "Go to File->Open.");
-		slide.append(1, " ");
-		slide.append(1, "End");
+		slide.appendText(1, "To open a new presentation,");
+		slide.appendText(2, "Go to File->Open.");
+		slide.appendText(1, " ");
+		slide.appendText(1, "End");
 		URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
-		slide.append(new BitmapItem(1, resource.getPath()));
+		slide.appendBitmap(1, resource.getPath());
 		presentation.append(slide);
 	}
 

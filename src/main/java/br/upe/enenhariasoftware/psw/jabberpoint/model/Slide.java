@@ -30,12 +30,16 @@ public class Slide implements Serializable {
     items = new ArrayList<>();
   }
 
-  public void append(SlideItem anItem) {
+  public void appendItem(SlideItem anItem) {
     items.add(anItem);
   }
 
-  public void append(int level, String message) {
-    append(new TextItem(level, message));
+  public void appendText(int level, String message) {
+    appendItem(new TextItem(level, message));
+  }
+
+  public void appendBitmap(int level, String message) {
+    appendItem(new BitmapItem(level, message));
   }
 
   public String getTitle() {
