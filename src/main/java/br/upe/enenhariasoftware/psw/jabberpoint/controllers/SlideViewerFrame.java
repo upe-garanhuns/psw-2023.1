@@ -7,12 +7,10 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.controller;
+package br.upe.enenhariasoftware.psw.jabberpoint.controllers;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerComponent;
 
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
@@ -22,13 +20,11 @@ import javax.swing.JFrame;
 public class SlideViewerFrame extends JFrame {
 
   private static final long serialVersionUID = 3227L;
-
   private static final String JABTITLE = "Jabberpoint 1.6";
-
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
-  public static SlideViewerComponent slideViewerComponent;
+  private SlideViewerComponent slideViewerComponent;
 
   public SlideViewerFrame(String title, Presentation presentation) {
     super(title);

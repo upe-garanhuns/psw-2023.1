@@ -7,12 +7,9 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.BitmapItem;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.BitmapItem;
 
 import java.io.FileNotFoundException;
 import java.net.URL;

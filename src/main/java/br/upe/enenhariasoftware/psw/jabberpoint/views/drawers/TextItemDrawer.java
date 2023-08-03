@@ -1,8 +1,8 @@
-package br.upe.enenhariasoftware.psw.jabberpoint.view;
+package br.upe.enenhariasoftware.psw.jabberpoint.views.drawers;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.TextItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.SlideItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.TextItem;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -10,25 +10,31 @@ import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.ImageObserver;
 import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextItemDrawer extends SlideItemDrawer <TextItem> {
+public class TextItemDrawer extends SlideItemDrawer {
+
+    private Graphics g;
+
+    public TextItemDrawer(Graphics g) {
+        this.g = g;
+    }
+
     @Override
-    void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer, TextItem textItem) {
-        String text = textItem.getText();
+    void draw(int x, int y, float scale, Style myStyle, SlideItem textItem) {
+        String text = ((TextItem) textItem).getText();
 
         if (text == null || text.length() == 0) {
             return;
         }
 
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale, text);
-        Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
+        List<TextLayout> layouts = getLayouts(this.g, myStyle, scale, text);
+        Point pen = new Point(x + (int) (myStyle.getIndent() * scale), y + (int) (myStyle.getLeading() * scale));
 
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(myStyle.color);
+        Graphics2D g2d = (Graphics2D) this.g;
+        g2d.setColor(myStyle.getColor());
 
         for (TextLayout layout : layouts) {
             pen.y += layout.getAscent();
@@ -39,11 +45,11 @@ public class TextItemDrawer extends SlideItemDrawer <TextItem> {
     }
 
     @Override
-    Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle, TextItem textItem) {
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale, textItem.getText());
+    Rectangle getBoundingBox(float scale, Style myStyle, SlideItem textItem) {
+        List<TextLayout> layouts = getLayouts(g, myStyle, scale, ((TextItem) textItem).getText());
 
         int xsize = 0;
-        int ysize = (int) (myStyle.leading * scale);
+        int ysize = (int) (myStyle.getLeading() * scale);
 
         for (TextLayout layout : layouts) {
             Rectangle2D bounds = layout.getBounds();
@@ -58,7 +64,7 @@ public class TextItemDrawer extends SlideItemDrawer <TextItem> {
             ysize += layout.getLeading() + layout.getDescent();
         }
 
-        return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
+        return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
     }
 
     private List<TextLayout> getLayouts(Graphics g, Style s, float scale, String text) {
@@ -70,7 +76,7 @@ public class TextItemDrawer extends SlideItemDrawer <TextItem> {
         FontRenderContext frc = g2d.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-        float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+        float wrappingWidth = (SlideDrawer.WIDTH - s.getIndent()) * scale;
 
         while (measurer.getPosition() < text.length()) {
             TextLayout layout = measurer.nextLayout(wrappingWidth);

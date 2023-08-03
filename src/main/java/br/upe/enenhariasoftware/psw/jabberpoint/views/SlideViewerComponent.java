@@ -7,9 +7,10 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.view;
+package br.upe.enenhariasoftware.psw.jabberpoint.views;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.*;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.drawers.SlideDrawer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,7 +46,7 @@ public class SlideViewerComponent extends JComponent {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+		return new Dimension(SlideDrawer.WIDTH, SlideDrawer.HEIGHT);
 	}
 
 	public void update(Presentation presentation) {

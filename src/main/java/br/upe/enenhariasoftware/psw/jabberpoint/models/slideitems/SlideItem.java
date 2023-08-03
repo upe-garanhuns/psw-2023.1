@@ -7,11 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
-
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
+package br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems;
 
 public abstract class SlideItem {
 

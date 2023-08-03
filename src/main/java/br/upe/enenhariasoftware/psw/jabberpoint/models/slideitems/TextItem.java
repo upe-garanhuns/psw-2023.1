@@ -7,21 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineBreakMeasurer;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ImageObserver;
-import java.text.AttributedString;
-import java.util.ArrayList;
-import java.util.List;
+package br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems;
 
 public class TextItem extends SlideItem {
 	private final String text;

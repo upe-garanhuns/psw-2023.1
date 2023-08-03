@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.view;
+package br.upe.enenhariasoftware.psw.jabberpoint.views;
 
 import java.awt.Frame;
 

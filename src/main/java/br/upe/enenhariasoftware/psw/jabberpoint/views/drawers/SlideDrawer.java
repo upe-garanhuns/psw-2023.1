@@ -1,0 +1,44 @@
+package br.upe.enenhariasoftware.psw.jabberpoint.views.drawers;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.models.*;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.SlideItem;
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+
+public class SlideDrawer {
+
+    public static final int WIDTH = 1200;
+    public static final int HEIGHT = 800;
+
+    public void drawSlide(Graphics g, Rectangle area, ImageObserver view, Slide slide) {
+        SlideItemDrawer slideItemDrawer;
+        float scale = getScale(area);
+
+        int y = area.y;
+
+        slideItemDrawer = new TextItemDrawer(g);
+
+        SlideItem slideItem = slide.getTextItemTitle();
+        Style style = Style.getStyle(slideItem.getLevel());
+        slideItemDrawer.draw(area.x, y, scale, style, slideItem);
+
+        y += slideItemDrawer.getBoundingBox(scale, style, slideItem).height;
+
+        for (int number = 0; number < slide.getSize(); number++) {
+            slideItem = slide.getSlideItems().get(number);
+            style = Style.getStyle(slideItem.getLevel());
+
+            slideItemDrawer = SlideItemDrawer.choose(slideItem, g, view);
+
+            slideItemDrawer.draw(area.x, y, scale, style, slideItem);
+            y += slideItemDrawer.getBoundingBox(scale, style,  slideItem).height;
+
+        }
+    }
+
+    private float getScale(Rectangle area) {
+        return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
+    }
+
+}

@@ -7,18 +7,15 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.SlideItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.TextItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Slide {
-
-	public static final int WIDTH = 1200;
-	public static final int HEIGHT = 800;
 
 	protected TextItem title;
 

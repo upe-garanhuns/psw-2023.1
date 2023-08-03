@@ -7,13 +7,13 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.controller;
+package br.upe.enenhariasoftware.psw.jabberpoint.controllers;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Savable;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.About;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Savable;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.About;
 
 import java.awt.Menu;
 import java.awt.MenuBar;
