@@ -10,11 +10,11 @@ import java.awt.image.ImageObserver;
 
 public class BitmapItemDrawer extends SlideItemDrawer {
 
-    private Graphics g;
-    private ImageObserver view;
+    private final Graphics graphics;
+    private final ImageObserver view;
 
-    public BitmapItemDrawer(Graphics g, ImageObserver view) {
-        this.g = g;
+    public BitmapItemDrawer(Graphics graphics, ImageObserver view) {
+        this.graphics = graphics;
         this.view = view;
     }
 
@@ -25,7 +25,7 @@ public class BitmapItemDrawer extends SlideItemDrawer {
         int width = x + (int) (myStyle.getIndent() * scale);
         int height = y + (int) (myStyle.getLeading() * scale);
 
-        this.g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(this.view) * scale),
+        this.graphics.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(this.view) * scale),
                 (int) (bufferedImage.getHeight(this.view) * scale), this.view);
     }
 

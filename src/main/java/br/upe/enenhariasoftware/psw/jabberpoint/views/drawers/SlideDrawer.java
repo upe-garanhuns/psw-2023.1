@@ -11,13 +11,13 @@ public class SlideDrawer {
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
 
-    public void drawSlide(Graphics g, Rectangle area, ImageObserver view, Slide slide) {
+    public void drawSlide(Graphics graphics, Rectangle area, ImageObserver view, Slide slide) {
         SlideItemDrawer slideItemDrawer;
         float scale = getScale(area);
 
         int y = area.y;
 
-        slideItemDrawer = new TextItemDrawer(g);
+        slideItemDrawer = new TextItemDrawer(graphics);
 
         SlideItem slideItem = slide.getTextItemTitle();
         Style style = Style.getStyle(slideItem.getLevel());
@@ -29,7 +29,7 @@ public class SlideDrawer {
             slideItem = slide.getSlideItems().get(number);
             style = Style.getStyle(slideItem.getLevel());
 
-            slideItemDrawer = SlideItemDrawer.choose(slideItem, g, view);
+            slideItemDrawer = SlideItemDrawer.choose(slideItem, graphics, view);
 
             slideItemDrawer.draw(area.x, y, scale, style, slideItem);
             y += slideItemDrawer.getBoundingBox(scale, style,  slideItem).height;

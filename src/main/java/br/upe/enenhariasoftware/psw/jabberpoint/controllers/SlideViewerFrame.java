@@ -1,7 +1,7 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ * <p>
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -23,8 +23,7 @@ public class SlideViewerFrame extends JFrame {
   private static final String JABTITLE = "Jabberpoint 1.6";
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
-
-  private SlideViewerComponent slideViewerComponent;
+  private final SlideViewerComponent slideViewerComponent;
 
   public SlideViewerFrame(String title, Presentation presentation) {
     super(title);

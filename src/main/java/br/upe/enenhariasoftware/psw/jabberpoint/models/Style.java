@@ -13,15 +13,13 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Style {
-
   private static Style[] styles;
-
   private static final String FONTNAME = "Helvetica";
-  private int indent;
-  private Color color;
-  private Font font;
-  private int fontSize;
-  private int leading;
+  private final int indent;
+  private final Color color;
+  private final Font font;
+  private final int fontSize;
+  private final int leading;
 
   public static void createStyles() {
     styles = new Style[5];

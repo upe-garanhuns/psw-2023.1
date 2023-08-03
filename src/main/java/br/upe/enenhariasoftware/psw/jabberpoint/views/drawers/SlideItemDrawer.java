@@ -9,11 +9,11 @@ import java.awt.image.ImageObserver;
 
 public abstract class SlideItemDrawer {
 
-    public static SlideItemDrawer choose(SlideItem slideItem, Graphics g, ImageObserver view) {
+    public static SlideItemDrawer choose(SlideItem slideItem, Graphics graphics, ImageObserver view) {
         if(slideItem instanceof BitmapItem) {
-            return new BitmapItemDrawer(g, view);
+            return new BitmapItemDrawer(graphics, view);
         } else {
-            return new TextItemDrawer(g);
+            return new TextItemDrawer(graphics);
         }
     }
 

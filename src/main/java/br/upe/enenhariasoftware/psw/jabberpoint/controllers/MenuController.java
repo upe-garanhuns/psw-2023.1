@@ -14,6 +14,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Savable;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.views.About;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.ErrorViewer;
 
 import java.awt.Menu;
 import java.awt.MenuBar;
@@ -42,9 +43,6 @@ public class MenuController extends MenuBar {
   protected static final String VIEW = "View";
   protected static final String TESTFILE = "classpath:test.xml"; 
   protected static final String SAVEFILE = "classpath:dump.xml";
-  protected static final String IOEX = "IO Exception: ";
-  protected static final String LOADERR = "Failed to load";
-  protected static final String SAVEERR = "Failed to save";
 
   public MenuController(SlideViewerFrame frame, Presentation pres) {
     parentFrame = frame;
@@ -65,7 +63,7 @@ public class MenuController extends MenuBar {
           presentation.setCurrentSlideNumber(0);
           parentFrame.updateFrame(presentation);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(MenuController.this.parentFrame, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+            ErrorViewer.showIOException(exc, MenuController.this.parentFrame, "IO Exception: ", "Failed to load");
         }
         MenuController.this.parentFrame.repaint();
     });
@@ -86,7 +84,7 @@ public class MenuController extends MenuBar {
         try {
           xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
-          JOptionPane.showMessageDialog(MenuController.this.parentFrame, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+            ErrorViewer.showIOException(exc, MenuController.this.parentFrame, "IO Exception: " , "Failed to load");
         }
     });
 

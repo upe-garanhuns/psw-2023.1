@@ -21,27 +21,27 @@ import org.slf4j.LoggerFactory;
 public class BitmapItem extends SlideItem {
 	private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
 	private BufferedImage bufferedImage;
-	private final String imageName;
+	private final String imagePath;
 
-	public BitmapItem(int level, String name) {
+	public BitmapItem(int level, String path) {
 		super(level);
 
-		imageName = name; // na verdade representa caminho que a imagem está
+		imagePath = path;
 
 		try {
-			bufferedImage = ImageIO.read(new File(imageName));
+			bufferedImage = ImageIO.read(new File(imagePath));
 		} catch (IOException e) {
 			logger.error(e.toString());
 		}
 	}
 
 	public String getName() {
-		return imageName;
+		return imagePath;
 	}
 
 	@Override
 	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
+		return "BitmapItem[" + getLevel() + "," + imagePath + "]";
 	}
 
 	public BufferedImage getBufferedImage() {
