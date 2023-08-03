@@ -9,7 +9,7 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerComponent;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,15 +18,15 @@ public class Presentation implements Serializable {
 
 	private String title;
 	private transient ArrayList<Slide> showList = null;
-	private SlideViewerComponent slideViewComponent = null;
+	private SlideViewer slideViewComponent = null;
 	private int currentSlideNumber = 0;
 
 	public Presentation() {
 		slideViewComponent = null;
 	}
 
-	public Presentation(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
+	public Presentation(SlideViewer slideViewer) {
+		this.slideViewComponent = slideViewer;
 	}
 
 	public int getSize() {
@@ -41,8 +41,8 @@ public class Presentation implements Serializable {
 		title = nt;
 	}
 
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
+	public void setShowView(SlideViewer slideViewer) {
+		this.slideViewComponent = slideViewer;
 	}
 
 	public int getSlideNumber() {

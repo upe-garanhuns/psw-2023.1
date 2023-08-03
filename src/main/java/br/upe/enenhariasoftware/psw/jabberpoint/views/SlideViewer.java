@@ -22,7 +22,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class SlideViewerComponent extends JComponent {
+public class SlideViewer extends JComponent {
 	private static final long serialVersionUID = 227L;
 
 	private static final Color BGCOLOR = Color.white;
@@ -38,7 +38,7 @@ public class SlideViewerComponent extends JComponent {
 	private transient PresentationController presentationController = null;
 	private JFrame frame = null;
 
-	public SlideViewerComponent(PresentationController presentationController, JFrame frame) {
+	public SlideViewer(PresentationController presentationController, JFrame frame) {
 		setBackground(BGCOLOR);
 		this.presentationController = presentationController;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);

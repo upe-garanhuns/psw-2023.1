@@ -30,13 +30,13 @@ public class PresentationViewer extends JFrame {
   public PresentationViewer(String title, PresentationController presentationController) {
     super(title);
 
-    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationController, this);
-    presentationController.getPresentation().setShowView(slideViewerComponent);
+    SlideViewer slideViewer = new SlideViewer(presentationController, this);
+    presentationController.getPresentation().setShowView(slideViewer);
 
-    setupWindow(slideViewerComponent, presentationController);
+    setupWindow(slideViewer, presentationController);
   }
 
-  public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationController presentation) {
+  public void setupWindow(SlideViewer slideViewer, PresentationController presentation) {
     setTitle(JABTITLE);
 
     addWindowListener(new WindowAdapter() {
@@ -46,7 +46,7 @@ public class PresentationViewer extends JFrame {
       }
     });
 
-    getContentPane().add(slideViewerComponent);
+    getContentPane().add(slideViewer);
     addKeyListener(new KeyController(presentation));
     setMenuBar(new MenuController(this, presentation));
     setSize(new Dimension(WIDTH, HEIGHT));
