@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Separação inicial das classes para aplicação do MVC">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Adaptação das classes MenuController e Presentation ao padrão MVC">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +122,7 @@
       <workItem from="1690809586929" duration="1714000" />
       <workItem from="1690904249671" duration="57000" />
       <workItem from="1690926912196" duration="1957000" />
-      <workItem from="1691019733098" duration="1692000" />
+      <workItem from="1691019733098" duration="2517000" />
     </task>
     <task id="LOCAL-00003" summary="Separação inicial das classes para aplicação do MVC">
       <option name="closed" value="true" />
@@ -136,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690810081719</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adaptação das classes MenuController e Presentation ao padrão MVC">
+      <option name="closed" value="true" />
+      <created>1691021879500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691021879500</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +160,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refatoração das classes SlideViewerComponent e Acessor" />
     <MESSAGE value="Separação inicial das classes para aplicação do MVC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separação inicial das classes para aplicação do MVC" />
+    <MESSAGE value="Adaptação das classes MenuController e Presentation ao padrão MVC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adaptação das classes MenuController e Presentation ao padrão MVC" />
   </component>
 </project>
