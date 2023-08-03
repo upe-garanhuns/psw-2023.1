@@ -25,7 +25,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XMLAccessor extends Accessor {
+public class XMLAccessor implements Accessible {
   private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
 
   protected static final String ERROR_MESSAGE = "Error occured: ";

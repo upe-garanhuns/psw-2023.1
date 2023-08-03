@@ -54,9 +54,4 @@ public class DemoPresentation extends Accessor {
     presentation.append(slide);
   }
 
-  @Override
-  public void saveFile(Presentation presentation, String unusedFilename) {
-    throw new IllegalStateException("Cannot save demo presentation!");
-  }
-
 }
