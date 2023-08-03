@@ -15,6 +15,9 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class KeyController extends KeyAdapter {
 
+  //Ela é controller
+  //porém acessa diretamente a "presentation", usando os métodos nextSlide e prevSlide
+  // acredito que esteja certo, pois ele pega recursos do model para manipular os dados recebidos.
   private Presentation presentation;
 
   public KeyController(Presentation p) {

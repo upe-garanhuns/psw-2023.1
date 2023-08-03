@@ -16,6 +16,9 @@ import java.util.List;
 
 public class Slide implements Serializable {
 
+  // Representa um slide em uma apresentação
+
+  // Pelo meu ver, essa classe está "perfeita", não possui métodos de controller ou view
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
   private static final long serialVersionUID = 1L;

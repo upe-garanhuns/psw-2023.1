@@ -21,11 +21,15 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 public class XMLAccessor extends Accessor {
 
+  // Responsável por ler e escrever as apresentações (Presentations) XML
+  // Se comunica com os outros models
+  // não vejo nada de view ou controller aqui
   private static final Logger logger = LogManager.getLogger(XMLAccessor.class);
 
   protected static final String DEFAULT_API_TO_USE = "dom";
@@ -49,6 +53,12 @@ public class XMLAccessor extends Accessor {
 
   }
 
+  // Responsável por carregar uma apresentação
+  // realiza mais de uma função
+  // 1 - Abre e lê o arquivo xml
+  // 2 - define o título de presentation
+  // 3 - a cada elemento do xml, cria um novo slide e o adiciona na apresentação
+  // 4 - adiciona os SlideItem(TextItem ou BitMapItem) a cada slide
   public void loadFile(Presentation presentation, String filename) throws IOException {
     int slideNumber = 0;
     int itemNumber = 0;
@@ -97,6 +107,10 @@ public class XMLAccessor extends Accessor {
 
   }
 
+  // Responsável por carregar um item do slide
+  // Realiza mais de uma função
+  // 1 - verifica o tipo do item do slidie, a partir dos atributos
+  // 2 - cria objeto TextItem ou BitmapItem, com base no tipo dos atributos do item
   protected void loadSlideItem(Slide slide, Element item) {
     int level = 1;
 
@@ -123,6 +137,10 @@ public class XMLAccessor extends Accessor {
       }
     }
   }
+
+  // Responsável por salvarr a apresentação
+  // 1 - inicializa o printwriter para gravar as informações do slide
+  // 2 - salva cada slidem, e cada item através do printwriter
 
   public void saveFile(Presentation presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));

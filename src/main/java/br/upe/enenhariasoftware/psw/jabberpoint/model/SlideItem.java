@@ -14,6 +14,8 @@ import java.awt.image.ImageObserver;
 
 public abstract class SlideItem {
 
+  // Representa um elemento presente nos slides de apresentação
+
   private int level = 0;
 
   protected SlideItem(int lev) {
@@ -32,6 +34,8 @@ public abstract class SlideItem {
 
   public abstract int getStyleLeading(Style myStyle, float scale);
 
+  // Corrigir esse método
+  // Existe implementação que utiliza o graphics e outra que não
   public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale,
                                            Style style);
 

@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 
 public class About {
 
+  // responsável por exibit uma caixa de diálogo com as informações do sistema (view)
+  // por ser simples, não vejo problemas nela
+
   private About() {}
 
   public static void show(Frame parent) {
