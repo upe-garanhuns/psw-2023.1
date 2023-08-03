@@ -3,8 +3,6 @@ v
 Fsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/About.java,c\f\cf1afa553eea184d394e21e8f89cc51210a949e4
 ‚
 Rsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/DemoPresentation.java,2\7\276adcf37698de69e07c094114b0b7ba8d6bca79
-ˆ
-Xsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/JabberPointApplication.java,b\e\beb36d8cd2ee1fba2968a90f563b33a41ba7f549
 „
 Tsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/KeyController.java,d\8\d83a71833ca1c5b7cdecc84ed1fbe485ff7f2aa2
 w

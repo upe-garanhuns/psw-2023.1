@@ -1,8 +1,6 @@
 
 ‚
 Rsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/DemoPresentation.java,2\7\276adcf37698de69e07c094114b0b7ba8d6bca79
-ˆ
-Xsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/JabberPointApplication.java,b\e\beb36d8cd2ee1fba2968a90f563b33a41ba7f549
 {
 Ksrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/SlideItem.java,1\6\167dc28f90814b676256380907a7e86ce046a331
 w
