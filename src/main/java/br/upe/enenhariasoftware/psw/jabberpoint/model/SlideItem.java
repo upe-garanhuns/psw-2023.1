@@ -29,6 +29,4 @@ public abstract class SlideItem {
 		return level;
 	}
 
-	public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
-
 }

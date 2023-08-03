@@ -29,7 +29,7 @@ public class BitmapItem extends SlideItem {
 	public BitmapItem(int level, String name) {
 		super(level);
 
-		imageName = name;
+		imageName = name; // na verdade representa caminho que a imagem está
 
 		try {
 			bufferedImage = ImageIO.read(new File(imageName));
@@ -40,12 +40,6 @@ public class BitmapItem extends SlideItem {
 
 	public String getName() {
 		return imageName;
-	}
-
-	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.indent * scale), 0, (int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
 	}
 
 	@Override

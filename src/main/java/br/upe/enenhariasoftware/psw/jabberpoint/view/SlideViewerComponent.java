@@ -16,7 +16,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -35,7 +34,7 @@ public class SlideViewerComponent extends JComponent {
 	private transient Presentation presentation;
 	private final JFrame frame;
 
-	private Drawer drawer = new Drawer();
+	private SlideDrawer drawer = new SlideDrawer();
 
 	public SlideViewerComponent(Presentation pres, JFrame frame) {
 		setBackground(BGCOLOR);
