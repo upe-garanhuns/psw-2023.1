@@ -10,6 +10,7 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.controllers;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.Menu;
 import br.upe.enenhariasoftware.psw.jabberpoint.views.SlideViewerComponent;
 
 import java.awt.Dimension;
@@ -45,7 +46,7 @@ public class SlideViewerFrame extends JFrame {
 
     getContentPane().add(slideViewerComponent);
     addKeyListener(new KeyController(presentation, this));
-    setMenuBar(new MenuController(this, presentation));
+    setMenuBar(new Menu(this, presentation));
     setSize(new Dimension(WIDTH, HEIGHT));
 
     setVisible(true);
