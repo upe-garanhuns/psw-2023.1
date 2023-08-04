@@ -23,21 +23,25 @@ public class JabberPointApplication {
 	public static void main(String[] args) {
 		Style.createStyles();
 
-	    PresentationController presentationController = new PresentationController();
+		PresentationController presentationController = new PresentationController();
+		new PresentationViewer("Jabberpoint 1.6 -", presentationController);
 
-	    new PresentationViewer("Jabberpoint 1.6 -", presentationController);
+		Accessor accessor;
+		if (args.length == 0) {
+			accessor = Accessor.getDemoAccessor();
+		} else {
+			accessor = new XMLAccessor();
+		}
 
-	    try {
-	      if (args.length == 0) {
-	        Accessor.getDemoAccessor().loadFile(presentationController, "");
-	      } else {
-	        new XMLAccessor().loadFile(presentationController, args[0]);
-	      }
+		try {
+			accessor.loadFile(presentationController, (args.length > 0) ? args[0] : "");
 
-	      presentationController.getPresentation().setSlideNumber(0);
+			presentationController.getPresentation().setSlideNumber(0);
 
-	    } catch (IOException ex) {
-	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
-	    }
+		} catch (IOException ex) {
+			JOptionPane.showMessageDialog(
+					null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE
+			);
+		}
 	}
 }
