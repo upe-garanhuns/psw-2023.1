@@ -62,18 +62,8 @@ public class TextItem extends SlideItem {
     return (int) (myStyle.getLeading() * scale);
   }
 
-
-  //Não consigo identificar mais de uma função, que não seja retornar um retangulo delimitador do texto
-  // observar melhor isso!
-  @Override
-  public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
-    List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
-
-    int x = getStyleIndent(myStyle,scale);
-    int y = 0;
-
+  public int calculateWidth(List<TextLayout> layouts){
     int width = 0;
-    int height = getStyleLeading(myStyle,scale);
 
     for (TextLayout layout : layouts) {
       Rectangle2D bounds = layout.getBounds();
@@ -81,31 +71,51 @@ public class TextItem extends SlideItem {
       if (bounds.getWidth() > width) {
         width = (int) bounds.getWidth();
       }
+    }
+    return width;
+  }
+
+  private int calculateHeight(List<TextLayout> layouts, Style myStyle, float scale) {
+    int height = getStyleLeading(myStyle,scale);
+
+    for (TextLayout layout : layouts) {
+      Rectangle2D bounds = layout.getBounds();
+
       if (bounds.getHeight() > 0) {
         height += bounds.getHeight();
       }
       height += layout.getLeading() + layout.getDescent();
     }
 
+    return height;
+  }
+
+
+  @Override
+  public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
+    List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
+
+    int x = getStyleIndent(myStyle,scale);
+    int y = 0;
+
+    int width = calculateWidth(layouts);
+    int height = calculateHeight(layouts,myStyle,scale);
+
     return new Rectangle(x, y, width, height);
   }
 
 
-  // Não utiliza o ImageObserver
-  // Realiza mais de uma função
-  // 1- verifica se o texto é nulo (outro método)
-  // 2 - renderiza o texto, a partir de x e y, layouts e pen (poderia ser outro método)
-  // muitas coisas acontecendo em um só método, da pra dividir em mais 2 e deixar esse draw chamando cada um
-  @Override
-  public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
-    if (text == null || text.length() == 0) {
-      return;
+  public boolean isTextNull(String text){
+    text = this.text;
+
+    if(text == null || text.length() == 0){
+      return true;
+    } else{
+      return false;
     }
-    List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
+  }
 
-    int x = baseX + getStyleIndent(myStyle,scale);
-    int y = baseY + getStyleLeading(myStyle,scale);
-
+  public void drawTextLayout (List<TextLayout> layouts, int x, int y, Graphics graphics, Style myStyle){
     Point pen = new Point(x,y);
 
     Graphics2D g2d = (Graphics2D) graphics;
@@ -119,26 +129,44 @@ public class TextItem extends SlideItem {
     }
   }
 
-  // Também realiza mais de uma função
-  // 1 - cria e retorna layouts
-  // 2 - faz o cálculo do wrappingWidth (largura de ajuste) (crio que esse ficaria melhor em outro método)
-  private List<TextLayout> getLayouts(Graphics graphics, Style myStyle, float scale) {
+  @Override
+  public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
+    if(isTextNull(text) == false){
+
+      List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
+
+      int PosX = baseX + getStyleIndent(myStyle,scale);
+      int PosY = baseY + getStyleLeading(myStyle,scale);
+
+      drawTextLayout(layouts,PosX,PosY,graphics,myStyle);
+    }
+  }
+
+  private float calculateWrappingWidth(Style myStyle, float scale){
+    return (Slide.WIDTH - myStyle.getIndent()) * scale;
+  }
+
+  private List<TextLayout> getTextLayouts(AttributedString attributedString, FontRenderContext fontRenderContext, float wrappingWidth) {
     List<TextLayout> layouts = new ArrayList<>();
 
-    AttributedString attributedString = getAttributedString(myStyle, scale);
-    Graphics2D g2d = (Graphics2D) graphics;
-
-    FontRenderContext fontRenderContext = g2d.getFontRenderContext();
     LineBreakMeasurer measurer = new LineBreakMeasurer(attributedString.getIterator(), fontRenderContext);
 
-    float wrappingWidth = (Slide.WIDTH - myStyle.getIndent()) * scale;
-
-    while (measurer.getPosition() < getText().length()) {
+    while (measurer.getPosition() < attributedString.getIterator().getEndIndex()) {
       TextLayout layout = measurer.nextLayout(wrappingWidth);
       layouts.add(layout);
     }
 
     return layouts;
+  }
+
+  private List<TextLayout> getLayouts(Graphics graphics, Style myStyle, float scale) {
+
+    AttributedString attributedString = getAttributedString(myStyle, scale);
+    Graphics2D g2d = (Graphics2D) graphics;
+    FontRenderContext fontRenderContext = g2d.getFontRenderContext();
+    float wrappingWidth = calculateWrappingWidth(myStyle,scale);
+
+    return getTextLayouts(attributedString, fontRenderContext, wrappingWidth);
   }
 
   @Override
