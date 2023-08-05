@@ -7,7 +7,10 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.DemoPresentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 import java.io.IOException;
 

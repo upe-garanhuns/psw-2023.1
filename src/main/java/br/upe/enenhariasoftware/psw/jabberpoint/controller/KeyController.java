@@ -9,40 +9,39 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+
 public class KeyController extends KeyAdapter {
 
-	private Presentation presentation;
+	private final Presentation presentation;
 
 	public KeyController(Presentation p) {
-
 		presentation = p;
 	}
-	@Override
 
+	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		switch (keyEvent.getKeyCode()) {
-		case KeyEvent.VK_PAGE_DOWN:
-		case KeyEvent.VK_DOWN:
-		case KeyEvent.VK_ENTER:
-		case '+':
-			presentation.nextSlide();
-			break;
-		case KeyEvent.VK_PAGE_UP:
-		case KeyEvent.VK_UP:
-		case '-':
-			presentation.prevSlide();
-			break;
-		case 'q':
-		case 'Q':
-			System.exit(0);
-			break; // fix?
-		default:
-			break;
+			case KeyEvent.VK_PAGE_DOWN:
+			case KeyEvent.VK_DOWN:
+			case KeyEvent.VK_ENTER:
+			case '+':
+				presentation.nextSlide();
+				break;
+			case KeyEvent.VK_PAGE_UP:
+			case KeyEvent.VK_UP:
+			case '-':
+				presentation.prevSlide();
+				break;
+			case 'q':
+			case 'Q':
+				System.exit(0);
+				break; // fix?
+			default:
+				break;
 		}
 	}
 
