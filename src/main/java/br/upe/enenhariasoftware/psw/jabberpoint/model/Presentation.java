@@ -9,9 +9,9 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
-
 import java.util.ArrayList;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 public class Presentation {
 
@@ -70,7 +70,7 @@ public class Presentation {
 	}
 
 	public void clear() {
-		showList = new ArrayList<Slide>();
+		showList = new ArrayList<>();
 		setSlideNumber(-1);
 	}
 
