@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -16,6 +16,7 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,15 +55,15 @@ public class BitmapItem extends SlideItem {
 
   @Override
   public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.indent * scale), 0,
+    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
         (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
   }
 
   @Override
   public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.indent * scale);
-    int height = y + (int) (myStyle.leading * scale);
+    int width = x + (int) (myStyle.getIndent() * scale);
+    int height = y + (int) (myStyle.getLeading() * scale);
 
     g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
         (int) (bufferedImage.getHeight(observer) * scale), observer);

@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,6 +17,9 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessible;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
