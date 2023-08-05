@@ -33,9 +33,9 @@ public class SlideViewerComponent extends JComponent {
     private static final int X_POSITION = 1100;
     private static final int Y_POSITION = 20;
 
-    private ISlide slide;
+    private transient ISlide slide;
     private final Font labelFont;
-    private IPresentation presentation;
+    private transient IPresentation presentation;
     private final JFrame frame;
     private final transient IViewController viewController;
 

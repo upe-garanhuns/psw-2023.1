@@ -21,6 +21,12 @@ public interface ISlide {
 
     int getSlideItemHeight(SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style);
 
+    Style getStyleItem();
+    void drawTitle(int x, int y, float scale, Graphics graphics, ImageObserver view);
+
+    void drawSlideItems(int x, int y, float scale, Graphics graphics,ImageObserver view);
+
+
     void draw(Graphics graphics, Rectangle area, ImageObserver view);
 
     int getWidth();

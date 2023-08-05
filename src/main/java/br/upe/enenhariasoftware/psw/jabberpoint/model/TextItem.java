@@ -105,14 +105,8 @@ public class TextItem extends SlideItem {
   }
 
 
-  public boolean isTextNull(String text){
-    text = this.text;
-
-    if(text == null || text.length() == 0){
-      return true;
-    } else{
-      return false;
-    }
+  public boolean isTextNull(){
+    return (this.text == null || this.text.length() == 0);
   }
 
   public void drawTextLayout (List<TextLayout> layouts, int x, int y, Graphics graphics, Style myStyle){
@@ -131,14 +125,14 @@ public class TextItem extends SlideItem {
 
   @Override
   public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
-    if(isTextNull(text) == false){
+    if(!isTextNull()){
 
       List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
 
-      int PosX = baseX + getStyleIndent(myStyle,scale);
-      int PosY = baseY + getStyleLeading(myStyle,scale);
+      int positionX = baseX + getStyleIndent(myStyle,scale);
+      int positionY = baseY + getStyleLeading(myStyle,scale);
 
-      drawTextLayout(layouts,PosX,PosY,graphics,myStyle);
+      drawTextLayout(layouts,positionX,positionY,graphics,myStyle);
     }
   }
 
