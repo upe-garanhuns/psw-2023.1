@@ -1,36 +1,39 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software Disciplina de Projeto de
  * Software - 2023.1
- *
+ *<p>
  * Licensed under the Apache License, Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
  *
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.util.List;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.BitmapItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.TextItem;
+
 
 public class XMLAccessor extends Accessor {
-	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
-
-	protected static final String ERROR_MESSAGE = "Error occured: ";
-
+	private static final Logger logger = Logger.getLogger(XMLAccessor.class.getName());
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
 	protected static final String SHOWTITLE = "showtitle";
@@ -49,10 +52,8 @@ public class XMLAccessor extends Accessor {
 	private String getTitle(Element element, String tagName) {
 		NodeList titles = element.getElementsByTagName(tagName);
 		return titles.item(0).getTextContent();
-
 	}
 
-	@Override
 	public void loadFile(Presentation presentation, String filename) throws IOException {
 		int slideNumber;
 		int itemNumber;
@@ -65,7 +66,6 @@ public class XMLAccessor extends Accessor {
 			dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true); // XML External Entity (XXE) attack
 			dbf.setFeature("http://xml.org/sax/features/external-general-entities", false); // General Entity Expansion
 			dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false); // Parameter Entity Expansion
-
 			DocumentBuilder builder = dbf.newDocumentBuilder();
 			Document document = builder.parse(new File(filename));
 
@@ -77,7 +77,6 @@ public class XMLAccessor extends Accessor {
 
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-
 				Slide slide = new Slide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
@@ -90,29 +89,26 @@ public class XMLAccessor extends Accessor {
 					loadSlideItem(slide, item);
 				}
 			}
-
 		} catch (IOException iox) {
-			logger.error("{}{}", ERROR_MESSAGE, iox.toString());
+			logger.log(Level.SEVERE, "Error reading file", iox);
 		} catch (SAXException sax) {
-			logger.error("{}{}", ERROR_MESSAGE, sax.getMessage());
+			logger.log(Level.SEVERE, "XML parsing error", sax);
 		} catch (ParserConfigurationException pcx) {
-			logger.error("{}{}", ERROR_MESSAGE, PCE);
+			logger.log(Level.SEVERE, PCE, pcx);
 		}
-
 	}
 
 	protected void loadSlideItem(Slide slide, Element item) {
 		int level = 1;
 
 		NamedNodeMap attributes = item.getAttributes();
-
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
 
 		if (leveltext != null) {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				logger.error("Error occured: {}", NFE);
+				logger.log(Level.parse("Error occured: {}"), NFE);
 			}
 		}
 
@@ -123,12 +119,11 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				logger.error("{}{}", ERROR_MESSAGE, UNKNOWNTYPE);
+				logger.log(Level.parse("Error occurred: {}"), NFE);
 			}
 		}
 	}
 
-	@Override
 	public void saveFile(Presentation presentation, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 
@@ -146,7 +141,7 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			List <SlideItem> slideItems = slide.getSlideItems();
+			List<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
@@ -159,7 +154,7 @@ public class XMLAccessor extends Accessor {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print(((BitmapItem) slideItem).getName());
 					} else {
-						logger.info("Ignoring {}", slideItem);
+						logger.info("Ignoring {}");
 					}
 				}
 
@@ -170,8 +165,6 @@ public class XMLAccessor extends Accessor {
 		}
 
 		out.println("</presentation>");
-
 		out.close();
 	}
-
 }
