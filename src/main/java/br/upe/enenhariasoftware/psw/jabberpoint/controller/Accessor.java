@@ -11,23 +11,15 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.DemoPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-
 import java.io.IOException;
-
-public abstract class Accessor {
-
+public abstract class Accessor{
 	public static final String DEMO_NAME = "Demo presentation";
 	public static final String DEFAULT_EXTENSION = ".xml";
-
 	public static Accessor getDemoAccessor() {
 		return new DemoPresentation();
 	}
-
 	protected Accessor() {
 	}
-
 	public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
-
 	public abstract void saveFile(Presentation presentation, String fileName) throws IOException;
-
 }
