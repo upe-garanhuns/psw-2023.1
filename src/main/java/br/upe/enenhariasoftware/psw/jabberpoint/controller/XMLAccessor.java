@@ -31,6 +31,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideItem;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.TextItem;
 
+
 public class XMLAccessor extends Accessor {
 	private static final Logger logger = Logger.getLogger(XMLAccessor.class.getName());
 	protected static final String DEFAULT_API_TO_USE = "dom";
