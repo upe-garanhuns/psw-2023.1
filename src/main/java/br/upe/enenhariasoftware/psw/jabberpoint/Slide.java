@@ -56,21 +56,21 @@ public class Slide implements Serializable {
 		return items.size();
 	}
 
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+	public void draw(Graphics slideGraphics, Rectangle area, ImageObserver view) {
 	    float scale = getScale(area);
 	    
 	    int y = area.y;
 
 	    Style style = Style.getStyle(title.getLevel());
-	    title.draw(area.x, y, scale, g, style, view);
+	    title.draw(area.x, y, scale, slideGraphics, style, view);
 	    
-	    y += title.getBoundingBox(g, view, scale, style).height;
+	    y += title.getBoundingBox(slideGraphics, view, scale, style).height;
 
 	    for (int number = 0; number < getSize(); number++) {
 	        SlideItem slideItem = getSlideItems().get(number);
 	        style = Style.getStyle(slideItem.getLevel());
-	        slideItem.draw(area.x, y, scale, g, style, view);
-	        y += slideItem.getBoundingBox(g, view, scale, style).height;
+	        slideItem.draw(area.x, y, scale, slideGraphics, style, view);
+	        y += slideItem.getBoundingBox(slideGraphics, view, scale, style).height;
 	    }
 	}
 
