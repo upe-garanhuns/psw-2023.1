@@ -21,7 +21,7 @@ public class Slide implements Serializable {
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
 
-	protected TextItem title;
+	protected TextItem slideTitle;
 	protected ArrayList<SlideItem> items;
 
 	public Slide() {
@@ -33,11 +33,11 @@ public class Slide implements Serializable {
 	}
 
 	public String getTitle() {
-		return title.getText();
+		return slideTitle.getText();
 	}
 
 	public void setTitle(String newTitle) {
-		title = new TextItem(0, newTitle);
+		slideTitle = new TextItem(0, newTitle);
 	}
 
 	public void append(int level, String message) {
@@ -61,10 +61,10 @@ public class Slide implements Serializable {
 	    
 	    int y = area.y;
 
-	    Style style = Style.getStyle(title.getLevel());
-	    title.draw(area.x, y, scale, slideGraphics, style, view);
+	    Style style = Style.getStyle(slideTitle.getLevel());
+	    slideTitle.draw(area.x, y, scale, slideGraphics, style, view);
 	    
-	    y += title.getBoundingBox(slideGraphics, view, scale, style).height;
+	    y += slideTitle.getBoundingBox(slideGraphics, view, scale, style).height;
 
 	    for (int number = 0; number < getSize(); number++) {
 	        SlideItem slideItem = getSlideItems().get(number);
