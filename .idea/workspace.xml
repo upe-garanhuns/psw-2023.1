@@ -5,22 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Separação inicial das classes para aplicação do MVC">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c7fbeaa1e72b9e327515b326d01a780bd13b1db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d53199987ac02b6c3eaa3ecb434bd3d5b5483c41" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7a27070a31061998365be51130c60383815c331" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7a27070a31061998365be51130c60383815c331" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/c/7c7fbeaa1e72b9e327515b326d01a780bd13b1db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/5/d53199987ac02b6c3eaa3ecb434bd3d5b5483c41" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/BitmapItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/BitmapItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/DemoPresentation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Slide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,6 +49,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -131,6 +133,8 @@
       <workItem from="1690809586929" duration="1714000" />
       <workItem from="1690904249671" duration="57000" />
       <workItem from="1690926912196" duration="1957000" />
+      <workItem from="1691153655571" duration="5011000" />
+      <workItem from="1691173754296" duration="1583000" />
     </task>
     <task id="LOCAL-00003" summary="Separação inicial das classes para aplicação do MVC">
       <option name="closed" value="true" />

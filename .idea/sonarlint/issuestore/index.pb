@@ -1,7 +1,25 @@
 
 à
 Xsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/JabberPointApplication.java,b\e\beb36d8cd2ee1fba2968a90f563b33a41ba7f549
-~
-Nsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java,c\7\c7a27070a31061998365be51130c60383815c331
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+w
+Gsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Style.java,f\e\fee0b3623e969069ba1992af7038c3a365e0cc68
+Ö
+Usrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java,7\c\7c7fbeaa1e72b9e327515b326d01a780bd13b1db
+Ö
+Usrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/MenuController.java,1\9\193ca41df3558cafe32d2aec35a9e1d757e55855
+Å
+Qsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java,d\5\d53199987ac02b6c3eaa3ecb434bd3d5b5483c41
+z
+Jsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Accessor.java,9\0\90b26e28b72fbd6c96309efa660a5cec690cf5b6
+}
+Msrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java,9\8\98fde65287e75fac32341d5f75d429f3b2660134
+Ç
+Rsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/DemoPresentation.java,2\7\276adcf37698de69e07c094114b0b7ba8d6bca79
+~
+Nsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java,c\7\c7a27070a31061998365be51130c60383815c331
+Ñ
+Tsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/KeyController.java,d\8\d83a71833ca1c5b7cdecc84ed1fbe485ff7f2aa2
+v
+Fsrc/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/About.java,c\f\cf1afa553eea184d394e21e8f89cc51210a949e4
