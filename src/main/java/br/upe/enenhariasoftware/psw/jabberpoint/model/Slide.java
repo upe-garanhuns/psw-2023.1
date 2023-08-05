@@ -9,11 +9,6 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.view.Style;
-
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +20,10 @@ public class Slide implements Serializable {
 
 	protected transient TextItem title;
 	protected transient ArrayList<SlideItem> items;
-
 	public Slide() {
 		items = new ArrayList<>();
 	}
+
 
 	public void append(SlideItem anItem) {
 		items.add(anItem);
@@ -50,37 +45,11 @@ public class Slide implements Serializable {
 		return items.get(number);
 	}
 
-	public List <SlideItem> getSlideItems() {
+	public List<SlideItem> getSlideItems() {
 		return items;
 	}
 
 	public int getSize() {
 		return items.size();
-	}
-
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-		float scale = getScale(area);
-
-		int y = area.y;
-
-		SlideItem slideItem = this.title;
-		Style style = Style.getStyle(slideItem.getLevel());
-		slideItem.draw(area.x, y, scale, g, style, view);
-
-		y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-		for (int number = 0; number < getSize(); number++) {
-			slideItem = getSlideItems().get(number);
-
-			style = Style.getStyle(slideItem.getLevel());
-			slideItem.draw(area.x, y, scale, g, style, view);
-
-			y += slideItem.getBoundingBox(g, view, scale, style).height;
-		}
-	}
-
-	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH),
-				((float) area.height) / ((float) HEIGHT));
 	}
 }
