@@ -1,9 +1,9 @@
 
-s	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š©¶Êûÿÿÿÿ8¨²Á™œ1
-s	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ‰·Úøÿÿÿÿ8©²Á™œ1
+s	java:S117Š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š©¶Êûÿÿÿÿ8…õ™œ1
+s	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ‰·Úøÿÿÿÿ8†õ™œ1
 c
-java:S1226m"AIntroduce a new variable instead of reusing the parameter "text".(çŸ“¤ûÿÿÿÿ8Ú²Á™œ1
+java:S1226m"AIntroduce a new variable instead of reusing the parameter "text".(çŸ“¤ûÿÿÿÿ8ˆõ™œ1
 ^
-java:S1126o"AReplace this if-then-else statement by a single return statement.(â¯ªÿ8ê´Á™œ1
+java:S1126o"AReplace this if-then-else statement by a single return statement.(â¯ªÿ8¦õ™œ1
 D
-java:S1125†"'Remove the unnecessary boolean literal.(¡‰´?8…µÁ™œ1
+java:S1125†"'Remove the unnecessary boolean literal.(¡‰´?8§õ™œ1
