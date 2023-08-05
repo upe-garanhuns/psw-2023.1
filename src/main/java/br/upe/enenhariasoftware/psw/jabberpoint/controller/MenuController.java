@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.About;
@@ -25,7 +26,7 @@ public class MenuController{
     private static final long serialVersionUID = 227L;
 
     private Frame parentFrame;
-    private Presentation presentation;
+    private IPresentation presentation;
 
     protected static final String PAGENR = "Slide number";
     protected static final String TESTFILE = "classpath:test.xml";
@@ -34,7 +35,7 @@ public class MenuController{
     protected static final String LOADERR = "Failed to load";
     protected static final String SAVEERR = "Failed to save";
 
-    public MenuController(Frame parentFrame, Presentation presentation) {
+    public MenuController(Frame parentFrame, IPresentation presentation) {
         this.parentFrame = parentFrame;
         this.presentation = presentation;
     }
@@ -70,7 +71,7 @@ public class MenuController{
     }
 
     public void previousSlide(){
-        presentation.prevSlide();
+        presentation.previousSlide();
     }
 
     public void goToSlide(){

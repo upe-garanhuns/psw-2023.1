@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Slide implements Serializable {
+public class Slide implements Serializable, ISlide {
 
   // Representa um slide em uma apresentação
 
@@ -62,14 +62,14 @@ public class Slide implements Serializable {
     return items.size();
   }
 
-  private float getScale(Rectangle area) {
+  public float getScale(Rectangle area) {
     float value1 = ((float) area.width) / ((float) WIDTH);
     float value2 =  ((float) area.height) / ((float) HEIGHT);
 
     return Math.min(value1,value2);
   }
 
-  private int getSlideItemHeight (SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style){
+  public int getSlideItemHeight (SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style){
     return slideItem.getBoundingBox(graphics, view, scale, style).height;
   }
 
@@ -88,6 +88,14 @@ public class Slide implements Serializable {
       slideItem.draw(x, y, scale, graphics, style, view);
       y += getSlideItemHeight(slideItem, graphics, view, scale, style);
     }
+  }
+
+  public int getWidth(){
+    return WIDTH;
+  }
+
+  public int getHeight(){
+    return HEIGHT;
   }
 
 }

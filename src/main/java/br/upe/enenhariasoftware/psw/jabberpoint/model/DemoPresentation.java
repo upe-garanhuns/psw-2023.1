@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class DemoPresentation extends Accessor {
 
-	public void loadFile(Presentation presentation, String unusedFilename) throws FileNotFoundException {
+	public void loadFile(IPresentation presentation, String unusedFilename) throws FileNotFoundException {
 
 		presentation.setTitle("Demo presentation");
 
@@ -52,7 +52,7 @@ public class DemoPresentation extends Accessor {
 		presentation.append(slide);
 	}
 
-	public void saveFile(Presentation presentation, String unusedFilename) {
+	public void saveFile(IPresentation presentation, String unusedFilename) {
 		throw new IllegalStateException("Cannot save demo presentation!");
 	}
 

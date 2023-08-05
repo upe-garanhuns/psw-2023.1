@@ -11,6 +11,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class KeyController extends KeyAdapter {
@@ -18,10 +19,10 @@ public class KeyController extends KeyAdapter {
   //Ela é controller
   //porém acessa diretamente a "presentation", usando os métodos nextSlide e prevSlide
   // acredito que esteja certo, pois ele pega recursos do model para manipular os dados recebidos.
-  private Presentation presentation;
+  private IPresentation presentation;
 
-  public KeyController(Presentation p) {
-    presentation = p;
+  public KeyController(IPresentation presentation) {
+    this.presentation = presentation;
   }
 
   @Override
@@ -36,7 +37,7 @@ public class KeyController extends KeyAdapter {
       case KeyEvent.VK_PAGE_UP:
       case KeyEvent.VK_UP:
       case '-':
-        presentation.prevSlide();
+        presentation.previousSlide();
         break;
       case 'q':
       case 'Q':

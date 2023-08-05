@@ -5,7 +5,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
-public class ViewController {
+public class ViewController implements IViewController{
 
     private Slide slide;
 

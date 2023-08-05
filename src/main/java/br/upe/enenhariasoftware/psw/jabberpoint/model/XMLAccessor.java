@@ -59,7 +59,7 @@ public class XMLAccessor extends Accessor {
   // 2 - define o título de presentation
   // 3 - a cada elemento do xml, cria um novo slide e o adiciona na apresentação
   // 4 - adiciona os SlideItem(TextItem ou BitMapItem) a cada slide
-  public void loadFile(Presentation presentation, String filename) throws IOException {
+  public void loadFile(IPresentation presentation, String filename) throws IOException {
     int slideNumber = 0;
     int itemNumber = 0;
     int max = 0;
@@ -142,7 +142,7 @@ public class XMLAccessor extends Accessor {
   // 1 - inicializa o printwriter para gravar as informações do slide
   // 2 - salva cada slidem, e cada item através do printwriter
 
-  public void saveFile(Presentation presentation, String filename) throws IOException {
+  public void saveFile(IPresentation presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));
 
     out.println("<?xml version=\"1.0\"?>");

@@ -17,8 +17,9 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.ViewController;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.IViewController;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.ISlide;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 
 public class SlideViewerComponent extends JComponent {
@@ -32,13 +33,13 @@ public class SlideViewerComponent extends JComponent {
     private static final int X_POSITION = 1100;
     private static final int Y_POSITION = 20;
 
-    private Slide slide;
+    private ISlide slide;
     private final Font labelFont;
-    private Presentation presentation;
+    private IPresentation presentation;
     private final JFrame frame;
-    private final transient ViewController viewController;
+    private final transient IViewController viewController;
 
-    public SlideViewerComponent(Presentation presentation, JFrame frame, ViewController viewController) {
+    public SlideViewerComponent(IPresentation presentation, JFrame frame, IViewController viewController) {
         setBackground(BACKGROUND_COLOR);
         this.presentation = presentation;
         this.labelFont = new Font(FONT_NAME, FONT_STYLE, FONT_HEIGHT);
@@ -48,10 +49,10 @@ public class SlideViewerComponent extends JComponent {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+        return new Dimension(slide.getWidth(), slide.getHeight());
     }
 
-    public void update(Presentation presentation, Slide data) {
+    public void update(IPresentation presentation, ISlide data) {
         if (data == null) {
             repaint();
             return;
@@ -75,7 +76,7 @@ public class SlideViewerComponent extends JComponent {
         graphics.setColor(COLOR);
         graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), X_POSITION, Y_POSITION);
         Rectangle area = new Rectangle(0, Y_POSITION, getWidth(), (getHeight() - Y_POSITION));
-        viewController.setSlide(slide);
+        viewController.setSlide((Slide) slide);
         viewController.drawSlide(graphics, area, this);
     }
 }

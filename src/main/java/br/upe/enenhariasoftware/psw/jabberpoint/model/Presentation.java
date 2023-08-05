@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
-public class Presentation implements Serializable {
+public class Presentation implements Serializable, IPresentation {
 
   private String title;
   private ArrayList<Slide> slideList;
@@ -25,27 +25,9 @@ public class Presentation implements Serializable {
     clear();
   }
 
-  // TODO ver melhor se realmente Presentation deve mexer com a view
   public Presentation(SlideViewerComponent slideViewerComponent) {
     this.slideViewComponent = slideViewerComponent;
     clear();
-  }
-
-  public int getSize() {
-    return this.slideList.size();
-  }
-
-  public String getTitle() {
-    return this.title;
-  }
-
-  public void setTitle(String newTitle) {
-    this.title = newTitle;
-  }
-
-  // TODO ver melhor isso aqui
-  public void setShowView(SlideViewerComponent slideViewerComponent) {
-    this.slideViewComponent = slideViewerComponent;
   }
 
   public int getSlideNumber() {
@@ -59,7 +41,23 @@ public class Presentation implements Serializable {
     }
   }
 
-  public void prevSlide() {
+  public String getTitle() {
+    return this.title;
+  }
+
+  public void setTitle(String newTitle) {
+    this.title = newTitle;
+  }
+
+  public int getSize() {
+    return this.slideList.size();
+  }
+
+  public void setShowView(SlideViewerComponent slideViewerComponent) {
+    this.slideViewComponent = slideViewerComponent;
+  }
+
+  public void previousSlide() {
     if (currentSlideNumber > 0) {
       setSlideNumber(currentSlideNumber - 1);
     }

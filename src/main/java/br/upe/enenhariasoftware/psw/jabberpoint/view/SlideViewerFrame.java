@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.ViewController;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class SlideViewerFrame extends JFrame {
@@ -27,16 +28,12 @@ public class SlideViewerFrame extends JFrame {
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
-  public SlideViewerFrame(String title, Presentation presentation) {
+  public SlideViewerFrame(String title, IPresentation presentation) {
     super(title);
     setupWindow(presentation);
   }
 
-  // Esse método tem muito de view, mas ele adiciona
-  // o actionlistener para o negocinho de fechar a tele,
-  // o que me deixa pensando se esse método tem uma pitada
-  // de controller
-  public void setupWindow(Presentation presentation) {
+  public void setupWindow(IPresentation presentation) {
     setTitle(JABTITLE);
     addWindowListener(new WindowAdapter() {
       @Override
