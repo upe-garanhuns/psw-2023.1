@@ -9,6 +9,8 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.view.Style;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
