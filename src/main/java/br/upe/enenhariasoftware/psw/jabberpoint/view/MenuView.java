@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class MenuView extends MenuBar{
 
-    private final MenuController menuController;
+    private final transient MenuController menuController;
 
     protected static final String FILE = "File";
     protected static final String EXIT = "Exit";

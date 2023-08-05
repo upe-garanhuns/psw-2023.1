@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Separação inicial das classes para aplicação do MVC">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7a27070a31061998365be51130c60383815c331" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7a27070a31061998365be51130c60383815c331" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/193ca41df3558cafe32d2aec35a9e1d757e55855" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/a/7a773e51482153f6b978c63582eebd4234aa98a1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c7fbeaa1e72b9e327515b326d01a780bd13b1db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c7a27070a31061998365be51130c60383815c331" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d53199987ac02b6c3eaa3ecb434bd3d5b5483c41" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/9/193ca41df3558cafe32d2aec35a9e1d757e55855" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/a/7a773e51482153f6b978c63582eebd4234aa98a1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/c/7c7fbeaa1e72b9e327515b326d01a780bd13b1db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/7/c7a27070a31061998365be51130c60383815c331" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/5/d53199987ac02b6c3eaa3ecb434bd3d5b5483c41" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/MenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -164,6 +178,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refatoração das classes SlideViewerComponent e Acessor" />
     <MESSAGE value="Separação inicial das classes para aplicação do MVC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separação inicial das classes para aplicação do MVC" />
+    <MESSAGE value="Continuação MVC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Continuação MVC" />
   </component>
 </project>

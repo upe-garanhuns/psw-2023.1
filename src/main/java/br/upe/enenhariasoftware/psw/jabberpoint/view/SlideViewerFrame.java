@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.ViewController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class SlideViewerFrame extends JFrame {
@@ -23,7 +24,6 @@ public class SlideViewerFrame extends JFrame {
   private static final long serialVersionUID = 3227L;
 
   private static final String JABTITLE = "Jabberpoint 1.6";
-
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
@@ -45,7 +45,7 @@ public class SlideViewerFrame extends JFrame {
       }
     });
 
-    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
+    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this, new ViewController());
     presentation.setShowView(slideViewerComponent);
 
     getContentPane().add(slideViewerComponent);
@@ -56,7 +56,4 @@ public class SlideViewerFrame extends JFrame {
     setVisible(true);
   }
 
-  public void exit(int n) {
-    System.exit(n);
-  }
 }

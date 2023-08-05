@@ -17,6 +17,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.ViewController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 
@@ -35,25 +36,21 @@ public class SlideViewerComponent extends JComponent {
     private final Font labelFont;
     private Presentation presentation;
     private final JFrame frame;
+    private final transient ViewController viewController;
 
-    // É só o construtor, se é M, V ou C vai depender dos outros métodos
-    public SlideViewerComponent(Presentation presentation, JFrame frame) {
+    public SlideViewerComponent(Presentation presentation, JFrame frame, ViewController viewController) {
         setBackground(BACKGROUND_COLOR);
         this.presentation = presentation;
         this.labelFont = new Font(FONT_NAME, FONT_STYLE, FONT_HEIGHT);
         this.frame = frame;
+        this.viewController = viewController;
     }
 
-    // Tenho 90% de certeza que é view, mas tem os 10% da dúvida
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(Slide.WIDTH, Slide.HEIGHT);
     }
 
-
-    // Ela atualiza o o que está na tela? pra mim é isso
-    // Ele configura o título do frame toda vez que o método
-    // é chamado, será que isso é necessário mesmo?
     public void update(Presentation presentation, Slide data) {
         if (data == null) {
             repaint();
@@ -65,12 +62,6 @@ public class SlideViewerComponent extends JComponent {
         this.frame.setTitle(presentation.getTitle());
     }
 
-    // Esse aqui, pra mim, é view
-    // Ele basicamente faz o desenho do slide na tela, e eu
-    // não vejo pontos onde ele mexe com a lógica de negócio,
-    // mas lá no fim ele chama o método draw do slide, e eu não
-    // sei se isso podia ser controller
-    // Sem contar que esse método tá muito longo
     @Override
     public void paintComponent(Graphics graphics) {
         graphics.setColor(BACKGROUND_COLOR);
@@ -84,6 +75,7 @@ public class SlideViewerComponent extends JComponent {
         graphics.setColor(COLOR);
         graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), X_POSITION, Y_POSITION);
         Rectangle area = new Rectangle(0, Y_POSITION, getWidth(), (getHeight() - Y_POSITION));
-        slide.draw(graphics, area, this);
+        viewController.setSlide(slide);
+        viewController.drawSlide(graphics, area, this);
     }
 }

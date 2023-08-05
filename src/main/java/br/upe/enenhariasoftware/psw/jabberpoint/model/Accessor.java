@@ -15,9 +15,6 @@ public abstract class Accessor {
   public static final String DEMO_NAME = "Demo presentation";
   public static final String DEFAULT_EXTENSION = ".xml";
 
-  // Essa classe me dá 90% de impressão de que ela é Model, porque
-  // apesar de ser abstrata ela fornece as assinaturas dos métodos
-  // de salvar e carregar o a apresentação
   public static Accessor getDemoAccessor() {
     return new DemoPresentation();
   }
