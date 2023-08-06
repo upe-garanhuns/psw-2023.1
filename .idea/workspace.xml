@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Separação inicial das classes para aplicação do MVC">
-      <change afterPath="$PROJECT_DIR$/jabberpoint.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/6/167dc28f90814b676256380907a7e86ce046a331" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/454055e99d48b3b6028ee0be0a726d20391af521" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/6/167dc28f90814b676256380907a7e86ce046a331" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/5/454055e99d48b3b6028ee0be0a726d20391af521" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/JabberPointApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/JabberPointApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/KeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/KeyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/ISlide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/ISlide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Slide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/TextItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,25 +39,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Computador 2/git/psw-2023.1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Computador 2/git/psw-2023.1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.br.upe.enenhariasoftware.psw.jabberpoint.controller.JabberPointApplication">
     <configuration name="JabberPointApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.upe.enenhariasoftware.psw.jabberpoint.JabberPointApplication" />
@@ -152,6 +138,7 @@
       <workItem from="1691173754296" duration="1583000" />
       <workItem from="1691203615801" duration="1720000" />
       <workItem from="1691241578797" duration="5217000" />
+      <workItem from="1691294838181" duration="2814000" />
     </task>
     <task id="LOCAL-00003" summary="Separação inicial das classes para aplicação do MVC">
       <option name="closed" value="true" />
