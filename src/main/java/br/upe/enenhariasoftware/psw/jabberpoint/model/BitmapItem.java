@@ -34,7 +34,7 @@ public class BitmapItem extends SlideItem {
         try {
             bufferedImage = ImageIO.read(new File(imageName));
         } catch (IOException e) {
-            logger.error(FILE + imageName + NOTFOUND);
+            logger.error("{}{}{}", FILE, imageName, NOTFOUND);
         }
     }
 
