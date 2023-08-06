@@ -51,7 +51,7 @@ public class Presentation implements Serializable {
 
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
-		if (slideViewComponent != null) {
+		if (slideViewComponent != null && number < getSize()) {
 			slideViewComponent.update(this, getCurrentSlide());
 		}
 	}

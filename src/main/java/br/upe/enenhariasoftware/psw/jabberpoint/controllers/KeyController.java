@@ -9,8 +9,6 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.controllers;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
