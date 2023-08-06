@@ -18,7 +18,6 @@ import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.ViewController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class SlideViewerFrame extends JFrame {
 

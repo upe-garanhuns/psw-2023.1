@@ -2,6 +2,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
+import java.util.List;
 
 public interface ISlide {
 
@@ -16,6 +17,8 @@ public interface ISlide {
     void setTitle(String newTitle);
 
     SlideItem getSlideItem(int number);
+
+    List<SlideItem> getSlideItems();
 
     float getScale(Rectangle area);
 

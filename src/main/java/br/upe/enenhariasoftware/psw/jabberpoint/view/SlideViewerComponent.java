@@ -22,7 +22,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.ISlide;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 
-public class SlideViewerComponent extends JComponent {
+public class SlideViewerComponent extends JComponent implements ISlideViewComponent{
 
     private static final long serialVersionUID = 227L;
     private static final Color BACKGROUND_COLOR = Color.white;
@@ -52,13 +52,13 @@ public class SlideViewerComponent extends JComponent {
         return new Dimension(slide.getWidth(), slide.getHeight());
     }
 
-    public void update(IPresentation presentation, ISlide data) {
-        if (data == null) {
+    public void update(IPresentation presentation, ISlide slide) {
+        if (slide == null) {
             repaint();
             return;
         }
         this.presentation = presentation;
-        this.slide = data;
+        this.slide = slide;
         repaint();
         this.frame.setTitle(presentation.getTitle());
     }
@@ -76,7 +76,7 @@ public class SlideViewerComponent extends JComponent {
         graphics.setColor(COLOR);
         graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), X_POSITION, Y_POSITION);
         Rectangle area = new Rectangle(0, Y_POSITION, getWidth(), (getHeight() - Y_POSITION));
-        viewController.setSlide((Slide) slide);
+        viewController.setSlide(slide);
         viewController.drawSlide(graphics, area, this);
     }
 }

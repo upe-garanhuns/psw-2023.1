@@ -16,7 +16,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 public class Presentation implements Serializable, IPresentation {
 
   private String title;
-  private ArrayList<Slide> slideList;
+  private ArrayList<ISlide> slideList;
   private SlideViewerComponent slideViewComponent;
   private int currentSlideNumber = 0;
   private static final long serialVersionUID = 221L;
@@ -78,11 +78,11 @@ public class Presentation implements Serializable, IPresentation {
     slideList.add(newSlide);
   }
 
-  public Slide getSlide(int slideNumber) {
+  public ISlide getSlide(int slideNumber) {
     return (slideNumber >= 0 && slideNumber < getSize()) ? slideList.get(slideNumber) : null;
   }
 
-  public Slide getCurrentSlide() {
+  public ISlide getCurrentSlide() {
     return getSlide(currentSlideNumber);
   }
 

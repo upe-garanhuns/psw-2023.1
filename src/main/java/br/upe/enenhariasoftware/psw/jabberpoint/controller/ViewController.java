@@ -1,13 +1,13 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.ISlide;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
 public class ViewController implements IViewController{
 
-    private Slide slide;
+    private ISlide slide;
 
     public void drawSlide(Graphics graphics, Rectangle area, ImageObserver viewComponent){
 
@@ -15,7 +15,7 @@ public class ViewController implements IViewController{
 
     }
 
-    public void setSlide(Slide slide){
+    public void setSlide(ISlide slide){
 
         this.slide = slide;
 

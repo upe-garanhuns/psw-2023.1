@@ -24,7 +24,7 @@ public interface IPresentation {
 
     void append(Slide newSlide);
 
-    Slide getSlide(int slideNumber);
+    ISlide getSlide(int slideNumber);
 
-    Slide getCurrentSlide();
+    ISlide getCurrentSlide();
 }
