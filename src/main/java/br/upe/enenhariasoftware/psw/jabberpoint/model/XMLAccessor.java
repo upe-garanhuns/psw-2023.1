@@ -88,11 +88,6 @@ public class XMLAccessor extends Accessor {
   }
 
   public void loadFile(IPresentation presentation, String filename) throws IOException {
-    int slideNumber = 0;
-    int itemNumber = 0;
-    int max = 0;
-    int maxItems = 0;
-
     try {
       DocumentBuilder builder = configuringDocumentBuilder();
 
@@ -167,10 +162,10 @@ public class XMLAccessor extends Accessor {
       printWriter.println("<slide>");
       printWriter.println("<title>" + slide.getTitle() + "</title>");
 
-      List<SlideItem> slideItems = slide.getSlideItems();
+      List<ISlideItem> slideItems = slide.getSlideItems();
 
       for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-        SlideItem slideItem = slideItems.get(itemNumber);
+        ISlideItem slideItem = slideItems.get(itemNumber);
         printWriter.print("<item kind=");
 
         if (slideItem instanceof TextItem) {

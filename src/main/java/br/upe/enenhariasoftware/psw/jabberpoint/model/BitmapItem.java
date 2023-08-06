@@ -20,22 +20,19 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 
-public class BitmapItem extends SlideItem {
+public class BitmapItem implements ISlideItem {
 
-  // Representa um item de slide que contém uma bufferedImage
   private static final Logger logger = LogManager.getLogger(BitmapItem.class);
 
   private BufferedImage bufferedImage;
   private String imageName;
 
+  private int level = 0;
   protected static final String FILE = "File ";
   protected static final String NOTFOUND = " not found";
 
-  // Está sendo realizado duas ações
-  // 1 - Inicialização do level e imageName
-  // 2 - Leitura da imagem do arquivo
   public BitmapItem(int level, String name) {
-    super(level);
+    this.level = level;
     imageName = name;
 
     readImage();
@@ -47,6 +44,11 @@ public class BitmapItem extends SlideItem {
     } catch (IOException e) {
       logger.error(FILE + imageName + NOTFOUND);
     }
+  }
+
+  @Override
+  public int getLevel() {
+    return level;
   }
 
   public BitmapItem() {
@@ -75,8 +77,6 @@ public class BitmapItem extends SlideItem {
     return (int) (myStyle.getLeading() * scale);
   }
 
-  // Calcula e retorna um retângulo que delimita o bitmapItem
-  // Não utiliza o parâmetro graphics
   @Override
   public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
     int styleIndent = getStyleIndent(myStyle, scale);
@@ -86,7 +86,6 @@ public class BitmapItem extends SlideItem {
     return new Rectangle(styleIndent, 0, imageWidth, height);
   }
 
-  // Creio que faz sentido esse método estar nessa classe, já que desenha a imagem de acordo com as especificações dadas
   @Override
   public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver observer) {
     int x = baseX + getStyleIndent(myStyle, scale);
