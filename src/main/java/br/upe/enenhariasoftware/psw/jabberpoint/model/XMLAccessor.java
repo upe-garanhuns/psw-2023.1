@@ -26,10 +26,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 public class XMLAccessor extends Accessor {
-
-  // Responsável por ler e escrever as apresentações (Presentations) XML
-  // Se comunica com os outros models
-  // não vejo nada de view ou controller aqui
   private static final Logger logger = LogManager.getLogger(XMLAccessor.class);
 
   protected static final String DEFAULT_API_TO_USE = "dom";
