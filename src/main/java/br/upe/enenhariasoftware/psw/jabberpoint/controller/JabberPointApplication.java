@@ -22,8 +22,9 @@ public class JabberPointApplication {
     Style.createStyles();
 
     Presentation presentation = new Presentation();
+    FrameController frameController = new FrameController(presentation);
 
-    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+    new SlideViewerFrame("Jabberpoint 1.6 -", presentation, frameController);
 
     try {
       if (args.length == 0) {

@@ -9,6 +9,7 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.FrameController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
@@ -26,9 +27,11 @@ public class SlideViewerFrame extends JFrame {
 
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
+  private final FrameController frameController;
 
-  public SlideViewerFrame(String title, Presentation presentation) {
+  public SlideViewerFrame(String title, Presentation presentation, FrameController frameController) {
     super(title);
+    this.frameController = frameController;
 
     SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
     presentation.setShowView(slideViewerComponent);
@@ -42,7 +45,7 @@ public class SlideViewerFrame extends JFrame {
     addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
-        System.exit(0);
+        frameController.windowClosing();
       }
     });
 

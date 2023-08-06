@@ -79,6 +79,7 @@ public class MenuView extends MenuBar {
 
         add(fileMenu);
     }
+
     public void viewBox() {
         MenuItem menuItem;
 
@@ -112,6 +113,7 @@ public class MenuView extends MenuBar {
 
         add(viewMenu);
     }
+
     public void helpBox() {
         MenuItem menuItem;
 
