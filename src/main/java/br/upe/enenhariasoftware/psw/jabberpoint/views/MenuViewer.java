@@ -9,8 +9,10 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.views;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.MenuController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controllers.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
 
 import java.awt.Frame;
@@ -45,12 +47,6 @@ public class MenuViewer extends MenuBar {
   protected static final String SAVE = "Save";
   protected static final String VIEW = "View";
 
-  protected static final String TESTFILE = "src/main/resources/test.xml";
-  protected static final String SAVEFILE = "classpath:dump.xml"; 
-
-  protected static final String IOEX = "IO Exception: ";
-  protected static final String LOADERR = "Failed to load";
-  protected static final String SAVEERR = "Failed to save";
 
   public MenuViewer(Frame frame, PresentationController pres) {
     this.frame = frame;
@@ -74,13 +70,7 @@ public class MenuViewer extends MenuBar {
       public void actionPerformed(ActionEvent actionEvent) {
         presentationController.clear();
 
-        Accessor xmlAccessor = new XMLAccessor();
-        try {
-          xmlAccessor.loadFile(presentationController, new File(TESTFILE).getAbsolutePath());
-          presentationController.getPresentation().setSlideNumber(0);
-        } catch (IOException exc) {
-          JOptionPane.showMessageDialog(MenuViewer.this.frame, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
-        }
+        MenuController.loadPresentation(presentationController);
 
         MenuViewer.this.frame.repaint();
       }
@@ -101,12 +91,7 @@ public class MenuViewer extends MenuBar {
 
     fileMenuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        Accessor xmlAccessor = new XMLAccessor();
-        try {
-          xmlAccessor.saveFile(presentationController, SAVEFILE);
-        } catch (IOException exc) {
-          JOptionPane.showMessageDialog(MenuViewer.this.frame, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
-        }
+        MenuController.savePresentation(presentationController);
       }
     });
 
@@ -151,6 +136,7 @@ public class MenuViewer extends MenuBar {
       public void actionPerformed(ActionEvent actionEvent) {
         String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
+
         presentationController.getPresentation().setSlideNumber(pageNumber - 1);
       }
     });
@@ -173,7 +159,7 @@ public class MenuViewer extends MenuBar {
     setHelpMenu(helpMenu);
   }
 
-  public MenuItem mkMenuItem(String name) {
+  private MenuItem mkMenuItem(String name) {
     return new MenuItem(name, new MenuShortcut(name.charAt(0)));
   }
 }
