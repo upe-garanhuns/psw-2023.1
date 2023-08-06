@@ -7,23 +7,24 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.Model;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import br.upe.enenhariasoftware.psw.jabberpoint.View.BitmapItemView;
 
-public class DemoPresentation extends Accessor {
+public class DemoPresentationModel extends AccessorModel {
 
-  private Presentation presentation = new Presentation();
+  private PresentationModel presentation = new PresentationModel();
 
   @Override
-  public void loadFile(Presentation presentation, String unusedFilename)
+  public void loadFile(PresentationModel presentation, String unusedFilename)
       throws FileNotFoundException {
 
     presentation.setTitle("Demo presentation");
 
-    Slide slide;
-    slide = new Slide();
+    SlideModel slide;
+    slide = new SlideModel();
 
     slide.setTitle("JabberPoint");
     slide.append(2, "Copyright (c) 1996-now: Ian Darwin");
@@ -35,7 +36,7 @@ public class DemoPresentation extends Accessor {
     slide.append(3, "Stop: q ou Q");
     presentation.append(slide);
 
-    slide = new Slide();
+    slide = new SlideModel();
     slide.setTitle("Presentation levels demo");
     slide.append(1, "Level 1");
     slide.append(2, "Level 2");
@@ -45,24 +46,24 @@ public class DemoPresentation extends Accessor {
     slide.append(4, "Style Level 4");
     presentation.append(slide);
 
-    slide = new Slide();
+    slide = new SlideModel();
     slide.setTitle("Second Slide");
     slide.append(1, "To open a new presentation,");
     slide.append(2, "Go to File->Open.");
     slide.append(1, " ");
     slide.append(1, "End");
     URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
-    slide.append(new BitmapItem(1, resource.getPath()));
+    slide.append(new BitmapItemView(1, resource.getPath()));
     presentation.append(slide);
     this.presentation = presentation;
   }
 
   @Override
-  public void saveFile(Presentation presentation, String unusedFilename) {
+  public void saveFile(PresentationModel presentation, String unusedFilename) {
     throw new IllegalStateException("Cannot save demo presentation!");
   }
 
-  public Presentation getPresentation() {
+  public PresentationModel getPresentation() {
     return this.presentation;
   }
 

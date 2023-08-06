@@ -7,28 +7,24 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import br.upe.enenhariasoftware.psw.jabberpoint.Controller.SlideComponentController;
 
-public class Presentation implements Serializable {
+public class PresentationModel implements Serializable {
 
   private static final long serialVersionUID = 197L;
 
   private String title;
-  private List<Slide> slides = null;
-  private SlideViewerComponent slideViewComponent = null;
+  private List<SlideModel> slides = null;
+  private SlideComponentController slideComponentController = null;
   private int currentSlideNumber = 0;
 
-  public Presentation() {
-    slideViewComponent = null;
-    clear();
-  }
-
-  public Presentation(SlideViewerComponent slideViewerComponent) {
-    this.slideViewComponent = slideViewerComponent;
+  public PresentationModel() {
+    slideComponentController = null;
     clear();
   }
 
@@ -44,8 +40,8 @@ public class Presentation implements Serializable {
     title = nt;
   }
 
-  public void setShowView(SlideViewerComponent slideViewerComponent) {
-    this.slideViewComponent = slideViewerComponent;
+  public void setShowView(SlideComponentController slideComponentController) {
+    this.slideComponentController = slideComponentController;
   }
 
   public int getSlideNumber() {
@@ -54,8 +50,8 @@ public class Presentation implements Serializable {
 
   public void setSlideNumber(int number) {
     currentSlideNumber = number;
-    if (slideViewComponent != null) {
-      slideViewComponent.update(this, getCurrentSlide());
+    if (slideComponentController != null) {
+      slideComponentController.getSlideViewComponent().update(this, getCurrentSlide());
     }
   }
 
@@ -71,23 +67,25 @@ public class Presentation implements Serializable {
     }
   }
 
-  void clear() {
+  public void clear() {
     slides = new ArrayList<>();
     setSlideNumber(-1);
   }
 
-  public void append(Slide slide) {
+  public void append(SlideModel slide) {
     slides.add(slide);
   }
 
-  public Slide getSlide(int number) {
-    if (number < 0 || number >= getSize()) {
+  public SlideModel getSlide(int number) {
+    if (number < 0) {
       return null;
+    } else if (number >= getSize()) {
+      return slides.get(getSize() - 1);
     }
     return slides.get(number);
   }
 
-  public Slide getCurrentSlide() {
+  public SlideModel getCurrentSlide() {
     return getSlide(currentSlideNumber);
   }
 

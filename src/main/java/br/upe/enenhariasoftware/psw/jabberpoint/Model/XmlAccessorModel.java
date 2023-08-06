@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.Model;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,10 +23,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import br.upe.enenhariasoftware.psw.jabberpoint.Controller.SlideItemController;
+import br.upe.enenhariasoftware.psw.jabberpoint.View.BitmapItemView;
+import br.upe.enenhariasoftware.psw.jabberpoint.View.SlideItemView;
+import br.upe.enenhariasoftware.psw.jabberpoint.View.TextItemView;
 
-public class XMLAccessor extends Accessor {
+public class XmlAccessorModel extends AccessorModel {
 
-  public static final Logger LOGGER = Logger.getLogger(XMLAccessor.class.getName());
+  public static final Logger LOGGER = Logger.getLogger(XmlAccessorModel.class.getName());
 
 
   protected static final String DEFAULT_API_TO_USE = "dom";
@@ -51,7 +55,7 @@ public class XMLAccessor extends Accessor {
   }
 
   @Override
-  public void loadFile(Presentation presentation, String filename) throws IOException {
+  public void loadFile(PresentationModel presentation, String filename) throws IOException {
     int slideNumber;
     int itemNumber;
     int max;
@@ -72,7 +76,7 @@ public class XMLAccessor extends Accessor {
       for (slideNumber = 0; slideNumber < max; slideNumber++) {
         Element xmlSlide = (Element) slides.item(slideNumber);
 
-        Slide slide = new Slide();
+        SlideModel slide = new SlideModel();
         slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
         presentation.append(slide);
 
@@ -95,7 +99,7 @@ public class XMLAccessor extends Accessor {
 
   }
 
-  protected void loadSlideItem(Slide slide, Element item) {
+  protected void loadSlideItem(SlideModel slide, Element item) {
     int level = 1;
 
     NamedNodeMap attributes = item.getAttributes();
@@ -112,10 +116,10 @@ public class XMLAccessor extends Accessor {
 
     String type = attributes.getNamedItem(KIND).getTextContent();
     if (TEXT.equals(type)) {
-      slide.append(new TextItem(level, item.getTextContent()));
+      slide.append(new TextItemView(level, item.getTextContent()));
     } else {
       if (IMAGE.equals(type)) {
-        slide.append(new BitmapItem(level, item.getTextContent()));
+        slide.append(new BitmapItemView(level, item.getTextContent()));
       } else {
         LOGGER.warning(UNKNOWNTYPE);
       }
@@ -123,7 +127,7 @@ public class XMLAccessor extends Accessor {
   }
 
   @Override
-  public void saveFile(Presentation presentation, String filename) throws IOException {
+  public void saveFile(PresentationModel presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));
 
     out.println("<?xml version=\"1.0\"?>");
@@ -135,23 +139,23 @@ public class XMLAccessor extends Accessor {
     out.println("</showtitle>");
 
     for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
-      Slide slide = presentation.getSlide(slideNumber);
+      SlideModel slide = presentation.getSlide(slideNumber);
 
       out.println("<slide>");
       out.println("<title>" + slide.getTitle() + "</title>");
 
-      List<SlideItem> slideItems = slide.getSlideItems();
+      List<SlideItemController> slideItems = slide.getSlideItems();
       for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-        SlideItem slideItem = slideItems.get(itemNumber);
+        SlideItemView slideItem = slideItems.get(itemNumber).getSlideItem();
         out.print("<item kind=");
 
-        if (slideItem instanceof TextItem) {
+        if (slideItem instanceof TextItemView) {
           out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
-          out.print(((TextItem) slideItem).getText());
+          out.print(((TextItemView) slideItem).getText());
         } else {
-          if (slideItem instanceof BitmapItem) {
+          if (slideItem instanceof BitmapItemView) {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-            out.print(((BitmapItem) slideItem).getName());
+            out.print(((BitmapItemView) slideItem).getName());
           } else {
             LOGGER.log(Level.INFO, "Ignoring {0}", slideItem);
           }

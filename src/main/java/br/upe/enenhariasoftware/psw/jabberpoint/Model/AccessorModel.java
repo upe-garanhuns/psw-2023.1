@@ -7,23 +7,23 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.Model;
 
 import java.io.IOException;
 
-public abstract class Accessor {
+public abstract class AccessorModel {
 
   public static final String DEMO_NAME = "Demo presentation";
   public static final String DEFAULT_EXTENSION = ".xml";
 
-  public static Accessor getDemoAccessor() {
-    return new DemoPresentation();
+  public static AccessorModel getDemoAccessor() {
+    return new DemoPresentationModel();
   }
 
-  protected Accessor() {}
+  protected AccessorModel() {}
 
-  public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
+  public abstract void loadFile(PresentationModel presentation, String fileName) throws IOException;
 
-  public abstract void saveFile(Presentation presentation, String fileName) throws IOException;
+  public abstract void saveFile(PresentationModel presentation, String fileName) throws IOException;
 
 }

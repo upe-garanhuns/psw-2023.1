@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.View;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -17,10 +17,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.StyleModel;
 
-public class BitmapItem extends SlideItem {
+public class BitmapItemView extends SlideItemView {
 
-  public static final Logger LOGGER = Logger.getLogger(BitmapItem.class.getName());
+  public static final Logger LOGGER = Logger.getLogger(BitmapItemView.class.getName());
 
   private transient BufferedImage bufferedImage;
   private String imageName;
@@ -28,7 +29,7 @@ public class BitmapItem extends SlideItem {
   protected static final String FILE = "File ";
   protected static final String NOTFOUND = " not found";
 
-  public BitmapItem(int level, String name) {
+  public BitmapItemView(int level, String name) {
     super(level);
 
     imageName = name;
@@ -41,7 +42,7 @@ public class BitmapItem extends SlideItem {
 
   }
 
-  public BitmapItem() {
+  public BitmapItemView() {
     this(0, null);
   }
 
@@ -50,18 +51,18 @@ public class BitmapItem extends SlideItem {
   }
 
   @Override
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.indent * scale), 0,
+  public Rectangle getBoundingBox(Graphics graphic, ImageObserver observer, float scale, StyleModel myStyle) {
+    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
         (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
   }
 
   @Override
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.indent * scale);
-    int height = y + (int) (myStyle.leading * scale);
+  public void draw(int x, int y, float scale, Graphics graphic, StyleModel myStyle, ImageObserver observer) {
+    int width = x + (int) (myStyle.getIndent() * scale);
+    int height = y + (int) (myStyle.getLeading() * scale);
 
-    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
+    graphic.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
         (int) (bufferedImage.getHeight(observer) * scale), observer);
   }
 

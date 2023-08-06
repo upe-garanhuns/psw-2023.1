@@ -11,20 +11,26 @@ package br.upe.enenhariasoftware.psw.jabberpoint;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.AccessorModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.StyleModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.XmlAccessorModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.View.SlideFrameView;
 
 public class JabberPointApplication {
   public static void main(String[] args) {
-    Style.createStyles();
+    StyleModel.createStyles();
 
-    Presentation presentation = new Presentation();
+    PresentationModel presentation = new PresentationModel();
 
-    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+    new SlideFrameView("Jabberpoint 1.6 -", presentation); // essa linha de código é curta, mas
+                                                             // faz MUITA coisa
 
     try {
       if (args.length == 0) {
-        Accessor.getDemoAccessor().loadFile(presentation, "");
+        AccessorModel.getDemoAccessor().loadFile(presentation, "");
       } else {
-        new XMLAccessor().loadFile(presentation, args[0]);
+        new XmlAccessorModel().loadFile(presentation, args[0]);
       }
 
       presentation.setSlideNumber(0);

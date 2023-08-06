@@ -7,14 +7,14 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.View;
 
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-public final class About {
+public final class AboutView {
 
-  private About() {
+  private AboutView() {
     throw new IllegalStateException("About is an utility class");
   }
 

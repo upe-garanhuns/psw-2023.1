@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.View;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,8 +24,10 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.SlideModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.StyleModel;
 
-public class TextItem extends SlideItem implements Serializable {
+public class TextItemView extends SlideItemView implements Serializable {
 
   private static final long serialVersionUID = 449L;
 
@@ -34,12 +36,12 @@ public class TextItem extends SlideItem implements Serializable {
 
   private static final String EMPTYTEXT = "No Text Given";
 
-  public TextItem(int level, String string) {
+  public TextItemView(int level, String string) {
     super(level);
     text = string;
   }
 
-  public TextItem() {
+  public TextItemView() {
     this(0, EMPTYTEXT);
   }
 
@@ -47,7 +49,7 @@ public class TextItem extends SlideItem implements Serializable {
     return text == null ? "" : text;
   }
 
-  public AttributedString getAttributedString(Style style, float scale) {
+  public AttributedString getAttributedString(StyleModel style, float scale) {
     AttributedString attrStr = new AttributedString(getText());
 
     attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
@@ -56,11 +58,12 @@ public class TextItem extends SlideItem implements Serializable {
   }
 
   @Override
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    List<TextLayout> layouts = getLayouts(g, myStyle, scale);
+  public Rectangle getBoundingBox(Graphics graphic, ImageObserver observer, float scale,
+      StyleModel myStyle) {
+    List<TextLayout> layouts = getLayouts(graphic, myStyle, scale);
 
     int xsize = 0;
-    int ysize = (int) (myStyle.leading * scale);
+    int ysize = (int) (myStyle.getLeading() * scale);
 
     Iterator<TextLayout> iterator = layouts.iterator();
 
@@ -78,20 +81,21 @@ public class TextItem extends SlideItem implements Serializable {
       ysize += layout.getLeading() + layout.getDescent();
     }
 
-    return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
+    return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
   }
 
   @Override
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
+  public void draw(int x, int y, float scale, Graphics graphic, StyleModel myStyle, ImageObserver observer) {
     if (text == null || text.length() == 0) {
       return;
     }
 
-    List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-    Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
+    List<TextLayout> layouts = getLayouts(graphic, myStyle, scale);
+    Point pen = new Point(x + (int) (myStyle.getIndent() * scale),
+        y + (int) (myStyle.getLeading() * scale));
 
-    Graphics2D g2d = (Graphics2D) g;
-    g2d.setColor(myStyle.color);
+    Graphics2D g2d = (Graphics2D) graphic;
+    g2d.setColor(myStyle.getColor());
 
     Iterator<TextLayout> it = layouts.iterator();
 
@@ -105,16 +109,16 @@ public class TextItem extends SlideItem implements Serializable {
     }
   }
 
-  private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
+  private List<TextLayout> getLayouts(Graphics graphic, StyleModel style, float scale) {
     List<TextLayout> layouts = new ArrayList<>();
 
-    AttributedString attrStr = getAttributedString(s, scale);
-    Graphics2D g2d = (Graphics2D) g;
+    AttributedString attrStr = getAttributedString(style, scale);
+    Graphics2D g2d = (Graphics2D) graphic;
 
     FontRenderContext frc = g2d.getFontRenderContext();
     LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-    float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+    float wrappingWidth = (SlideModel.WIDTH - style.getIndent()) * scale;
 
     while (measurer.getPosition() < getText().length()) {
       TextLayout layout = measurer.nextLayout(wrappingWidth);

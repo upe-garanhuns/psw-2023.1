@@ -7,7 +7,7 @@
  * @author Ian F. Darwin, Helaine Lins
  */
 
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.View;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,8 +16,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import br.upe.enenhariasoftware.psw.jabberpoint.Controller.SlideController;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.Model.SlideModel;
 
-public class SlideViewerComponent extends JComponent {
+public class SlideComponentView extends JComponent {
   private static final long serialVersionUID = 227L;
 
   private static final Color BGCOLOR = Color.white;
@@ -28,56 +31,58 @@ public class SlideViewerComponent extends JComponent {
   private static final int XPOS = 1100;
   private static final int YPOS = 20;
 
-  private Slide slide;
+  private SlideController slideController;
   private Font labelFont = null;
-  private Presentation presentation = null;
+  private PresentationModel presentation = null;
   private JFrame frame = null;
 
-  public SlideViewerComponent(Presentation pres, JFrame frame) {
+  public SlideComponentView(PresentationModel presentation, JFrame frame) {
     setBackground(BGCOLOR);
-    presentation = pres;
+    this.presentation = presentation;
     labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
     this.frame = frame;
   }
 
   @Override
   public Dimension getPreferredSize() {
-    return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+    return new Dimension(SlideModel.WIDTH, SlideModel.HEIGHT);
   }
 
-  public void update(Presentation presentation, Slide data) {
-    if (data == null) {
+  public void update(PresentationModel presentation, SlideModel slide) {
+    if (slide == null) {
       repaint();
       return;
     }
 
     this.presentation = presentation;
-    this.slide = data;
+
+    this.slideController = new SlideController(slide);
     repaint();
     frame.setTitle(presentation.getTitle());
   }
 
   @Override
-  public void paintComponent(Graphics g) {
-    g.setColor(BGCOLOR);
-    g.fillRect(0, 0, getSize().width, getSize().height);
+  public void paintComponent(Graphics graphic) {
+    graphic.setColor(BGCOLOR);
+    graphic.fillRect(0, 0, getSize().width, getSize().height);
 
-    if (presentation.getSlideNumber() < 0 || slide == null) {
+    if (presentation.getSlideNumber() < 0 || slideController.getSlide() == null) {
       return;
     }
 
-    g.setFont(labelFont);
-    g.setColor(COLOR);
+    graphic.setFont(labelFont);
+    graphic.setColor(COLOR);
     if (1 + presentation.getSlideNumber() >= presentation.getSize()) {
-      g.drawString("Slide " + (presentation.getSize()) + " of " + presentation.getSize(), XPOS,
-          YPOS);
-    } else {
-      g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(),
+      graphic.drawString("Slide " + (presentation.getSize()) + " of " + presentation.getSize(),
           XPOS, YPOS);
+    } else {
+      graphic.drawString(
+          "Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS,
+          YPOS);
     }
     Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-    slide.draw(g, area, this);
+    slideController.getSlideView().draw(graphic, area, this);
   }
 
 }
