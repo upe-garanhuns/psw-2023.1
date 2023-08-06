@@ -2,4 +2,40 @@
 <!DOCTYPE presentation SYSTEM "jabberpoint.dtd">
 <presentation>
 <showtitle>XML-Based Demo Presentation for Jabberpoint</showtitle>
+<slide>
+<title>JabberPoint XML-Demo</title>
+<item kind="text" level="1">Welcome to Jabberpoint</item>
+<item kind="text" level="2">Copyright (c) 1996-2023 Ian Darwin, helaine Lins</item>
+<item kind="text" level="1">Navegation:</item>
+<item kind="text" level="2">Next: PgDn ou Enter</item>
+<item kind="text" level="2">Previous: PgUp ou up-arrow</item>
+<item kind="text" level="2">Q: q ou Q</item>
+</slide>
+<slide>
+<title>Empty Slide</title>
+<item kind="text" level="1"> </item>
+</slide>
+<slide>
+<title>Fundo</title>
+<item kind="text" level="1">Software Engineering - University of Pernambuco</item>
+<item kind="text" level="1"> </item>
+<item kind="text" level="1">Garanhuns</item>
+<item kind="text" level="1"> </item>
+<item kind="image" level="2">src/main/resources/upe_garanhuns.jpg</item>
+</slide>
+<slide>
+<title>JabberPoint: Style</title>
+<item kind="text" level="1">Level 1</item>
+<item kind="text" level="2">Level 2</item>
+<item kind="text" level="1">Jabber Presentation</item>
+<item kind="text" level="2">Level 2 has Style 2</item>
+<item kind="text" level="3">Level 3 has Style estilo</item>
+</slide>
+<slide>
+<title>Slide Final</title>
+<item kind="text" level="1">You could navigate to</item>
+<item kind="text" level="2">Presentation: File->Open</item>
+<item kind="text" level="1"> </item>
+<item kind="image" level="1">src/main/resources/JabberPoint.jpg</item>
+</slide>
 </presentation>

@@ -47,4 +47,8 @@ public class PresentationController {
     public void setPresentation(Presentation presentation) {
         this.presentation = presentation;
     }
+
+    public int getPresentationSize() {
+        return presentation.getSize();
+    }
 }

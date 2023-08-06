@@ -30,9 +30,11 @@ import javax.swing.JOptionPane;
 public class MenuViewer extends MenuBar {
 
   private static final long serialVersionUID = 227L;
-  
+
   private Frame frame;
   private PresentationController presentationController;
+  private MenuController menuController;
+
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";
@@ -48,14 +50,13 @@ public class MenuViewer extends MenuBar {
   protected static final String VIEW = "View";
 
 
-  public MenuViewer(Frame frame, PresentationController pres) {
+  public MenuViewer(Frame frame, PresentationController presentationController) {
     this.frame = frame;
-    presentationController = pres;
+    this.menuController = new MenuController(frame);
+    this.presentationController = presentationController;
 
     createFileMenu();
-
     createViewMenu();
-    
     createHelpMenu();
 
   }
@@ -69,8 +70,8 @@ public class MenuViewer extends MenuBar {
     fileMenuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
         presentationController.clear();
-
-        MenuController.loadPresentation(presentationController);
+        MenuController menuController = new MenuController(frame);
+        menuController.loadPresentation(presentationController);
 
         MenuViewer.this.frame.repaint();
       }
@@ -91,7 +92,8 @@ public class MenuViewer extends MenuBar {
 
     fileMenuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        MenuController.savePresentation(presentationController);
+        MenuController menuController = new MenuController(frame);
+        menuController.savePresentation(presentationController);
       }
     });
 
@@ -137,7 +139,7 @@ public class MenuViewer extends MenuBar {
         String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
 
-        presentationController.getPresentation().setSlideNumber(pageNumber - 1);
+        menuController.setSlideNumber(pageNumber, presentationController);
       }
     });
 
