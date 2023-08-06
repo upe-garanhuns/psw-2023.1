@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISlide {
 
-    public void appendItem(ISlideItem anItem);
+    void appendItem(ISlideItem anItem);
 
     void appendText(int level, String message);
 
@@ -18,7 +18,7 @@ public interface ISlide {
 
     ISlideItem getSlideItem(int number);
 
-    List<SlideItem> getSlideItems();
+    List<ISlideItem> getSlideItems();
 
     float getScale(Rectangle area);
 
@@ -28,7 +28,6 @@ public interface ISlide {
     void drawTitle(int x, int y, float scale, Graphics graphics, ImageObserver view);
 
     void drawSlideItems(int x, int y, float scale, Graphics graphics,ImageObserver view);
-
 
     void draw(Graphics graphics, Rectangle area, ImageObserver view);
 

@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Separação inicial das classes para aplicação do MVC">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/ISlideViewComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/6/167dc28f90814b676256380907a7e86ce046a331" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/454055e99d48b3b6028ee0be0a726d20391af521" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/6/167dc28f90814b676256380907a7e86ce046a331" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/5/454055e99d48b3b6028ee0be0a726d20391af521" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c246be2601ea84fea6bfecce2cc3d612225750f0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/IViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/IViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/IPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/IPresentation.java" afterDir="false" />
+    <list default="true" id="b7318e82-1cc8-4362-8914-01642d565f98" name="Changes" comment="Aplicação dos princípios SOLID">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/292e46a319c70bfd486308f686e20076da71f395" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/9/292e46a319c70bfd486308f686e20076da71f395" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/ISlide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/ISlide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/Presentation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/model/XMLAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/upe/enenhariasoftware/psw/jabberpoint/view/SlideViewerFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
