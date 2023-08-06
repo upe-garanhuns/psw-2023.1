@@ -7,10 +7,13 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class DemoPresentation extends Accessor {
 

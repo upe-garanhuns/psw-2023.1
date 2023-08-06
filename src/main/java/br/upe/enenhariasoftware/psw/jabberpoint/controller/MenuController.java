@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import java.awt.Frame;
 import java.io.Serializable;
@@ -22,6 +22,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.About;
 
 public class MenuController extends MenuBar implements Serializable {
 

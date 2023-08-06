@@ -13,6 +13,12 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
+
 public class JabberPointApplication {
 	public static void main(String[] args) {
 		Style.createStyles();

@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 
 public class BitmapItem extends SlideItem {
 
@@ -49,6 +52,11 @@ public class BitmapItem extends SlideItem {
 		return imageName;
 	}
 
+	public String toString() {
+		return "BitmapItem[" + getLevel() + "," + imageName + "]";
+	}
+
+	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		return new Rectangle((int) (myStyle.indent * scale), 0, (int) (bufferedImage.getWidth(observer) * scale),
 				((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
@@ -60,9 +68,5 @@ public class BitmapItem extends SlideItem {
 
 		g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
 				(int) (bufferedImage.getHeight(observer) * scale), observer);
-	}
-
-	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
 	}
 }

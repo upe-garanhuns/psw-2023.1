@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,6 +19,8 @@ import java.io.Serializable;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 
 public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;

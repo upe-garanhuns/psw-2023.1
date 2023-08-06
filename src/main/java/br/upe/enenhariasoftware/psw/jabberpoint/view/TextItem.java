@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,6 +23,8 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
 public class TextItem extends SlideItem {
 
