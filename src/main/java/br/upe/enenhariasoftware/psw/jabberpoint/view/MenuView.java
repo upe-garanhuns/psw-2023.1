@@ -1,13 +1,19 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessible;
 
+import javax.swing.*;
+import java.awt.Frame;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class MenuView extends MenuBar {
 
