@@ -38,11 +38,11 @@ public class Presentation implements Serializable {
   }
 
   public String getTitle() {
-    return title;
+    return this.title;
   }
 
-  public void setTitle(String nt) {
-    title = nt;
+  public void setTitle(String newTitle) {
+    this.title = newTitle;
   }
 
   public void setShowView(SlideViewerComponent slideViewerComponent) {
@@ -50,7 +50,7 @@ public class Presentation implements Serializable {
   }
 
   public int getSlideNumber() {
-    return currentSlideNumber;
+    return this.currentSlideNumber;
   }
 
   public void setSlideNumber(int number) {
@@ -90,9 +90,5 @@ public class Presentation implements Serializable {
 
   public Slide getCurrentSlide() {
     return getSlide(currentSlideNumber);
-  }
-
-  public void exit(int n) {
-    System.exit(n);
   }
 }
