@@ -23,7 +23,7 @@ import org.apache.log4j.Logger;
 
 public class JabberPointApplication {
 
-	private static final Logger logger = LogManager.getLogger(JabberPointApplication.class);
+	public static final Logger logger = LogManager.getLogger(JabberPointApplication.class);
 	public static void main(String[] args) {
 		Style.createStyles();
 

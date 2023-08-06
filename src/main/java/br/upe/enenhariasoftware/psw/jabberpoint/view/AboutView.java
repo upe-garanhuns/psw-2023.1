@@ -11,12 +11,9 @@ package br.upe.enenhariasoftware.psw.jabberpoint.view;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-public class About {
+public class AboutView {
 
-  // responsável por exibit uma caixa de diálogo com as informações do sistema (view)
-  // por ser simples, não vejo problemas nela
-
-  private About() {}
+  private AboutView() {}
 
   public static void show(Frame parent) {
     JOptionPane.showMessageDialog(parent,

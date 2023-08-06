@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISlide {
 
-    public void appendItem(SlideItem anItem);
+    public void appendItem(ISlideItem anItem);
 
     void appendText(int level, String message);
 
@@ -16,13 +16,19 @@ public interface ISlide {
 
     void setTitle(String newTitle);
 
-    SlideItem getSlideItem(int number);
+    ISlideItem getSlideItem(int number);
 
     List<SlideItem> getSlideItems();
 
     float getScale(Rectangle area);
 
-    int getSlideItemHeight(SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style);
+    int getSlideItemHeight(ISlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style);
+
+    Style getStyleItem();
+    void drawTitle(int x, int y, float scale, Graphics graphics, ImageObserver view);
+
+    void drawSlideItems(int x, int y, float scale, Graphics graphics,ImageObserver view);
+
 
     void draw(Graphics graphics, Rectangle area, ImageObserver view);
 

@@ -22,16 +22,21 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextItem extends SlideItem {
+public class TextItem implements ISlideItem {
 
-  // Representa um item de texto no slide de apresentação
   private String text;
 
+  private int level = 0;
   private static final String EMPTYTEXT = "No Text Given";
 
   public TextItem(int level, String string) {
-    super(level);
+    this.level = level;
     text = string;
+  }
+
+  @Override
+  public int getLevel() {
+    return level;
   }
 
   public TextItem() {
@@ -42,8 +47,6 @@ public class TextItem extends SlideItem {
     return text == null ? "" : text;
   }
 
-  // Creio que realiza apenas uma função
-  // retornar o texto com estilo de fonte e formatado
   public AttributedString getAttributedString(Style style, float scale) {
     AttributedString attrStr = new AttributedString(getText());
 
@@ -105,14 +108,8 @@ public class TextItem extends SlideItem {
   }
 
 
-  public boolean isTextNull(String text){
-    text = this.text;
-
-    if(text == null || text.length() == 0){
-      return true;
-    } else{
-      return false;
-    }
+  public boolean isTextNull(){
+    return (this.text == null || this.text.length() == 0);
   }
 
   public void drawTextLayout (List<TextLayout> layouts, int x, int y, Graphics graphics, Style myStyle){
@@ -131,14 +128,14 @@ public class TextItem extends SlideItem {
 
   @Override
   public void draw(int baseX, int baseY, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
-    if(isTextNull(text) == false){
+    if(!isTextNull()){
 
       List<TextLayout> layouts = getLayouts(graphics, myStyle, scale);
 
-      int PosX = baseX + getStyleIndent(myStyle,scale);
-      int PosY = baseY + getStyleLeading(myStyle,scale);
+      int positionX = baseX + getStyleIndent(myStyle,scale);
+      int positionY = baseY + getStyleLeading(myStyle,scale);
 
-      drawTextLayout(layouts,PosX,PosY,graphics,myStyle);
+      drawTextLayout(layouts,positionX,positionY,graphics,myStyle);
     }
   }
 

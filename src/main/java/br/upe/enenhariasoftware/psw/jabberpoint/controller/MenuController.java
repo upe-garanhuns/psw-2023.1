@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.About;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.AboutView;
 
 public class MenuController{
 
@@ -80,7 +80,7 @@ public class MenuController{
     }
 
     public void about(){
-        About.show(parentFrame);
+        AboutView.show(parentFrame);
     }
 
     public void exit(){

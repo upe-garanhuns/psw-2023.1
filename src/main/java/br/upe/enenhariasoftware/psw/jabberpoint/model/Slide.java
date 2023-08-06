@@ -15,22 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Slide implements Serializable, ISlide {
-
-  // Representa um slide em uma apresentação
-
-  // Pelo meu ver, essa classe está "perfeita", não possui métodos de controller ou view
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
   private static final long serialVersionUID = 1L;
 
   protected transient TextItem title;
-  protected transient List<SlideItem> items;
+  protected transient List<ISlideItem> items;
 
   public Slide() {
     items = new ArrayList<>();
   }
 
-  public void appendItem(SlideItem anItem) {
+  public void appendItem(ISlideItem anItem) {
     items.add(anItem);
   }
 
@@ -38,8 +34,8 @@ public class Slide implements Serializable, ISlide {
     appendItem(new TextItem(level, message));
   }
 
-  public void appendBitmap(int level, String message) {
-    appendItem(new BitmapItem(level, message));
+  public void appendBitmap(int level, String imageName) {
+    appendItem(new BitmapItem(level, imageName));
   }
 
   public String getTitle() {
@@ -50,11 +46,11 @@ public class Slide implements Serializable, ISlide {
     title = new TextItem(0, newTitle);
   }
 
-  public SlideItem getSlideItem(int number) {
+  public ISlideItem getSlideItem(int number) {
     return items.get(number);
   }
 
-  public List<SlideItem> getSlideItems() {
+  public List<ISlideItem> getSlideItems() {
     return items;
   }
 
@@ -69,25 +65,40 @@ public class Slide implements Serializable, ISlide {
     return Math.min(value1,value2);
   }
 
-  public int getSlideItemHeight (SlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style){
+  public int getSlideItemHeight (ISlideItem slideItem, Graphics graphics, ImageObserver view, float scale, Style style){
     return slideItem.getBoundingBox(graphics, view, scale, style).height;
   }
 
-  public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
-    TextItem textItem = this.title;
-    float scale = getScale(area);
-    int x = area.x;
-    int y = area.y;
-    Style style = Style.getStyle(textItem.getLevel());
+  public Style getStyleItem() {
+    return Style.getStyle(title.getLevel());
+  }
 
-    textItem.draw(x, y, scale, graphics, style, view);
-    y += getSlideItemHeight(textItem, graphics, view, scale, style);
+  public void drawTitle(int x, int y, float scale, Graphics graphics, ImageObserver view) {
+    TextItem titleItem = this.title;
+    Style style = getStyleItem();
+    titleItem.draw(x, y, scale, graphics, style, view);
+  }
 
-    for (SlideItem slideItem : getSlideItems()) {
+  public void drawSlideItems(int x, int y, float scale, Graphics graphics, ImageObserver view) {
+    drawTitle(x,y,scale,graphics,view);
+
+    Style style = getStyleItem();
+
+    y += getSlideItemHeight(this.title, graphics, view, scale, style);
+
+    for (ISlideItem slideItem : getSlideItems()) {
       style = Style.getStyle(slideItem.getLevel());
       slideItem.draw(x, y, scale, graphics, style, view);
       y += getSlideItemHeight(slideItem, graphics, view, scale, style);
     }
+  }
+
+  public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
+    float scale = getScale(area);
+    int x = area.x;
+    int y = area.y;
+
+    drawSlideItems(x,y,scale,graphics,view);
   }
 
   public int getWidth(){
