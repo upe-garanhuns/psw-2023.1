@@ -72,9 +72,11 @@ public class MenuController {
   public void goToNextSlide() {
     presentation.nextSlide();
   }
+
   public void goToPreviousSlide() {
     presentation.prevSlide();
   }
+
   public void goToChosenSlide() {
     String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
     int pageNumber = Integer.parseInt(pageNumberStr);
