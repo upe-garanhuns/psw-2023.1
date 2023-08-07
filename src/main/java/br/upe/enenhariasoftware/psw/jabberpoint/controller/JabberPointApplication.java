@@ -36,8 +36,7 @@ public class JabberPointApplication {
       presentation.setSlideNumber(0);
 
     } catch (IOException ex) {
-      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ",
-          JOptionPane.ERROR_MESSAGE);
+      frameController.showExceptionMessage(ex);
     }
   }
 }
