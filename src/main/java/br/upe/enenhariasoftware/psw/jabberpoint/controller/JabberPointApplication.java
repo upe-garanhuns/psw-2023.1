@@ -12,6 +12,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.ErrorView;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class JabberPointApplication {
       presentation.setSlideNumber(0);
 
     } catch (IOException ex) {
-      frameController.showExceptionMessage(ex);
+      ErrorView.showExceptionMessage(ex);
     }
   }
 }

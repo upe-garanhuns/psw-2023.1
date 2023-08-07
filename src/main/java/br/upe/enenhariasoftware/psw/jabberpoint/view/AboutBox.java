@@ -17,7 +17,7 @@ public class AboutBox {
   private AboutBox() {
     /*
      * Construtor privado para ocultar o construtor público implícito e evitar que outras classes
-     * façam instâncias indesejadas da class About.
+     * façam instâncias indesejadas da classe AboutBox.
      */
   }
 

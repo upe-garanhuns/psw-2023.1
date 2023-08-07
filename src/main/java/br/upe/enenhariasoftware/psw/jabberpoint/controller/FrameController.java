@@ -16,11 +16,6 @@ public class FrameController {
         System.exit(0);
     }
 
-    public void showExceptionMessage(IOException ex) {
-        JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ",
-                JOptionPane.ERROR_MESSAGE);
-    }
-
     public KeyController createKeyController(Presentation presentation) {
         return new KeyController(presentation);
     }
