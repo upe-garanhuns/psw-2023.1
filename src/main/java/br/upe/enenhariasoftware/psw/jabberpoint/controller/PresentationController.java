@@ -9,17 +9,14 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import java.util.ArrayList;
-
-import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
-
 import java.io.Serializable;
 
 public class PresentationController implements Serializable {
+
+	private static final long serialVersionUID = 227L;
 	
 	public void exit(int n) {
 		System.exit(n);
-	
+
 	}
 }

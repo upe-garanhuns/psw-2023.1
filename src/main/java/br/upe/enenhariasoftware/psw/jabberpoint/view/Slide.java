@@ -27,7 +27,7 @@ public class Slide implements Serializable {
 	protected ArrayList<SlideItem> items;
 
 	public Slide() {
-	  items = new ArrayList<>();
+		items = new ArrayList<>();
 	}
 
 	public void append(SlideItem anItem) {
@@ -59,21 +59,21 @@ public class Slide implements Serializable {
 	}
 
 	public void draw(Graphics slideGraphics, Rectangle area, ImageObserver view) {
-	    float scale = getScale(area);
-	    
-	    int y = area.y;
+		float scale = getScale(area);
 
-	    Style style = Style.getStyle(slideTitle.getLevel());
-	    slideTitle.draw(area.x, y, scale, slideGraphics, style, view);
-	    
-	    y += slideTitle.getBoundingBox(slideGraphics, view, scale, style).height;
+		int y = area.y;
 
-	    for (int number = 0; number < getSize(); number++) {
-	        SlideItem slideItem = getSlideItems().get(number);
-	        style = Style.getStyle(slideItem.getLevel());
-	        slideItem.draw(area.x, y, scale, slideGraphics, style, view);
-	        y += slideItem.getBoundingBox(slideGraphics, view, scale, style).height;
-	    }
+		Style style = Style.getStyle(slideTitle.getLevel());
+		slideTitle.draw(area.x, y, scale, slideGraphics, style, view);
+
+		y += slideTitle.getBoundingBox(slideGraphics, view, scale, style).height;
+
+		for (int number = 0; number < getSize(); number++) {
+			SlideItem slideItem = getSlideItems().get(number);
+			style = Style.getStyle(slideItem.getLevel());
+			slideItem.draw(area.x, y, scale, slideGraphics, style, view);
+			y += slideItem.getBoundingBox(slideGraphics, view, scale, style).height;
+		}
 	}
 
 	private float getScale(Rectangle area) {

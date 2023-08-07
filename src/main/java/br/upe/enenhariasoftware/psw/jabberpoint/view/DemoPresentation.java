@@ -16,6 +16,7 @@ import java.net.URL;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.BitmapItemController;
 
 public class DemoPresentation extends Accessor {
 
@@ -53,7 +54,7 @@ public class DemoPresentation extends Accessor {
 		slide.append(1, " ");
 		slide.append(1, "End");
 		URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
-		slide.append(new BitmapItem(1, resource.getPath()));
+		slide.append(new BitmapItemController(1, resource.getPath()));
 		presentationModel.append(slide);
 	}
 
@@ -64,7 +65,7 @@ public class DemoPresentation extends Accessor {
 	@Override
 	public void saveFile(PresentationModel presentationModel, String fileName) throws IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

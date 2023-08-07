@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
-public class PresentationModel implements Serializable{
-	
+public class PresentationModel implements Serializable {
+
 	private static final long serialVersionUID = 227L;
 	private String title;
 	private ArrayList<Slide> showList = null;
 	private int currentSlideNumber = 0;
-	
+
 	public PresentationModel() {
 		slideViewComponent = null;
 		clear();
 	}
-	
+
 	public PresentationModel(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
 		clear();
@@ -25,7 +25,7 @@ public class PresentationModel implements Serializable{
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
 	}
-	
+
 	public int getSize() {
 		return showList.size();
 	}
@@ -37,11 +37,11 @@ public class PresentationModel implements Serializable{
 	public void setTitle(String nt) {
 		title = nt;
 	}
-	
+
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
-	
+
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
@@ -60,6 +60,7 @@ public class PresentationModel implements Serializable{
 			setSlideNumber(currentSlideNumber + 1);
 		}
 	}
+
 	public void clear() {
 		showList = new ArrayList<>();
 		setSlideNumber(-1);
@@ -79,7 +80,6 @@ public class PresentationModel implements Serializable{
 	public Slide getCurrentSlide() {
 		return getSlide(currentSlideNumber);
 	}
-	
 
 	private SlideViewerComponent slideViewComponent = null;
 

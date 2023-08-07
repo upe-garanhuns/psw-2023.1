@@ -16,43 +16,42 @@ import javax.swing.JFrame;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 
 public class SlideViewerFrame extends JFrame {
 
-  private static final long serialVersionUID = 3227L;
+	private static final long serialVersionUID = 3227L;
 
-  private static final String JABTITLE = "Jabberpoint 1.6";
+	private static final String JABTITLE = "Jabberpoint 1.6";
 
-  public static final int WIDTH = 1200;
-  public static final int HEIGHT = 800;
+	public static final int WIDTH = 1200;
+	public static final int HEIGHT = 800;
 
-  public SlideViewerFrame(String title, PresentationModel presentationModel) {
-    super(title);
+	public SlideViewerFrame(String title, PresentationModel presentationModel) {
+		super(title);
 
-    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationModel, this);
-    presentationModel.setShowView(slideViewerComponent);
+		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationModel, this);
+		presentationModel.setShowView(slideViewerComponent);
 
-    setupWindow(slideViewerComponent, presentationModel);
-  }
+		setupWindow(slideViewerComponent, presentationModel);
+	}
 
-  public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationModel presentationModel) {
-    setTitle(JABTITLE);
+	public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationModel presentationModel) {
+		setTitle(JABTITLE);
 
-    addWindowListener(new WindowAdapter() {
-      @Override
-      public void windowClosing(WindowEvent e) {
-        System.exit(0);
-      }
-    });
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 
-    getContentPane().add(slideViewerComponent);
-    addKeyListener(new KeyController(presentationModel));
-    setMenuBar(new MenuController(this, presentationModel));
-    setSize(new Dimension(WIDTH, HEIGHT));
+		getContentPane().add(slideViewerComponent);
+		addKeyListener(new KeyController(presentationModel));
+		setMenuBar(new MenuController(this, presentationModel));
+		setSize(new Dimension(WIDTH, HEIGHT));
 
-    setVisible(true);
-  }
+		setVisible(true);
+	}
 
 }

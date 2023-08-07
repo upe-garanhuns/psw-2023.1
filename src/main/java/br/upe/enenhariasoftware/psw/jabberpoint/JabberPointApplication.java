@@ -18,28 +18,25 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 
 public class JabberPointApplication {
 	public static void main(String[] args) {
 		Style.createStyles();
 
-	    PresentationModel presentationModel = new PresentationModel();
-	    PresentationController presentation = new PresentationController();
-	    
-	    new SlideViewerFrame("Jabberpoint 1.6 -", presentationModel);
+		PresentationModel presentationModel = new PresentationModel();
+		new SlideViewerFrame("Jabberpoint 1.6 -", presentationModel);
 
-	    try {
-	      if (args.length == 0) {
-	        Accessor.getDemoAccessor().loadFile(presentationModel, "");
-	      } else {
-	        new XMLAccessor().loadFile(presentationModel, args[0]);
-	      }
+		try {
+			if (args.length == 0) {
+				Accessor.getDemoAccessor().loadFile(presentationModel, "");
+			} else {
+				new XMLAccessor().loadFile(presentationModel, args[0]);
+			}
 
-	      presentationModel.setSlideNumber(0);
+			presentationModel.setSlideNumber(0);
 
-	    } catch (IOException ex) {
-	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
-	    }
+		} catch (IOException ex) {
+			JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }

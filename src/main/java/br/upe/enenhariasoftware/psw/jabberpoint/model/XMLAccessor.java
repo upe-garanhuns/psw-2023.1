@@ -28,6 +28,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.BitmapItemController;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.BitmapItem;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideItem;
@@ -62,8 +63,8 @@ public class XMLAccessor extends Accessor {
 
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-            DocumentBuilder builder = factory.newDocumentBuilder();
+			factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+			DocumentBuilder builder = factory.newDocumentBuilder();
 
 			Document document = builder.parse(new File(filename));
 
@@ -90,11 +91,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-		  logger.log(Level.SEVERE, "ES ERROR:", iox);
+			logger.log(Level.SEVERE, "ES ERROR:", iox);
 		} catch (SAXException sax) {
-		  logger.log(Level.SEVERE, "SAX ERROR", sax);
+			logger.log(Level.SEVERE, "SAX ERROR", sax);
 		} catch (ParserConfigurationException pcx) {
-		  logger.log(Level.SEVERE, "PARSER CONFIGURATION ERROR: ", pcx);
+			logger.log(Level.SEVERE, "PARSER CONFIGURATION ERROR: ", pcx);
 		}
 
 	}
@@ -110,7 +111,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-			  logger.log(Level.SEVERE, NFE);
+				logger.log(Level.SEVERE, NFE);
 			}
 		}
 
@@ -119,9 +120,9 @@ public class XMLAccessor extends Accessor {
 			slide.append(new TextItem(level, item.getTextContent()));
 		} else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent()));
+				slide.append(new BitmapItemController(level, item.getTextContent()));
 			} else {
-			  logger.log(Level.SEVERE, UNKNOWNTYPE);
+				logger.log(Level.SEVERE, UNKNOWNTYPE);
 			}
 		}
 	}
@@ -154,7 +155,7 @@ public class XMLAccessor extends Accessor {
 				} else {
 					if (slideItem instanceof BitmapItem) {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print(((BitmapItem) slideItem).getName());
+						out.print(((BitmapItemController) slideItem).getName());
 					} else {
 						System.out.println("Ignoring " + slideItem);
 					}

@@ -20,12 +20,11 @@ import java.io.Serializable;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 
 public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;
-	
+
 	private static final Color BGCOLOR = Color.white;
 	private static final Color COLOR = Color.black;
 	private static final String FONTNAME = "Dialog";
@@ -33,7 +32,6 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
-	
 
 	private transient Slide slide;
 	private Font labelFont = null;
@@ -75,7 +73,8 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 
 		slideGraphics.setFont(labelFont);
 		slideGraphics.setColor(COLOR);
-		slideGraphics.drawString("Slide " + (1 + presentationModel.getSlideNumber()) + " of " + presentationModel.getSize(), XPOS, YPOS);
+		slideGraphics.drawString(
+				"Slide " + (1 + presentationModel.getSlideNumber()) + " of " + presentationModel.getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 

@@ -13,48 +13,15 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 
 public class BitmapItem extends SlideItem {
 
-	private BufferedImage bufferedImage;
-	private String imageName;
+	protected BufferedImage bufferedImage;
 
 	protected static final String FILE = "File ";
 	protected static final String NOTFOUND = " not found";
-	private static final Logger logger = Logger.getLogger(XMLAccessor.class.getName());
-	
-	public BitmapItem(int level, String name) {
-		super(level);
-
-		imageName = name;
-
-		try {
-			bufferedImage = ImageIO.read(new File(imageName));
-		} catch (IOException e) {
-		    logger.log(Level.SEVERE, FILE + imageName + NOTFOUND, e);
-		}
-
-	}
-
-	public BitmapItem() {
-		this(0, null);
-	}
-
-	public String getName() {
-		return imageName;
-	}
-
-	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
-	}
 
 	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
