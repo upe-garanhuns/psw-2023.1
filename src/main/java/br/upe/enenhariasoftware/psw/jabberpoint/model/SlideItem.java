@@ -9,9 +9,6 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 public abstract class SlideItem implements Serializable {

@@ -39,7 +39,4 @@ public class SlideDrawer {
         return Math.min(((float) area.width) / ((float) WIDTH),
                 ((float) area.height) / ((float) HEIGHT));
     }
-
-    public void draw(Graphics graphics, Rectangle area, SlideViewerComponent view, Slide slide) {
-    }
 }

@@ -14,10 +14,7 @@ import java.io.Serializable;
 public class TextItem extends SlideItem implements Serializable {
 
   private static final long serialVersionUID = 122L;
-
   private final String text;
-
-  private static final String EMPTYTEXT = "No Text Given";
 
   public TextItem(int level, String string) {
     super(level);
