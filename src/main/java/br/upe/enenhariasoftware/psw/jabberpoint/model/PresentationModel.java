@@ -2,16 +2,16 @@ package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
+
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 public class PresentationModel implements Serializable {
 
 	private static final long serialVersionUID = 227L;
 	private String title;
-	private ArrayList<Slide> showList = null;
+	private ArrayList<SlideModel> showList = null;
 	private int currentSlideNumber = 0;
-
+	
 	public PresentationModel() {
 		slideViewComponent = null;
 		clear();
@@ -66,18 +66,18 @@ public class PresentationModel implements Serializable {
 		setSlideNumber(-1);
 	}
 
-	public void append(Slide slide) {
-		showList.add(slide);
+	public void append(SlideModel slideModel) {
+		showList.add(slideModel);
 	}
 
-	public Slide getSlide(int number) {
+	public SlideModel getSlide(int number) {
 		if (number < 0 || number >= getSize()) {
 			return null;
 		}
 		return showList.get(number);
 	}
 
-	public Slide getCurrentSlide() {
+	public SlideModel getCurrentSlide() {
 		return getSlide(currentSlideNumber);
 	}
 

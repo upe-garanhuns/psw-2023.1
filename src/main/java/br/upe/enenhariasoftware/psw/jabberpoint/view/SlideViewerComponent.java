@@ -21,6 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideModel;
 
 public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;
@@ -33,7 +34,8 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 
-	private transient Slide slide;
+	private transient SlideModel slideModel;
+	private transient SlideView slideView;
 	private Font labelFont = null;
 	private transient PresentationModel presentationModel = null;
 	private JFrame frame = null;
@@ -47,17 +49,17 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+		return new Dimension(SlideView.WIDTH, SlideView.HEIGHT);
 	}
 
-	public void update(PresentationModel presentationModel, Slide data) {
+	public void update(PresentationModel presentationModel, SlideModel data) {
 		if (data == null) {
 			repaint();
 			return;
 		}
 
 		this.presentationModel = presentationModel;
-		this.slide = data;
+		this.slideModel = data;
 		repaint();
 		frame.setTitle(presentationModel.getTitle());
 	}
@@ -67,7 +69,7 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 		slideGraphics.setColor(BGCOLOR);
 		slideGraphics.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentationModel.getSlideNumber() < 0 || slide == null) {
+		if (presentationModel.getSlideNumber() < 0 || slideModel == null) {
 			return;
 		}
 
@@ -78,7 +80,7 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-		slide.draw(slideGraphics, area, this);
+		slideView.draw(slideGraphics, area, this);
 	}
 
 }

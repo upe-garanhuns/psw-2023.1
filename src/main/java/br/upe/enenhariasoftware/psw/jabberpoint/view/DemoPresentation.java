@@ -15,6 +15,7 @@ import java.net.URL;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideModel;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.BitmapItemController;
 
@@ -24,38 +25,38 @@ public class DemoPresentation extends Accessor {
 
 		presentationModel.setTitle("Demo presentation");
 
-		Slide slide;
-		slide = new Slide();
+		SlideModel slideModel;
+		slideModel = new SlideModel();
 
-		slide.setTitle("JabberPoint");
-		slide.append(2, "Copyright (c) 1996-now: Ian Darwin");
-		slide.append(2, "Copyright (c) 2023-now: Helaine Lins");
-		slide.append(4, "Memo demo presentation");
-		slide.append(1, "Navegation:");
-		slide.append(3, "Next slide: PgDn ou Enter");
-		slide.append(3, "Previous slide: PgUp ou up-arrow");
-		slide.append(3, "Stop: q ou Q");
-		presentationModel.append(slide);
+		slideModel.setTitle("JabberPoint");
+		slideModel.append(2, "Copyright (c) 1996-now: Ian Darwin");
+		slideModel.append(2, "Copyright (c) 2023-now: Helaine Lins");
+		slideModel.append(4, "Memo demo presentation");
+		slideModel.append(1, "Navegation:");
+		slideModel.append(3, "Next slide: PgDn ou Enter");
+		slideModel.append(3, "Previous slide: PgUp ou up-arrow");
+		slideModel.append(3, "Stop: q ou Q");
+		presentationModel.append(slideModel);
 
-		slide = new Slide();
-		slide.setTitle("Presentation levels demo");
-		slide.append(1, "Level 1");
-		slide.append(2, "Level 2");
-		slide.append(1, "Style Level 1");
-		slide.append(2, "Style Level  2");
-		slide.append(3, "Style Level 3");
-		slide.append(4, "Style Level 4");
-		presentationModel.append(slide);
+		slideModel = new SlideModel();
+		slideModel.setTitle("Presentation levels demo");
+		slideModel.append(1, "Level 1");
+		slideModel.append(2, "Level 2");
+		slideModel.append(1, "Style Level 1");
+		slideModel.append(2, "Style Level  2");
+		slideModel.append(3, "Style Level 3");
+		slideModel.append(4, "Style Level 4");
+		presentationModel.append(slideModel);
 
-		slide = new Slide();
-		slide.setTitle("Second Slide");
-		slide.append(1, "To open a new presentation,");
-		slide.append(2, "Go to File->Open.");
-		slide.append(1, " ");
-		slide.append(1, "End");
+		slideModel = new SlideModel();
+		slideModel.setTitle("Second Slide");
+		slideModel.append(1, "To open a new presentation,");
+		slideModel.append(2, "Go to File->Open.");
+		slideModel.append(1, " ");
+		slideModel.append(1, "End");
 		URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
-		slide.append(new BitmapItemController(1, resource.getPath()));
-		presentationModel.append(slide);
+		slideModel.append(new BitmapItemController(1, resource.getPath()));
+		presentationModel.append(slideModel);
 	}
 
 	public void saveFile(PresentationController presentation, String unusedFilename) {

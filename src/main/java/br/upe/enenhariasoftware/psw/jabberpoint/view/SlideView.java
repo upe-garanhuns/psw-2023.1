@@ -16,47 +16,23 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideModel;
 
-public class Slide implements Serializable {
+public class SlideView implements Serializable {
 
 	private static final long serialVersionUID = 227L;
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
-
+	
+	// SlideModel slideModel = new SlideModel();
+	private SlideModel slideModel;
+	
+	public SlideView(SlideModel slideModel) {
+		this.slideModel = slideModel;
+	}
+	
 	protected TextItem slideTitle;
 	protected ArrayList<SlideItem> items;
-
-	public Slide() {
-		items = new ArrayList<>();
-	}
-
-	public void append(SlideItem anItem) {
-		items.add(anItem);
-	}
-
-	public String getTitle() {
-		return slideTitle.getText();
-	}
-
-	public void setTitle(String newTitle) {
-		slideTitle = new TextItem(0, newTitle);
-	}
-
-	public void append(int level, String message) {
-		append(new TextItem(level, message));
-	}
-
-	public SlideItem getSlideItem(int number) {
-		return items.get(number);
-	}
-
-	public ArrayList<SlideItem> getSlideItems() {
-		return items;
-	}
-
-	public int getSize() {
-		return items.size();
-	}
 
 	public void draw(Graphics slideGraphics, Rectangle area, ImageObserver view) {
 		float scale = getScale(area);
@@ -68,8 +44,8 @@ public class Slide implements Serializable {
 
 		y += slideTitle.getBoundingBox(slideGraphics, view, scale, style).height;
 
-		for (int number = 0; number < getSize(); number++) {
-			SlideItem slideItem = getSlideItems().get(number);
+		for (int number = 0; number < slideModel.getSize(); number++) {
+			SlideItem slideItem = slideModel.getSlideItems().get(number);
 			style = Style.getStyle(slideItem.getLevel());
 			slideItem.draw(area.x, y, scale, slideGraphics, style, view);
 			y += slideItem.getBoundingBox(slideGraphics, view, scale, style).height;

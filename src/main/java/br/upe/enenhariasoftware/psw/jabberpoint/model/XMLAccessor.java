@@ -30,7 +30,6 @@ import org.xml.sax.SAXException;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.BitmapItemController;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.BitmapItem;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideItem;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.TextItem;
 
@@ -77,16 +76,16 @@ public class XMLAccessor extends Accessor {
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
 
-				Slide slide = new Slide();
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentationModel.append(slide);
+				SlideModel slideModel = new SlideModel();
+				slideModel.setTitle(getTitle(xmlSlide, SLIDETITLE));
+				presentationModel.append(slideModel);
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
 
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
-					loadSlideItem(slide, item);
+					loadSlideItem(slideModel, item);
 				}
 			}
 
@@ -100,7 +99,7 @@ public class XMLAccessor extends Accessor {
 
 	}
 
-	protected void loadSlideItem(Slide slide, Element item) {
+	protected void loadSlideItem(SlideModel slideModel, Element item) {
 		int level = 1;
 
 		NamedNodeMap attributes = item.getAttributes();
@@ -117,10 +116,10 @@ public class XMLAccessor extends Accessor {
 
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent()));
+			slideModel.append(new TextItem(level, item.getTextContent()));
 		} else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItemController(level, item.getTextContent()));
+				slideModel.append(new BitmapItemController(level, item.getTextContent()));
 			} else {
 				logger.log(Level.SEVERE, UNKNOWNTYPE);
 			}
@@ -139,10 +138,10 @@ public class XMLAccessor extends Accessor {
 		out.println("</showtitle>");
 
 		for (int slideNumber = 0; slideNumber < presentationModel.getSize(); slideNumber++) {
-			Slide slide = presentationModel.getSlide(slideNumber);
+			SlideModel slideModel = presentationModel.getSlide(slideNumber);
 
 			out.println("<slide>");
-			out.println("<title>" + slide.getTitle() + "</title>");
+			out.println("<title>" + slideModel.getTitle() + "</title>");
 
 			ArrayList<SlideItem> slideItems = new ArrayList<>();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
