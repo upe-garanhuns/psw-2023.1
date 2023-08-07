@@ -9,10 +9,8 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -26,7 +24,7 @@ public class BitmapItem extends SlideItem {
 
   private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
 
-  private transient BufferedImage bufferedImage;
+  private BufferedImage bufferedImage;
   private String imageName;
 
   protected static final String FILE = "File ";
@@ -48,25 +46,11 @@ public class BitmapItem extends SlideItem {
   public BitmapItem() {
     this(0, null);
   }
-
+  public BufferedImage getBufferedImage(){
+    return bufferedImage;
+  }
   public String getName() {
     return imageName;
-  }
-
-  @Override
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-        (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
-  }
-
-  @Override
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.getIndent() * scale);
-    int height = y + (int) (myStyle.getLeading() * scale);
-
-    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-        (int) (bufferedImage.getHeight(observer) * scale), observer);
   }
 
   @Override

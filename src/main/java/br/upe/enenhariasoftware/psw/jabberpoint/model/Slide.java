@@ -9,9 +9,7 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +18,6 @@ import java.util.List;
 public class Slide implements Serializable {
 
   private static final long serialVersionUID = 179L;
-
-  public static final int WIDTH = 1200;
-  public static final int HEIGHT = 800;
 
   protected TextItem title;
   protected ArrayList<SlideItem> items;
@@ -59,29 +54,11 @@ public class Slide implements Serializable {
     return items.size();
   }
 
-  public void draw(Graphics g, Rectangle area, ImageObserver view) {
-    float scale = getScale(area);
-
-    int y = area.y;
-
-    SlideItem slideItem = this.title;
-    Style style = Style.getStyle(slideItem.getLevel());
-    slideItem.draw(area.x, y, scale, g, style, view);
-
-    y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-    for (int number = 0; number < getSize(); number++) {
-      slideItem = getSlideItems().get(number);
-
-      style = Style.getStyle(slideItem.getLevel());
-      slideItem.draw(area.x, y, scale, g, style, view);
-
-      y += slideItem.getBoundingBox(g, view, scale, style).height;
-    }
+  public TextItem getTextItemTitle() {
+    return title;
   }
 
-  private float getScale(Rectangle area) {
-    return Math.min(((float) area.width) / ((float) WIDTH),
-        ((float) area.height) / ((float) HEIGHT));
-  }
+
+
+
 }

@@ -11,6 +11,7 @@ package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.drawers.SlideDrawer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,9 +33,10 @@ public class SlideViewerComponent extends JComponent {
   private static final int YPOS = 20;
 
   private Slide slide;
-  private Font labelFont = null;
-  private Presentation presentation = null;
-  private JFrame frame = null;
+  private Font labelFont;
+  private Presentation presentation;
+  private JFrame frame;
+  private final transient SlideDrawer drawer = new SlideDrawer();
 
   public SlideViewerComponent(Presentation pres, JFrame frame) {
     setBackground(BGCOLOR);
@@ -45,10 +47,12 @@ public class SlideViewerComponent extends JComponent {
 
   @Override
   public Dimension getPreferredSize() {
-    return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+
+    return new Dimension(SlideDrawer.WIDTH, SlideDrawer.HEIGHT);
   }
 
-  public void update(Presentation presentation, Slide data) {
+  public void update(Presentation presentation) {
+    Slide data = presentation.getCurrentSlide();
     if (data == null) {
       repaint();
       return;
@@ -61,22 +65,22 @@ public class SlideViewerComponent extends JComponent {
   }
 
   @Override
-  public void paintComponent(Graphics g) {
-    g.setColor(BGCOLOR);
-    g.fillRect(0, 0, getSize().width, getSize().height);
+  public void paintComponent(Graphics graphics) {
+    graphics.setColor(BGCOLOR);
+    graphics.fillRect(0, 0, getSize().width, getSize().height);
 
     if (presentation.getSlideNumber() < 0 || slide == null) {
       return;
     }
 
-    g.setFont(labelFont);
-    g.setColor(COLOR);
-    g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(),
+    graphics.setFont(labelFont);
+    graphics.setColor(COLOR);
+    graphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(),
         XPOS, YPOS);
 
     Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-    slide.draw(g, area, this);
+    drawer.draw(graphics, area, this, slide);
   }
 
 }
