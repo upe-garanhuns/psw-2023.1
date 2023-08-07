@@ -15,7 +15,6 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 
 import java.io.IOException;
-import javax.swing.JOptionPane;
 
 public class JabberPointApplication {
   public static void main(String[] args) {

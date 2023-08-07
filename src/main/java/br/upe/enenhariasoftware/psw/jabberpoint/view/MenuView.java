@@ -25,7 +25,7 @@ public class MenuView extends MenuBar {
     protected static final String PREV = "Previous";
     protected static final String GOTO = "Go to";
 
-    private final MenuController menuController;
+    private final transient MenuController menuController;
 
     public MenuView(MenuController menuController) {
         this.menuController = menuController;

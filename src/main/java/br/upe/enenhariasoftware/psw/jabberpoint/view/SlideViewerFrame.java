@@ -15,9 +15,10 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.Serializable;
 import javax.swing.JFrame;
 
-public class SlideViewerFrame extends JFrame {
+public class SlideViewerFrame extends JFrame implements Serializable {
 
   private static final long serialVersionUID = 3227L;
 
