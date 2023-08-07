@@ -9,7 +9,8 @@
 
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessible;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Savable;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.AboutBox;
 
@@ -38,7 +39,7 @@ public class MenuController {
   public void openFile() {
     presentation.clear();
 
-    Accessible xmlAccessor = new XMLAccessor();
+    Accessor xmlAccessor = new XMLAccessor();
     try {
       xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
       presentation.setSlideNumber(0);
@@ -56,7 +57,7 @@ public class MenuController {
   }
 
   public void saveFile() {
-    Accessible xmlAccessor = new XMLAccessor();
+    Savable xmlAccessor = new XMLAccessor();
     try {
       xmlAccessor.saveFile(presentation, SAVEFILE);
     } catch (IOException exc) {

@@ -18,7 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessible;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Savable;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XMLAccessor implements Accessible {
+public class XMLAccessor extends Accessor implements Savable {
   private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
 
   protected static final String ERROR_MESSAGE = "Error occured: ";
