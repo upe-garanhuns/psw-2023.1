@@ -10,7 +10,7 @@ public class SlideDrawer {
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view, Slide slide) {
+    public void drawSlide(Graphics graphics, Rectangle area, ImageObserver view, Slide slide) {
         SlideItemDrawer slideItemDrawer;
         float scale = getScale(area);
 
