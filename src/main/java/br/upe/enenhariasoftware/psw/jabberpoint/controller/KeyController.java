@@ -12,14 +12,14 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 
 public class KeyController extends KeyAdapter {
 
-	private Presentation presentation;
+	private PresentationModel presentationModel;
 
-	public KeyController(Presentation p) {
-		presentation = p;
+	public KeyController(PresentationModel p) {
+		presentationModel = p;
 	}
 
 	@Override
@@ -29,12 +29,12 @@ public class KeyController extends KeyAdapter {
 		case KeyEvent.VK_DOWN:
 		case KeyEvent.VK_ENTER:
 		case '+':
-			presentation.nextSlide();
+			presentationModel.nextSlide();
 			break;
 		case KeyEvent.VK_PAGE_UP:
 		case KeyEvent.VK_UP:
 		case '-':
-			presentation.prevSlide();
+			presentationModel.prevSlide();
 			break;
 		case 'q':
 		case 'Q':

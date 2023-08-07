@@ -24,7 +24,8 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.About;
 
@@ -33,7 +34,9 @@ public class MenuController extends MenuBar implements Serializable {
   private static final long serialVersionUID = 227L;
   
   private Frame frame1; 
-  private transient Presentation presentation; 
+  private transient PresentationController presentation; 
+  private transient PresentationModel presentationModel;
+  
 
   protected static final String ABOUT = "About";
   protected static final String FILE = "File";
@@ -55,9 +58,9 @@ public class MenuController extends MenuBar implements Serializable {
   protected static final String LOADERR = "Failed to load";
   protected static final String SAVEERR = "Failed to save";
 
-  public MenuController(Frame frame, Presentation pres) {
+  public MenuController(Frame frame, PresentationModel pres) {
     frame1 = frame;
-    presentation = pres;
+    presentationModel = pres;
     
     MenuItem menuItem;
     
@@ -67,12 +70,12 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        presentation.clear();
+    	  presentationModel.clear();
         
         Accessor xmlAccessor = new XMLAccessor();
         try {
-          xmlAccessor.loadFile(presentation, new File(TESTFILE).getAbsolutePath());
-          presentation.setSlideNumber(0);
+          xmlAccessor.loadFile(presentationModel, new File(TESTFILE).getAbsolutePath());
+          presentationModel.setSlideNumber(0);
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(frame1, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
@@ -86,7 +89,7 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        presentation.clear();
+    	  presentationModel.clear();
         frame1.repaint();
       }
     });
@@ -98,7 +101,7 @@ public class MenuController extends MenuBar implements Serializable {
       public void actionPerformed(ActionEvent e) {
         Accessor xmlAccessor = new XMLAccessor();
         try {
-          xmlAccessor.saveFile(presentation, SAVEFILE);
+          xmlAccessor.saveFile(presentationModel, SAVEFILE);
         } catch (IOException exc) {
           JOptionPane.showMessageDialog(frame1, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
@@ -112,7 +115,7 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        presentation.exit(0);
+    	  presentation.exit(0);
       }
     });
     
@@ -124,7 +127,7 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        presentation.nextSlide();
+    	  presentationModel.nextSlide();
       }
     });
     
@@ -133,7 +136,7 @@ public class MenuController extends MenuBar implements Serializable {
     
     menuItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent actionEvent) {
-        presentation.prevSlide();
+    	  presentationModel.prevSlide();
       }
     });
     
@@ -144,7 +147,7 @@ public class MenuController extends MenuBar implements Serializable {
       public void actionPerformed(ActionEvent actionEvent) {
     	  String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
         int pageNumber = Integer.parseInt(pageNumberStr);
-        presentation.setSlideNumber(pageNumber - 1);
+        presentationModel.setSlideNumber(pageNumber - 1);
       }
     });
     

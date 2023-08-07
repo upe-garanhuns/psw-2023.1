@@ -10,16 +10,18 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 
 public class DemoPresentation extends Accessor {
 
-	public void loadFile(Presentation presentation, String unusedFilename) throws FileNotFoundException {
+	public void loadFile(PresentationModel presentationModel, String unusedFilename) throws FileNotFoundException {
 
-		presentation.setTitle("Demo presentation");
+		presentationModel.setTitle("Demo presentation");
 
 		Slide slide;
 		slide = new Slide();
@@ -32,7 +34,7 @@ public class DemoPresentation extends Accessor {
 		slide.append(3, "Next slide: PgDn ou Enter");
 		slide.append(3, "Previous slide: PgUp ou up-arrow");
 		slide.append(3, "Stop: q ou Q");
-		presentation.append(slide);
+		presentationModel.append(slide);
 
 		slide = new Slide();
 		slide.setTitle("Presentation levels demo");
@@ -42,7 +44,7 @@ public class DemoPresentation extends Accessor {
 		slide.append(2, "Style Level  2");
 		slide.append(3, "Style Level 3");
 		slide.append(4, "Style Level 4");
-		presentation.append(slide);
+		presentationModel.append(slide);
 
 		slide = new Slide();
 		slide.setTitle("Second Slide");
@@ -52,11 +54,17 @@ public class DemoPresentation extends Accessor {
 		slide.append(1, "End");
 		URL resource = this.getClass().getClassLoader().getResource("JabberPoint.jpg");
 		slide.append(new BitmapItem(1, resource.getPath()));
-		presentation.append(slide);
+		presentationModel.append(slide);
 	}
 
-	public void saveFile(Presentation presentation, String unusedFilename) {
+	public void saveFile(PresentationController presentation, String unusedFilename) {
 		throw new IllegalStateException("Cannot save demo presentation!");
+	}
+
+	@Override
+	public void saveFile(PresentationModel presentationModel, String fileName) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -20,11 +20,12 @@ import java.io.Serializable;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 
 public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;
-
+	
 	private static final Color BGCOLOR = Color.white;
 	private static final Color COLOR = Color.black;
 	private static final String FONTNAME = "Dialog";
@@ -32,15 +33,16 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
+	
 
 	private transient Slide slide;
 	private Font labelFont = null;
-	private transient Presentation presentation = null;
+	private transient PresentationModel presentationModel = null;
 	private JFrame frame = null;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
+	public SlideViewerComponent(PresentationModel pres, JFrame frame) {
 		setBackground(BGCOLOR);
-		presentation = pres;
+		presentationModel = pres;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 		this.frame = frame;
 	}
@@ -50,16 +52,16 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(PresentationModel presentationModel, Slide data) {
 		if (data == null) {
 			repaint();
 			return;
 		}
 
-		this.presentation = presentation;
+		this.presentationModel = presentationModel;
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+		frame.setTitle(presentationModel.getTitle());
 	}
 
 	@Override
@@ -67,13 +69,13 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 		slideGraphics.setColor(BGCOLOR);
 		slideGraphics.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (presentationModel.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
 
 		slideGraphics.setFont(labelFont);
 		slideGraphics.setColor(COLOR);
-		slideGraphics.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
+		slideGraphics.drawString("Slide " + (1 + presentationModel.getSlideNumber()) + " of " + presentationModel.getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 

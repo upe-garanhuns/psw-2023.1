@@ -1,39 +1,31 @@
-/**
- * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
- * Disciplina de Projeto de Software - 2023.1
- * 
- * Licensed under the Apache License, Version 2.0
- * https://www.apache.org/licenses/LICENSE-2.0
- * 
- * @author Ian F. Darwin, Helaine Lins
- */
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-
 import br.upe.enenhariasoftware.psw.jabberpoint.view.Slide;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
-import java.io.Serializable;
-
-public class Presentation implements Serializable {
-
+public class PresentationModel implements Serializable{
+	
 	private static final long serialVersionUID = 227L;
 	private String title;
 	private ArrayList<Slide> showList = null;
-	private SlideViewerComponent slideViewComponent = null;
 	private int currentSlideNumber = 0;
-
-	public Presentation() {
+	
+	public PresentationModel() {
 		slideViewComponent = null;
 		clear();
 	}
-
-	public Presentation(SlideViewerComponent slideViewerComponent) {
+	
+	public PresentationModel(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
 		clear();
 	}
 
+	public void setShowView(SlideViewerComponent slideViewerComponent) {
+		this.slideViewComponent = slideViewerComponent;
+	}
+	
 	public int getSize() {
 		return showList.size();
 	}
@@ -45,15 +37,11 @@ public class Presentation implements Serializable {
 	public void setTitle(String nt) {
 		title = nt;
 	}
-
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
-	}
-
+	
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
-
+	
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
@@ -72,7 +60,6 @@ public class Presentation implements Serializable {
 			setSlideNumber(currentSlideNumber + 1);
 		}
 	}
-
 	public void clear() {
 		showList = new ArrayList<>();
 		setSlideNumber(-1);
@@ -92,8 +79,8 @@ public class Presentation implements Serializable {
 	public Slide getCurrentSlide() {
 		return getSlide(currentSlideNumber);
 	}
+	
 
-	public void exit(int n) {
-		System.exit(n);
-	}
+	private SlideViewerComponent slideViewComponent = null;
+
 }

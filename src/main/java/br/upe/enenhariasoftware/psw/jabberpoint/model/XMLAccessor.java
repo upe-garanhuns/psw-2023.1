@@ -57,7 +57,7 @@ public class XMLAccessor extends Accessor {
 
 	}
 
-	public void loadFile(Presentation presentation, String filename) throws IOException {
+	public void loadFile(PresentationModel presentationModel, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 
 		try {
@@ -68,7 +68,7 @@ public class XMLAccessor extends Accessor {
 			Document document = builder.parse(new File(filename));
 
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			presentationModel.setTitle(getTitle(doc, SHOWTITLE));
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
@@ -78,7 +78,7 @@ public class XMLAccessor extends Accessor {
 
 				Slide slide = new Slide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentation.append(slide);
+				presentationModel.append(slide);
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
@@ -126,7 +126,7 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-	public void saveFile(Presentation presentation, String filename) throws IOException {
+	public void saveFile(PresentationModel presentationModel, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 
 		out.println("<?xml version=\"1.0\"?>");
@@ -134,11 +134,11 @@ public class XMLAccessor extends Accessor {
 		out.println("<presentation>");
 
 		out.print("<showtitle>");
-		out.print(presentation.getTitle());
+		out.print(presentationModel.getTitle());
 		out.println("</showtitle>");
 
-		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
-			Slide slide = presentation.getSlide(slideNumber);
+		for (int slideNumber = 0; slideNumber < presentationModel.getSize(); slideNumber++) {
+			Slide slide = presentationModel.getSlide(slideNumber);
 
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
