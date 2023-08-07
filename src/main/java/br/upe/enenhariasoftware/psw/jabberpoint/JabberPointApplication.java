@@ -1,7 +1,7 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ * <p>
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -9,9 +9,14 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint;
 
-import java.io.IOException;
+import br.upe.enenhariasoftware.psw.jabberpoint.controllers.SlideViewerFrame;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.views.ErrorViewer;
 
-import javax.swing.JOptionPane;
+import java.io.IOException;
 
 public class JabberPointApplication {
 	public static void main(String[] args) {
@@ -19,7 +24,7 @@ public class JabberPointApplication {
 
 	    Presentation presentation = new Presentation();
 
-	    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
+	    SlideViewerFrame frame = new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
 
 	    try {
 	      if (args.length == 0) {
@@ -28,10 +33,11 @@ public class JabberPointApplication {
 	        new XMLAccessor().loadFile(presentation, args[0]);
 	      }
 
-	      presentation.setSlideNumber(0);
+	      presentation.setCurrentSlideNumber(0);
+		  frame.updateFrame(presentation);
 
 	    } catch (IOException ex) {
-	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
+			ErrorViewer.showIOException(ex, null, "IO Error: ", "Jabberpoint Error ");
 	    }
 	}
 }

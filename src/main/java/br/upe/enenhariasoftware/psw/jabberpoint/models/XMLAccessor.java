@@ -1,31 +1,38 @@
 /**
  * UPE - Campus Garanhuns Curso de Bacharelado em Engenharia de Software
  * Disciplina de Projeto de Software - 2023.1
- * 
+ * <p>
  * Licensed under the Apache License, Version 2.0
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.BitmapItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.SlideItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.models.slideitems.TextItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XMLAccessor extends Accessor {
+public class XMLAccessor extends Accessor implements Savable {
+
+	private static final Logger logger = LoggerFactory.getLogger(XMLAccessor.class);
 
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -49,7 +56,10 @@ public class XMLAccessor extends Accessor {
 	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
-		int slideNumber, itemNumber, max = 0, maxItems = 0;
+		int slideNumber;
+		int itemNumber;
+		int max;
+		int maxItems;
 
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -79,11 +89,11 @@ public class XMLAccessor extends Accessor {
 			}
 
 		} catch (IOException iox) {
-			System.err.println(iox.toString());
+			logger.error(iox.toString());
 		} catch (SAXException sax) {
-			System.err.println(sax.getMessage());
+			logger.error(sax.getMessage());
 		} catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			logger.error(PCE);
 		}
 
 	}
@@ -99,7 +109,7 @@ public class XMLAccessor extends Accessor {
 			try {
 				level = Integer.parseInt(leveltext);
 			} catch (NumberFormatException x) {
-				System.err.println(NFE);
+				logger.error(NFE);
 			}
 		}
 
@@ -110,11 +120,12 @@ public class XMLAccessor extends Accessor {
 			if (IMAGE.equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			} else {
-				System.err.println(UNKNOWNTYPE);
+				logger.error(UNKNOWNTYPE);
 			}
 		}
 	}
 
+	@Override
 	public void saveFile(Presentation presentation, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 
@@ -132,9 +143,9 @@ public class XMLAccessor extends Accessor {
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			ArrayList<SlideItem> slideItems = (ArrayList<SlideItem>) slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = slideItems.get(itemNumber);
 				out.print("<item kind=");
 
 				if (slideItem instanceof TextItem) {
@@ -145,7 +156,7 @@ public class XMLAccessor extends Accessor {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print(((BitmapItem) slideItem).getName());
 					} else {
-						System.out.println("Ignoring " + slideItem);
+						logger.error("Ignoring {}", slideItem);
 					}
 				}
 

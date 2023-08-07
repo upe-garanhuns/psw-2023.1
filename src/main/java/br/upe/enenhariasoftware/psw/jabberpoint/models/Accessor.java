@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
 import java.io.IOException;
 
@@ -20,11 +20,8 @@ public abstract class Accessor {
 		return new DemoPresentation();
 	}
 
-	public Accessor() {
+	protected Accessor() {
 	}
 
-	abstract public void loadFile(Presentation presentation, String fileName) throws IOException;
-
-	abstract public void saveFile(Presentation presentation, String fileName) throws IOException;
-
+	public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
 }

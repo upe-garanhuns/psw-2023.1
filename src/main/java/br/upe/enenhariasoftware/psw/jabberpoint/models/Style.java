@@ -7,21 +7,19 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.models;
 
 import java.awt.Color;
 import java.awt.Font;
 
 public class Style {
-
   private static Style[] styles;
-
   private static final String FONTNAME = "Helvetica";
-  int indent;
-  Color color;
-  Font font;
-  int fontSize;
-  int leading;
+  private final int indent;
+  private final Color color;
+  private final Font font;
+  private final int fontSize;
+  private final int leading;
 
   public static void createStyles() {
     styles = new Style[5];
@@ -43,7 +41,8 @@ public class Style {
   public Style(int indent, Color color, int points, int leading) {
     this.indent = indent;
     this.color = color;
-    font = new Font(FONTNAME, Font.BOLD, fontSize = points);
+    this.fontSize = points;
+    this.font = new Font(FONTNAME, Font.BOLD, fontSize);
     this.leading = leading;
   }
 
@@ -54,4 +53,25 @@ public class Style {
   public Font getFont(float scale) {
     return font.deriveFont(fontSize * scale);
   }
+
+  public int getIndent() {
+    return indent;
+  }
+
+  public Color getColor() {
+    return color;
+  }
+
+  public Font getFont() {
+    return font;
+  }
+
+  public int getFontSize() {
+    return fontSize;
+  }
+
+  public int getLeading() {
+    return leading;
+  }
+
 }
