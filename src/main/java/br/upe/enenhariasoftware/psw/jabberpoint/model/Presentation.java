@@ -16,7 +16,7 @@ import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 public class Presentation implements Serializable, IPresentation {
 
   private String title;
-  private ArrayList<ISlide> slideList;
+  private transient ArrayList<ISlide> slideList;
   private SlideViewerComponent slideViewComponent;
   private int currentSlideNumber = 0;
   private static final long serialVersionUID = 221L;

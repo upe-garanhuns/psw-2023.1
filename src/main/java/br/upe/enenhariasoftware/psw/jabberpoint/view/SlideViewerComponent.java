@@ -20,7 +20,6 @@ import javax.swing.JFrame;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.IViewController;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.IPresentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.ISlide;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
 
 public class SlideViewerComponent extends JComponent implements ISlideViewComponent{
 
