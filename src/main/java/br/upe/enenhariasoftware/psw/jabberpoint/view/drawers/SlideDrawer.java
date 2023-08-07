@@ -1,7 +1,6 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.view.drawers;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.*;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideItem;
-import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerComponent;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
