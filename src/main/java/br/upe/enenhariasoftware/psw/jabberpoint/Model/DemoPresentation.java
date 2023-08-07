@@ -6,8 +6,8 @@
  * https://www.apache.org/licenses/LICENSE-2.0
  * 
  * @author Ian F. Darwin, Helaine Lins
- */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+*/
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -55,5 +55,4 @@ public class DemoPresentation extends Accessor {
 	public void saveFile(Presentation presentation, String unusedFilename) {
 		throw new IllegalStateException("Cannot save demo presentation!");
 	}
-
 }

@@ -7,8 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
-
+package br.upe.enenhariasoftware.psw.jabberpoint.model;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
