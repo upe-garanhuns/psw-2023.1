@@ -17,6 +17,5 @@ public class PresentationController implements Serializable {
 	
 	public void exit(int n) {
 		System.exit(n);
-
 	}
 }

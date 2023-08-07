@@ -19,7 +19,7 @@ public class Style {
 	private static final String FONTNAME = "Helvetica";
 	public int indent;
 	public Color color;
-	Font font;
+	public Font font;
 	int fontSize;
 	public int leading;
 
@@ -49,10 +49,10 @@ public class Style {
 	}
 
 	public String toString() {
-		return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
+		return "[" + indent + "," + color + "; " + font.getSize() + " on " + leading + "]";
 	}
 
 	public Font getFont(float scale) {
-		return font.deriveFont(fontSize * scale);
+		return font.deriveFont(font.getSize() * scale);
 	}
 }

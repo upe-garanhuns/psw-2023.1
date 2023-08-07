@@ -15,15 +15,15 @@ import java.awt.image.ImageObserver;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
-public abstract class SlideItem {
+public class SlideItem {
 
 	private int level = 0;
 
-	protected SlideItem(int lev) {
+	public SlideItem(int lev) {
 		level = lev;
 	}
 
-	protected SlideItem() {
+	public SlideItem() {
 		this(0);
 	}
 
@@ -31,8 +31,11 @@ public abstract class SlideItem {
 		return level;
 	}
 
-	public abstract Rectangle getBoundingBox(Graphics slideGraphics, ImageObserver observer, float scale, Style style);
+	public Rectangle getBoundingBox(Graphics slideGraphics, ImageObserver observer, float scale, Style style) {
+		return new Rectangle();
+	}
 
-	public abstract void draw(int x, int y, float scale, Graphics slideGraphics, Style style, ImageObserver observer);
+	public void draw(int x, int y, float scale, Graphics slideGraphics, Style style, ImageObserver observer) {
 
+	}
 }

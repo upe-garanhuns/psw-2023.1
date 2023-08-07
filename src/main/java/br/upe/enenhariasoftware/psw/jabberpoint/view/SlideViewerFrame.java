@@ -33,10 +33,10 @@ public class SlideViewerFrame extends JFrame {
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationModel, this);
 		presentationModel.setShowView(slideViewerComponent);
 
-		setupWindow(slideViewerComponent, presentationModel);
+		setupWindow(presentationModel);
 	}
 
-	public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationModel presentationModel) {
+	public void setupWindow(PresentationModel presentationModel) {
 		setTitle(JABTITLE);
 
 		addWindowListener(new WindowAdapter() {
@@ -46,6 +46,7 @@ public class SlideViewerFrame extends JFrame {
 			}
 		});
 
+		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationModel, this);
 		getContentPane().add(slideViewerComponent);
 		addKeyListener(new KeyController(presentationModel));
 		setMenuBar(new MenuController(this, presentationModel));

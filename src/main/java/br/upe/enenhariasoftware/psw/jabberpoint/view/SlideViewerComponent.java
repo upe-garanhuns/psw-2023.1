@@ -14,7 +14,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import java.io.Serializable;
 
 import javax.swing.JComponent;
@@ -34,8 +33,6 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 
-	private transient SlideModel slideModel;
-	private transient SlideView slideView;
 	private Font labelFont = null;
 	private transient PresentationModel presentationModel = null;
 	private JFrame frame = null;
@@ -58,8 +55,8 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 			return;
 		}
 
+		new SlideView(data);
 		this.presentationModel = presentationModel;
-		this.slideModel = data;
 		repaint();
 		frame.setTitle(presentationModel.getTitle());
 	}
@@ -69,7 +66,7 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 		slideGraphics.setColor(BGCOLOR);
 		slideGraphics.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentationModel.getSlideNumber() < 0 || slideModel == null) {
+		if (presentationModel == null || presentationModel.getSlideNumber() < 0) {
 			return;
 		}
 
@@ -80,7 +77,10 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-		slideView.draw(slideGraphics, area, this);
+		if (presentationModel.getCurrentSlide() != null) {
+			SlideModel slideModel = presentationModel.getCurrentSlide();
+			SlideView slideView = new SlideView(slideModel);
+			slideView.draw(slideGraphics, area, this);
+		}
 	}
-
 }

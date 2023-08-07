@@ -16,33 +16,31 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
 
 public class KeyController extends KeyAdapter {
 
-	private PresentationModel presentationModel;
+    private PresentationModel presentationModel;
 
-	public KeyController(PresentationModel p) {
-		presentationModel = p;
-	}
+    public KeyController(PresentationModel presentationModel) {
+        this.presentationModel = presentationModel;
+    }
 
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		switch (keyEvent.getKeyCode()) {
-		case KeyEvent.VK_PAGE_DOWN:
-		case KeyEvent.VK_DOWN:
-		case KeyEvent.VK_ENTER:
-		case '+':
-			presentationModel.nextSlide();
-			break;
-		case KeyEvent.VK_PAGE_UP:
-		case KeyEvent.VK_UP:
-		case '-':
-			presentationModel.prevSlide();
-			break;
-		case 'q':
-		case 'Q':
-			System.exit(0);
-			break; // fix?
-		default:
-			break;
-		}
-	}
-
+    public void keyPressed(KeyEvent keyEvent) {
+        switch (keyEvent.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_ENTER:
+            case '+':
+                presentationModel.nextSlide();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+            case KeyEvent.VK_UP:
+            case '-':
+                presentationModel.prevSlide();
+                break;
+            case 'q':
+            case 'Q':
+                System.exit(0);
+                break;
+            default:
+                break;
+        }
+    }
 }

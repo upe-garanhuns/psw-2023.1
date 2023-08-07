@@ -18,22 +18,39 @@ import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
 public class BitmapItem extends SlideItem {
 
-	protected BufferedImage bufferedImage;
+    protected BufferedImage bufferedImage;
 
-	protected static final String FILE = "File ";
-	protected static final String NOTFOUND = " not found";
+    protected static final String FILE = "File ";
+    protected static final String NOTFOUND = " not found";
 
-	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.indent * scale), 0, (int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
-	}
+    public BitmapItem() {
+        super();
+    }
 
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-		int width = x + (int) (myStyle.indent * scale);
-		int height = y + (int) (myStyle.leading * scale);
+    public BitmapItem(BufferedImage image) {
+        super();
+        bufferedImage = image;
+    }
 
-		g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-				(int) (bufferedImage.getHeight(observer) * scale), observer);
-	}
+    @Override
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+        return new Rectangle((int) (myStyle.indent * scale), 0, (int) (bufferedImage.getWidth(observer) * scale),
+                ((int) (myStyle.leading * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
+    }
+
+    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
+        int width = x + (int) (myStyle.indent * scale);
+        int height = y + (int) (myStyle.leading * scale);
+
+        g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
+                (int) (bufferedImage.getHeight(observer) * scale), observer);
+    }
+
+    public BufferedImage getBufferedImage() {
+        return bufferedImage;
+    }
+
+    public void setBufferedImage(BufferedImage image) {
+        bufferedImage = image;
+    }
 }

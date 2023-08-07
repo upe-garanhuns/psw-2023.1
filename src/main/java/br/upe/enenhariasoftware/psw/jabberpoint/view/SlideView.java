@@ -24,7 +24,6 @@ public class SlideView implements Serializable {
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
 	
-	// SlideModel slideModel = new SlideModel();
 	private SlideModel slideModel;
 	
 	public SlideView(SlideModel slideModel) {
