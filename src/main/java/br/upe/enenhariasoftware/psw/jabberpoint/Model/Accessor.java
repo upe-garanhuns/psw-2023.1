@@ -9,6 +9,8 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.model;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+
 import java.io.IOException;
 
 public abstract class Accessor {
@@ -23,8 +25,8 @@ public abstract class Accessor {
 	protected Accessor() {
 	}
 
-	public abstract void loadFile(Presentation presentation, String fileName) throws IOException;
+	public abstract void loadFile(PresentationController presentationController, String fileName) throws IOException;
 
-	public abstract void saveFile(Presentation presentation, String fileName) throws IOException;
+	public abstract void saveFile(PresentationController presentationController, String fileName) throws IOException;
 
 }

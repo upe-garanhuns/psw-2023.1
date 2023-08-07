@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.KeyController;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.MenuController;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
 
 public class SlideViewerFrame extends JFrame {
 
@@ -27,16 +27,16 @@ public class SlideViewerFrame extends JFrame {
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
 
-  public SlideViewerFrame(String title, Presentation presentation) {
+  public SlideViewerFrame(String title, PresentationController presentationController) {
     super(title);
 
-    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-    presentation.setShowView(slideViewerComponent);
+    SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentationController, this);
+    presentationController.getPresentation().setShowView(slideViewerComponent);
 
-    setupWindow(slideViewerComponent, presentation);
+    setupWindow(slideViewerComponent, presentationController);
   }
 
-  public void setupWindow(SlideViewerComponent slideViewerComponent, Presentation presentation) {
+  public void setupWindow(SlideViewerComponent slideViewerComponent, PresentationController presentation) {
     setTitle(JABTITLE);
 
     addWindowListener(new WindowAdapter() {
@@ -49,7 +49,7 @@ public class SlideViewerFrame extends JFrame {
 
     getContentPane().add(slideViewerComponent);
     addKeyListener(new KeyController(presentation));
-    setMenuBar(new MenuController(this, presentation));
+    setMenuBar(new MenuViewer(this, presentation));
     setSize(new Dimension(WIDTH, HEIGHT));
 
     setVisible(true);

@@ -21,6 +21,8 @@ import java.io.Serializable;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+
 
 public class SlideViewerComponent extends JComponent implements Serializable {
 	private static final long serialVersionUID = 227L;
@@ -35,12 +37,12 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 
 	private transient Slide slide;
 	private Font labelFont = null;
-	private transient Presentation presentation = null;
+	private transient PresentationController presentationController = null;
 	private JFrame frame = null;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
+	public SlideViewerComponent(PresentationController presentationController, JFrame frame) {
 		setBackground(BGCOLOR);
-		presentation = pres;
+		this.presentationController = presentationController;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 		this.frame = frame;
 	}
@@ -56,10 +58,10 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 			return;
 		}
 
-		this.presentation = presentation;
+		presentationController.setPresentation(presentation);
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+		frame.setTitle(presentationController.getPresentation().getTitle());
 	}
 
 	@Override
@@ -67,13 +69,13 @@ public class SlideViewerComponent extends JComponent implements Serializable {
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
 
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (presentationController.getPresentation().getSlideNumber() < 0 || slide == null) {
 			return;
 		}
 
 		g.setFont(labelFont);
 		g.setColor(COLOR);
-		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(), XPOS, YPOS);
+		g.drawString("Slide " + (1 + presentationController.getPresentation().getSlideNumber()) + " of " + presentationController.getPresentation().getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 

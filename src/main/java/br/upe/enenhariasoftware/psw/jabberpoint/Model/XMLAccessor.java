@@ -25,6 +25,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+
 public class XMLAccessor extends Accessor {
 
 	private static final Logger LOGGER = Logger.getLogger(XMLAccessor.class.getName());
@@ -50,7 +52,8 @@ public class XMLAccessor extends Accessor {
 
 	}
 
-	public void loadFile(Presentation presentation, String filename) throws IOException {
+	@Override
+	public void loadFile(PresentationController presentationController, String fileName) throws IOException {
 		int slideNumber = 0;
 		int itemNumber = 0;
 		int max = 0;
@@ -65,10 +68,10 @@ public class XMLAccessor extends Accessor {
 
 			DocumentBuilder builder = factory.newDocumentBuilder();
 
-			Document document = builder.parse(new File(filename));
+			Document document = builder.parse(new File(fileName));
 
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			presentationController.getPresentation().setTitle(getTitle(doc, SHOWTITLE));
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
@@ -78,7 +81,7 @@ public class XMLAccessor extends Accessor {
 
 				Slide slide = new Slide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentation.append(slide);
+				presentationController.append(slide);
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
@@ -96,7 +99,6 @@ public class XMLAccessor extends Accessor {
 		} catch (ParserConfigurationException pcx) {
 			LOGGER.warning(PCE);
 		}
-
 	}
 
 	protected void loadSlideItem(Slide slide, Element item) {
@@ -126,19 +128,20 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-	public void saveFile(Presentation presentation, String filename) throws IOException {
-		PrintWriter out = new PrintWriter(new FileWriter(filename));
+	@Override
+	public void saveFile(PresentationController presentationController, String fileName) throws IOException {
+		PrintWriter out = new PrintWriter(new FileWriter(fileName));
 
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
 		out.println("<presentation>");
 
 		out.print("<showtitle>");
-		out.print(presentation.getTitle());
+		out.print(presentationController.getPresentation().getTitle());
 		out.println("</showtitle>");
 
-		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
-			Slide slide = presentation.getSlide(slideNumber);
+		for (int slideNumber = 0; slideNumber < presentationController.getPresentation().getSize(); slideNumber++) {
+			Slide slide = presentationController.getPresentation().getSlide(slideNumber);
 
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
@@ -170,5 +173,4 @@ public class XMLAccessor extends Accessor {
 
 		out.close();
 	}
-
 }

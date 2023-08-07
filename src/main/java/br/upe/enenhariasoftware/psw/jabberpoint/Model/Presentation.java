@@ -22,12 +22,10 @@ public class Presentation {
 
 	public Presentation() {
 		slideViewComponent = null;
-		clear();
 	}
 
 	public Presentation(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
-		clear();
 	}
 
 	public int getSize() {
@@ -57,27 +55,6 @@ public class Presentation {
 		}
 	}
 
-	public void prevSlide() {
-		if (currentSlideNumber > 0) {
-			setSlideNumber(currentSlideNumber - 1);
-		}
-	}
-
-	public void nextSlide() {
-		if (currentSlideNumber < (showList.size() - 1)) {
-			setSlideNumber(currentSlideNumber + 1);
-		}
-	}
-
-	public void clear() {
-		showList = new ArrayList<>();
-		setSlideNumber(-1);
-	}
-
-	public void append(Slide slide) {
-		showList.add(slide);
-	}
-
 	public Slide getSlide(int number) {
 		if (number < 0 || number >= getSize()) {
 			return null;
@@ -89,7 +66,12 @@ public class Presentation {
 		return getSlide(currentSlideNumber);
 	}
 
-	public void exit(int n) {
-		System.exit(n);
+	public ArrayList<Slide> getShowList() {
+		return showList;
 	}
+
+	public void setShowList(ArrayList<Slide> showList) {
+		this.showList = showList;
+	}
+
 }
