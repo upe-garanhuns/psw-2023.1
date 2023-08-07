@@ -12,7 +12,7 @@ public class ErrorView {
          */
     }
 
-    public static void showExceptionMessage(IOException ex) {
+    public static void exceptionMessage(IOException ex) {
         JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ",
                 JOptionPane.ERROR_MESSAGE);
     }

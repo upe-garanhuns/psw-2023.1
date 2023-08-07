@@ -1,9 +1,9 @@
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
 import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.ErrorView;
 import br.upe.enenhariasoftware.psw.jabberpoint.view.MenuView;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
@@ -14,6 +14,10 @@ public class FrameController {
 
     public void windowClosing() {
         System.exit(0);
+    }
+
+    public static void showExceptionMessage(IOException ex) {
+        ErrorView.exceptionMessage(ex);
     }
 
     public KeyController createKeyController(Presentation presentation) {
