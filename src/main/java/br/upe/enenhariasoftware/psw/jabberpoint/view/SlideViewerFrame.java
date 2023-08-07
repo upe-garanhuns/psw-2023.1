@@ -26,7 +26,7 @@ public class SlideViewerFrame extends JFrame implements Serializable {
 
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
-  private final FrameController frameController;
+  private final transient FrameController frameController;
 
   public SlideViewerFrame(String title, Presentation presentation, FrameController frameController) {
     super(title);
