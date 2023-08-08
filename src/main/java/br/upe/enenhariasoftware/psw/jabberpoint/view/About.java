@@ -7,13 +7,16 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Frame;
 
 import javax.swing.JOptionPane;
 
 public class About {
+
+	private About() {
+	}
 
 	public static void show(Frame parent) {
 		JOptionPane.showMessageDialog(parent,

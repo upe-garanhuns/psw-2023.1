@@ -13,25 +13,37 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.PresentationModel;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
+
 public class JabberPointApplication {
+	
 	public static void main(String[] args) {
 		Style.createStyles();
+		PresentationModel presentationModel = new PresentationModel();
+		new SlideViewerFrame("Jabberpoint 1.6 -", presentationModel);
+		loadPresentation(presentationModel, args);
+	}
 
-	    Presentation presentation = new Presentation();
+	private static void loadPresentation(PresentationModel presentationModel, String[] args) {
+		try {
+			Accessor accessor;
+			if (args.length == 0) {
+				accessor = Accessor.getDemoAccessor();
+			} else {
+				accessor = new XMLAccessor();
+			}
+			accessor.loadFile(presentationModel, args.length > 0 ? args[0] : "");
+			presentationModel.setSlideNumber(0);
+		} catch (IOException ex) {
+			showErrorMessage("IO Error: " + ex, "Jabberpoint Error ");
+		}
+	}
 
-	    new SlideViewerFrame("Jabberpoint 1.6 -", presentation);
-
-	    try {
-	      if (args.length == 0) {
-	        Accessor.getDemoAccessor().loadFile(presentation, "");
-	      } else {
-	        new XMLAccessor().loadFile(presentation, args[0]);
-	      }
-
-	      presentation.setSlideNumber(0);
-
-	    } catch (IOException ex) {
-	      JOptionPane.showMessageDialog(null, "IO Error: " + ex, "Jabberpoint Error ", JOptionPane.ERROR_MESSAGE);
-	    }
+	private static void showErrorMessage(String message, String title) {
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
 	}
 }

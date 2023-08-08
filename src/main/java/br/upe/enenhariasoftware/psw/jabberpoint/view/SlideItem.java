@@ -7,13 +7,15 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
-public abstract class SlideItem {
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
+
+public class SlideItem {
 
 	private int level = 0;
 
@@ -29,8 +31,11 @@ public abstract class SlideItem {
 		return level;
 	}
 
-	public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
+	public Rectangle getBoundingBox(Graphics slideGraphics, ImageObserver observer, float scale, Style style) {
+		return new Rectangle();
+	}
 
-	public abstract void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
+	public void draw(int x, int y, float scale, Graphics slideGraphics, Style style, ImageObserver observer) {
 
+	}
 }

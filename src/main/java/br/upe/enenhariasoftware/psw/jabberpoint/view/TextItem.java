@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint;
+package br.upe.enenhariasoftware.psw.jabberpoint.view;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,6 +23,8 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
 
 public class TextItem extends SlideItem {
 
@@ -54,7 +56,8 @@ public class TextItem extends SlideItem {
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
-		int xsize = 0, ysize = (int) (myStyle.leading * scale);
+		int xsize = 0;
+		int ysize = (int) (myStyle.leading * scale);
 
 		Iterator<TextLayout> iterator = layouts.iterator();
 
@@ -100,7 +103,7 @@ public class TextItem extends SlideItem {
 	}
 
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
+		List<TextLayout> layouts = new ArrayList<>();
 
 		AttributedString attrStr = getAttributedString(s, scale);
 		Graphics2D g2d = (Graphics2D) g;
@@ -108,7 +111,7 @@ public class TextItem extends SlideItem {
 		FontRenderContext frc = g2d.getFontRenderContext();
 		LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-		float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+		float wrappingWidth = (SlideView.WIDTH - s.indent) * scale;
 
 		while (measurer.getPosition() < getText().length()) {
 			TextLayout layout = measurer.nextLayout(wrappingWidth);
