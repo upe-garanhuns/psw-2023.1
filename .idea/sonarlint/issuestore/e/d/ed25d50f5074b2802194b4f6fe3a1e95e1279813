@@ -1,0 +1,15 @@
+
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›®š²ÿÿÿÿÿ
+€
+java:S1149"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(ÄĞµıÿÿÿÿ
+{
+java:S11491"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(®ÒªÁ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÖßÓÑøÿÿÿÿ
+Z
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(•ëö%
+G
+java:S1905.",Remove this unnecessary cast to "SlideItem".(­„§„üÿÿÿÿ
+G
+java:S1905E",Remove this unnecessary cast to "SlideItem".(“½°´úÿÿÿÿ
