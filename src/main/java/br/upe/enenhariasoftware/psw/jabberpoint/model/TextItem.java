@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.view.Style;
+
 public class TextItem extends SlideItem {
 
 	private String text;
@@ -54,7 +56,7 @@ public class TextItem extends SlideItem {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
 		int xsize = 0;
-		int ysize = (int) (myStyle.leading * scale);
+		int ysize = (int) (myStyle.getLeading() * scale);
 
 		Iterator<TextLayout> iterator = layouts.iterator();
 
@@ -72,7 +74,7 @@ public class TextItem extends SlideItem {
 			ysize += layout.getLeading() + layout.getDescent();
 		}
 
-		return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
+		return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize);
 	}
 
 	@Override
@@ -82,10 +84,10 @@ public class TextItem extends SlideItem {
 		}
 
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
+		Point pen = new Point(x + (int) (myStyle.getIndent() * scale), y + (int) (myStyle.getLeading() * scale));
 
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(myStyle.color);
+		g2d.setColor(myStyle.getColor());
 
 		Iterator<TextLayout> it = layouts.iterator();
 
@@ -108,7 +110,7 @@ public class TextItem extends SlideItem {
 		FontRenderContext frc = g2d.getFontRenderContext();
 		LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-		float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+		float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
 
 		while (measurer.getPosition() < getText().length()) {
 			TextLayout layout = measurer.nextLayout(wrappingWidth);

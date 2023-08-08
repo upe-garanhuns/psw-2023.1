@@ -7,7 +7,7 @@
  * 
  * @author Ian F. Darwin, Helaine Lins
  */
-package br.upe.enenhariasoftware.psw.jabberpoint.model;
+package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,7 +25,11 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.BitmapItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Slide;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.SlideItem;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.TextItem;
 
 public class XMLAccessor extends Accessor {
 

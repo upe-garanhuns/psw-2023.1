@@ -12,12 +12,12 @@ package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Presentation;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Style;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
+
 import br.upe.enenhariasoftware.psw.jabberpoint.view.SlideViewerFrame;
 import br.upe.enenhariasoftware.psw.jabberpoint.controller.PresentationController;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
+import br.upe.enenhariasoftware.psw.jabberpoint.view.Style;
+
 
 
 public class JabberPointApplication {

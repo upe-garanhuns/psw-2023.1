@@ -15,6 +15,8 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.upe.enenhariasoftware.psw.jabberpoint.view.Style;
+
 public class Slide {
 
 	public static final int WIDTH = 1200;

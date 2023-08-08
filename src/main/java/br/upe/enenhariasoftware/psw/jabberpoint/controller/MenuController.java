@@ -9,13 +9,13 @@
  */
 package br.upe.enenhariasoftware.psw.jabberpoint.controller;
 
-import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
-import br.upe.enenhariasoftware.psw.jabberpoint.model.XMLAccessor;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import br.upe.enenhariasoftware.psw.jabberpoint.model.Accessor;
 
 public class MenuController {
 
